@@ -1,0 +1,329 @@
+{
+	"project": "e18d3ac6-70c3-4892-9d52-c2e05a74a287",
+	"process": {
+		"nodes": [
+			{
+				"node_id": "BEGIN",
+				"desc": "Start",
+				"begin": 1751359888,
+				"estimated_time": 1,
+				"real_time": 1,
+				"count": 1,
+				"finished": true
+			},
+			{
+				"node_id": "PrepareDocuments",
+				"begin": 0,
+				"estimated_time": 4,
+				"real_time": 0,
+				"count": 0,
+				"finished": false
+			},
+			{
+				"node_id": "WriteGamePrd",
+				"begin": 0,
+				"estimated_time": 164,
+				"real_time": 0,
+				"count": 0,
+				"finished": false
+			},
+			{
+				"node_id": "WriteLevelPrd",
+				"begin": 0,
+				"estimated_time": 464,
+				"real_time": 0,
+				"count": 0,
+				"finished": false
+			},
+			{
+				"node_id": "WriteMapPrd",
+				"begin": 0,
+				"estimated_time": 236,
+				"real_time": 0,
+				"count": 0,
+				"finished": false
+			},
+			{
+				"node_id": "WritePlayerPrd",
+				"begin": 0,
+				"estimated_time": 47,
+				"real_time": 0,
+				"count": 0,
+				"finished": false
+			},
+			{
+				"node_id": "WriteMapData",
+				"begin": 0,
+				"estimated_time": 79,
+				"real_time": 0,
+				"count": 0,
+				"finished": false
+			},
+			{
+				"node_id": "WritePlayerCode",
+				"begin": 0,
+				"estimated_time": 15,
+				"real_time": 0,
+				"count": 0,
+				"finished": false
+			},
+			{
+				"node_id": "WriteLevelTasks",
+				"begin": 0,
+				"estimated_time": 82,
+				"real_time": 0,
+				"count": 0,
+				"finished": false
+			},
+			{
+				"node_id": "WriteNpcPrd",
+				"begin": 0,
+				"estimated_time": 75,
+				"real_time": 0,
+				"count": 0,
+				"finished": false
+			},
+			{
+				"node_id": "WriteLevelCode",
+				"begin": 0,
+				"estimated_time": 146,
+				"real_time": 0,
+				"count": 0,
+				"finished": false
+			},
+			{
+				"node_id": "WriteNpcCode",
+				"begin": 0,
+				"estimated_time": 23,
+				"real_time": 0,
+				"count": 0,
+				"finished": false
+			},
+			{
+				"node_id": "WriteAICode",
+				"begin": 0,
+				"estimated_time": 43,
+				"real_time": 0,
+				"count": 0,
+				"finished": false
+			},
+			{
+				"node_id": "WriteSkillPrd",
+				"begin": 0,
+				"estimated_time": 12,
+				"real_time": 0,
+				"count": 0,
+				"finished": false
+			},
+			{
+				"node_id": "WriteSkillCode",
+				"begin": 0,
+				"estimated_time": 24,
+				"real_time": 0,
+				"count": 0,
+				"finished": false
+			},
+			{
+				"node_id": "WaitMakeMap",
+				"begin": 0,
+				"estimated_time": 1,
+				"real_time": 0,
+				"count": 0,
+				"finished": false
+			},
+			{
+				"node_id": "MakeGameMap",
+				"begin": 0,
+				"estimated_time": 900,
+				"real_time": 0,
+				"count": 0,
+				"finished": false
+			}
+		]
+	},
+	"history": [
+		{
+			"role": "ai",
+			"timestamp": 1751359888,
+			"messages": [
+				{
+					"type": "text",
+					"content": "你好，我可以帮助你制作一个3D的Gameplay的设计文档，只要点击'生成'按钮，可以直接制作一个3D游戏，试着说出你的要求."
+				}
+			]
+		},
+		{
+			"role": "human",
+			"timestamp": 1751359888,
+			"messages": [
+				{
+					"type": "text",
+					"content": "你好"
+				}
+			]
+		},
+		{
+			"role": "ai",
+			"timestamp": 1751359896,
+			"messages": [
+				{
+					"type": "text",
+					"content": "你好！很高兴见到你！我是一个专业的游戏需求分析师，我可以帮助你设计一个30分钟以内的RPG游戏。\n\n让我们开始吧！首先，我想了解一下：你心目中想要制作的游戏是什么样子的？比如：\n- 你希望这是一个什么主题的游戏？（奇幻冒险、科幻探索、现代都市等）\n- 你有什么特别的游戏创意或故事想法吗？\n\n请随意分享你的想法，不管是完整的构思还是零散的灵感都可以！"
+				}
+			],
+			"ai_response": {
+				"message_type": "ai",
+				"text": "```json\n{\n  \"requirement\": {\n    \"game_name\": \"\",\n    \"game_theme\": \"\",\n    \"game_style\": \"\",\n    \"game_mood_board\": [],\n    \"performance_style\": \"\",\n    \"game_mechanics\": [],\n    \"game_design_goals_for_player\": \"\",\n    \"game_world_map\": \"\",\n    \"game_content\": [],\n    \"special_requirement\": \"\",\n    \"user_language_preference\": \"中文\"\n  },\n  \"llm_chat_response\": \"你好！很高兴见到你！我是一个专业的游戏需求分析师，我可以帮助你设计一个30分钟以内的RPG游戏。\\n\\n让我们开始吧！首先，我想了解一下：你心目中想要制作的游戏是什么样子的？比如：\\n- 你希望这是一个什么主题的游戏？（奇幻冒险、科幻探索、现代都市等）\\n- 你有什么特别的游戏创意或故事想法吗？\\n\\n请随意分享你的想法，不管是完整的构思还是零散的灵感都可以！\",\n  \"finished\": false\n}\n```"
+			}
+		},
+		{
+			"role": "ai",
+			"timestamp": 1751359896,
+			"messages": [
+				{
+					"type": "file",
+					"content": "根据目前的信息的总结(持续更新)",
+					"extra_info": {
+						"requirement.md": "docs/requirement.md"
+					}
+				}
+			]
+		}
+	],
+	"kv": {
+		"requirement": "{\n\t\"user_language_preference\": \"中文\"\n}"
+	},
+	"config": {
+		"open": true,
+		"use_tts": false,
+		"default_llm": "claude-latest",
+		"default_review_llm": "deepseek-reasoner",
+		"default_llm_coder": "claude-latest",
+		"default_llm_coder_smart": "claude-thinking",
+		"default_llm_smart": "claude-thinking",
+		"default_llm_cheep": "deepseek-reasoner",
+		"default_action": {
+			"open": false,
+			"multi_step": false,
+			"llm_select_type": "",
+			"llm": "claude-latest",
+			"llm_review": "deepseek-reasoner",
+			"max_review_step": 0
+		},
+		"actions": {
+			"WriteAICode": {
+				"open": true,
+				"multi_step": false,
+				"llm_select_type": "coder",
+				"llm": "claude-latest",
+				"llm_review": "claude-thinking",
+				"max_review_step": 1
+			},
+			"WriteGamePrd": {
+				"open": false,
+				"multi_step": false,
+				"llm_select_type": "smarter",
+				"llm": "claude-thinking",
+				"llm_review": "deepseek-reasoner",
+				"max_review_step": 0
+			},
+			"WriteLevelCode": {
+				"open": true,
+				"multi_step": false,
+				"llm_select_type": "coder",
+				"llm": "claude-latest",
+				"llm_review": "claude-thinking",
+				"max_review_step": 1
+			},
+			"WriteLevelPrd": {
+				"open": false,
+				"multi_step": false,
+				"llm_select_type": "smarter",
+				"llm": "claude-thinking",
+				"llm_review": "deepseek-reasoner",
+				"max_review_step": 0
+			},
+			"WriteLevelTasks": {
+				"open": false,
+				"multi_step": false,
+				"llm_select_type": "coder",
+				"llm": "claude-latest",
+				"llm_review": "deepseek-reasoner",
+				"max_review_step": 0
+			},
+			"WriteMapData": {
+				"open": false,
+				"multi_step": false,
+				"llm_select_type": "normal",
+				"llm": "claude-latest",
+				"llm_review": "deepseek-reasoner",
+				"max_review_step": 0
+			},
+			"WriteMapPrd": {
+				"open": false,
+				"multi_step": false,
+				"llm_select_type": "smarter",
+				"llm": "claude-thinking",
+				"llm_review": "deepseek-reasoner",
+				"max_review_step": 0
+			},
+			"WriteNpcCode": {
+				"open": false,
+				"multi_step": false,
+				"llm_select_type": "coder",
+				"llm": "claude-latest",
+				"llm_review": "",
+				"max_review_step": 0
+			},
+			"WriteNpcPrd": {
+				"open": false,
+				"multi_step": false,
+				"llm_select_type": "normal",
+				"llm": "claude-latest",
+				"llm_review": "deepseek-reasoner",
+				"max_review_step": 0
+			},
+			"WriteNumericalPrd": {
+				"open": true,
+				"multi_step": false,
+				"llm_select_type": "smarter",
+				"llm": "claude-thinking",
+				"llm_review": "claude-thinking",
+				"max_review_step": 1
+			},
+			"WritePlayerCode": {
+				"open": false,
+				"multi_step": false,
+				"llm_select_type": "coder",
+				"llm": "claude-latest",
+				"llm_review": "",
+				"max_review_step": 0
+			},
+			"WritePlayerPrd": {
+				"open": false,
+				"multi_step": false,
+				"llm_select_type": "normal",
+				"llm": "claude-latest",
+				"llm_review": "deepseek-reasoner",
+				"max_review_step": 0
+			},
+			"WriteSkillCode": {
+				"open": true,
+				"multi_step": false,
+				"llm_select_type": "coder",
+				"llm": "claude-latest",
+				"llm_review": "claude-thinking",
+				"max_review_step": 1
+			},
+			"WriteSkillPrd": {
+				"open": false,
+				"multi_step": false,
+				"llm_select_type": "normal",
+				"llm": "claude-latest",
+				"llm_review": "deepseek-reasoner",
+				"max_review_step": 0
+			}
+		}
+	},
+	"config_schema": "{\n\t\"additionalProperties\": false,\n\t\"properties\": {\n\t\t\"actions\": {\n\t\t\t\"additionalProperties\": {\n\t\t\t\t\"additionalProperties\": false,\n\t\t\t\t\"properties\": {\n\t\t\t\t\t\"llm\": {\n\t\t\t\t\t\t\"description\": \"基础大模型类型\",\n\t\t\t\t\t\t\"enum\": [\n\t\t\t\t\t\t\t\"deepseek-reasoner\",\n\t\t\t\t\t\t\t\"deepseek-chat\",\n\t\t\t\t\t\t\t\"gpt-4o\",\n\t\t\t\t\t\t\t\"claude3dot7\",\n\t\t\t\t\t\t\t\"claude3dot7-thinking\",\n\t\t\t\t\t\t\t\"gpt-4o-mini\"\n\t\t\t\t\t\t],\n\t\t\t\t\t\t\"type\": \"string\"\n\t\t\t\t\t},\n\t\t\t\t\t\"llm_review\": {\n\t\t\t\t\t\t\"description\": \"review模型\",\n\t\t\t\t\t\t\"enum\": [\n\t\t\t\t\t\t\t\"deepseek-reasoner\",\n\t\t\t\t\t\t\t\"deepseek-chat\",\n\t\t\t\t\t\t\t\"gpt-4o\",\n\t\t\t\t\t\t\t\"claude3dot7\",\n\t\t\t\t\t\t\t\"claude3dot7-thinking\",\n\t\t\t\t\t\t\t\"gpt-4o-mini\"\n\t\t\t\t\t\t],\n\t\t\t\t\t\t\"type\": \"string\"\n\t\t\t\t\t},\n\t\t\t\t\t\"llm_select_type\": {\n\t\t\t\t\t\t\"description\": \"LLM选择类型(设置无效)\",\n\t\t\t\t\t\t\"enum\": [\n\t\t\t\t\t\t\t\"normal\",\n\t\t\t\t\t\t\t\"coder\",\n\t\t\t\t\t\t\t\"smartCoder\",\n\t\t\t\t\t\t\t\"cheep\",\n\t\t\t\t\t\t\t\"reviewer\",\n\t\t\t\t\t\t\t\"faster\"\n\t\t\t\t\t\t],\n\t\t\t\t\t\t\"type\": \"string\"\n\t\t\t\t\t},\n\t\t\t\t\t\"max_review_step\": {\n\t\t\t\t\t\t\"description\": \"最大review次数\",\n\t\t\t\t\t\t\"type\": \"integer\"\n\t\t\t\t\t},\n\t\t\t\t\t\"multi_step\": {\n\t\t\t\t\t\t\"description\": \"是否使用复杂多步骤模式\",\n\t\t\t\t\t\t\"type\": \"boolean\"\n\t\t\t\t\t},\n\t\t\t\t\t\"open\": {\n\t\t\t\t\t\t\"description\": \"是否启用当前配置\",\n\t\t\t\t\t\t\"type\": \"boolean\"\n\t\t\t\t\t}\n\t\t\t\t},\n\t\t\t\t\"required\": [\n\t\t\t\t\t\"open\",\n\t\t\t\t\t\"multi_step\",\n\t\t\t\t\t\"llm_select_type\",\n\t\t\t\t\t\"llm\",\n\t\t\t\t\t\"llm_review\",\n\t\t\t\t\t\"max_review_step\"\n\t\t\t\t],\n\t\t\t\t\"type\": \"object\"\n\t\t\t},\n\t\t\t\"description\": \"指定的action配置(优先级高)\",\n\t\t\t\"type\": \"object\"\n\t\t},\n\t\t\"default_action\": {\n\t\t\t\"additionalProperties\": false,\n\t\t\t\"description\": \"默认的action配置(优先级低)\",\n\t\t\t\"properties\": {\n\t\t\t\t\"llm\": {\n\t\t\t\t\t\"description\": \"基础大模型类型\",\n\t\t\t\t\t\"enum\": [\n\t\t\t\t\t\t\"deepseek-reasoner\",\n\t\t\t\t\t\t\"deepseek-chat\",\n\t\t\t\t\t\t\"gpt-4o\",\n\t\t\t\t\t\t\"claude3dot7\",\n\t\t\t\t\t\t\"claude3dot7-thinking\",\n\t\t\t\t\t\t\"gpt-4o-mini\"\n\t\t\t\t\t],\n\t\t\t\t\t\"type\": \"string\"\n\t\t\t\t},\n\t\t\t\t\"llm_review\": {\n\t\t\t\t\t\"description\": \"review模型\",\n\t\t\t\t\t\"enum\": [\n\t\t\t\t\t\t\"deepseek-reasoner\",\n\t\t\t\t\t\t\"deepseek-chat\",\n\t\t\t\t\t\t\"gpt-4o\",\n\t\t\t\t\t\t\"claude3dot7\",\n\t\t\t\t\t\t\"claude3dot7-thinking\",\n\t\t\t\t\t\t\"gpt-4o-mini\"\n\t\t\t\t\t],\n\t\t\t\t\t\"type\": \"string\"\n\t\t\t\t},\n\t\t\t\t\"llm_select_type\": {\n\t\t\t\t\t\"description\": \"LLM选择类型(设置无效)\",\n\t\t\t\t\t\"enum\": [\n\t\t\t\t\t\t\"normal\",\n\t\t\t\t\t\t\"coder\",\n\t\t\t\t\t\t\"smartCoder\",\n\t\t\t\t\t\t\"cheep\",\n\t\t\t\t\t\t\"reviewer\",\n\t\t\t\t\t\t\"faster\"\n\t\t\t\t\t],\n\t\t\t\t\t\"type\": \"string\"\n\t\t\t\t},\n\t\t\t\t\"max_review_step\": {\n\t\t\t\t\t\"description\": \"最大review次数\",\n\t\t\t\t\t\"type\": \"integer\"\n\t\t\t\t},\n\t\t\t\t\"multi_step\": {\n\t\t\t\t\t\"description\": \"是否使用复杂多步骤模式\",\n\t\t\t\t\t\"type\": \"boolean\"\n\t\t\t\t},\n\t\t\t\t\"open\": {\n\t\t\t\t\t\"description\": \"是否启用当前配置\",\n\t\t\t\t\t\"type\": \"boolean\"\n\t\t\t\t}\n\t\t\t},\n\t\t\t\"required\": [\n\t\t\t\t\"open\",\n\t\t\t\t\"multi_step\",\n\t\t\t\t\"llm_select_type\",\n\t\t\t\t\"llm\",\n\t\t\t\t\"llm_review\",\n\t\t\t\t\"max_review_step\"\n\t\t\t],\n\t\t\t\"type\": \"object\"\n\t\t},\n\t\t\"default_llm\": {\n\t\t\t\"description\": \"默认LLM\",\n\t\t\t\"enum\": [\n\t\t\t\t\"deepseek-reasoner\",\n\t\t\t\t\"deepseek-chat\",\n\t\t\t\t\"gpt-4o\",\n\t\t\t\t\"claude3dot7\",\n\t\t\t\t\"claude3dot7-thinking\",\n\t\t\t\t\"gpt-4o-mini\"\n\t\t\t],\n\t\t\t\"type\": \"string\"\n\t\t},\n\t\t\"default_llm_cheep\": {\n\t\t\t\"description\": \"默认低成本LLM\",\n\t\t\t\"enum\": [\n\t\t\t\t\"deepseek-reasoner\",\n\t\t\t\t\"deepseek-chat\",\n\t\t\t\t\"gpt-4o\",\n\t\t\t\t\"claude3dot7\",\n\t\t\t\t\"claude3dot7-thinking\",\n\t\t\t\t\"gpt-4o-mini\"\n\t\t\t],\n\t\t\t\"type\": \"string\"\n\t\t},\n\t\t\"default_llm_coder\": {\n\t\t\t\"description\": \"默认CoderLLM\",\n\t\t\t\"enum\": [\n\t\t\t\t\"deepseek-reasoner\",\n\t\t\t\t\"deepseek-chat\",\n\t\t\t\t\"gpt-4o\",\n\t\t\t\t\"claude3dot7\",\n\t\t\t\t\"claude3dot7-thinking\",\n\t\t\t\t\"gpt-4o-mini\"\n\t\t\t],\n\t\t\t\"type\": \"string\"\n\t\t},\n\t\t\"default_llm_coder_smart\": {\n\t\t\t\"description\": \"默认SmartCoderLLM\",\n\t\t\t\"enum\": [\n\t\t\t\t\"deepseek-reasoner\",\n\t\t\t\t\"deepseek-chat\",\n\t\t\t\t\"gpt-4o\",\n\t\t\t\t\"claude3dot7\",\n\t\t\t\t\"claude3dot7-thinking\",\n\t\t\t\t\"gpt-4o-mini\"\n\t\t\t],\n\t\t\t\"type\": \"string\"\n\t\t},\n\t\t\"default_llm_smart\": {\n\t\t\t\"description\": \"默认最聪明LLM\",\n\t\t\t\"enum\": [\n\t\t\t\t\"deepseek-reasoner\",\n\t\t\t\t\"deepseek-chat\",\n\t\t\t\t\"gpt-4o\",\n\t\t\t\t\"claude3dot7\",\n\t\t\t\t\"claude3dot7-thinking\",\n\t\t\t\t\"gpt-4o-mini\"\n\t\t\t],\n\t\t\t\"type\": \"string\"\n\t\t},\n\t\t\"default_review_llm\": {\n\t\t\t\"description\": \"默认reviewLLM\",\n\t\t\t\"enum\": [\n\t\t\t\t\"deepseek-reasoner\",\n\t\t\t\t\"deepseek-chat\",\n\t\t\t\t\"gpt-4o\",\n\t\t\t\t\"claude3dot7\",\n\t\t\t\t\"claude3dot7-thinking\",\n\t\t\t\t\"gpt-4o-mini\"\n\t\t\t],\n\t\t\t\"type\": \"string\"\n\t\t},\n\t\t\"open\": {\n\t\t\t\"description\": \"是否启用\",\n\t\t\t\"type\": \"boolean\"\n\t\t},\n\t\t\"use_tts\": {\n\t\t\t\"description\": \"是否启用语音合成\",\n\t\t\t\"type\": \"boolean\"\n\t\t}\n\t},\n\t\"required\": [\n\t\t\"open\",\n\t\t\"use_tts\"\n\t],\n\t\"type\": \"object\"\n}"
+}
