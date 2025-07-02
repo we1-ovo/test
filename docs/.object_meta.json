@@ -7,6 +7,10 @@
 		"WriteGamePrd": {
 			"name": "write_game_prd.GamePrd",
 			"is_ptr": false
+		},
+		"WriteLevelPrd": {
+			"name": "write_level_prd.LevelPrd",
+			"is_ptr": false
 		}
 	}
 }
