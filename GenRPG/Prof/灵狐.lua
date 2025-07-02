@@ -2,49 +2,53 @@ local M = {
     -- id为NPC的模板TID，与文件名一致
     id = "灵狐",
     -- desc是NPC的描述，会显示在NPC信息中
-    desc = "谷口区域的低级妖兽，体型小巧，毛色银白，双眼发出幽蓝光芒，速度极快但攻击力较弱",
-    type = "junior", -- 从boss、junior、senior中选择，灵狐是低级妖兽，选择junior
-    attackType = "melee", -- 灵狐是近战攻击类型
-    prefab = "Assets/PolygonApocalypse/Prefabs/Characters/Chr_Attach/SM_Chr_Attach_Zombie_Female_Hair_02.prefab", -- 预制体名称
-    avatar = "Assets/Avatars/Assets_PolygonApocalypse_Prefabs_Characters_Chr_Attach_SM_Chr_Attach_Zombie_Female_Hair_02.png", -- 立绘头像
-    -- prop是NPC的属性参考数值系统
+    desc = "体型小巧的银白色妖兽，双眼发出幽蓝光芒，是灵草谷谷口区域常见的低级妖兽",
+    -- 灵狐是普通妖兽，选择junior类型
+    type = "junior",
+    -- 灵狐以扑击和爪击为主，是近战攻击类型
+    attackType = "melee",
+    -- 选择合适的模型作为预制体
+    prefab = "Assets/Toon_RTS/WesternKingdoms/prefabs/WK_Cavalry_Light_B.prefab",
+    -- 对应的头像
+    avatar = "Assets/Avatars/Assets_Toon_RTS_WesternKingdoms_prefabs_WK_Cavalry_Light_B.png",
+    -- 灵狐的属性参数，根据数值系统和灵狐的具体描述设置
     prop = {
-        -- hpMax是最大生命值
-        hpMax = 300,
-        -- hpGen是生命回复速度
-        hpGen = 3,
-        -- mpMax是最大法力值
-        mpMax = 80,
-        -- mpGen是法力回复速度
-        mpGen = 4,
-        -- speed是速度，灵狐速度快
+        -- 从属性描述中获取生命值
+        hpMax = 350,
+        -- 从数值系统中的NPC属性获取生命回复速度
+        hpGen = 4,
+        -- 从属性描述中获取法力值
+        mpMax = 100,
+        -- 从数值系统中的NPC属性获取法力回复速度
+        mpGen = 5,
+        -- 从属性描述中获取速度
         speed = 5,
-        -- strength是力量，攻击力中低
-        strength = 15,
-        -- defense是防御，灵狐防御力低
-        defense = 5,
-        -- agility是敏捷，灵狐敏捷度高
-        agility = 20,
-        -- exp是NPC死亡时给予player的经验值
-        exp = 120,
+        -- 从属性描述中获取力量（攻击力）
+        strength = 30,
+        -- 从属性描述中获取防御力
+        defense = 15,
+        -- 从属性描述中获取敏捷值
+        agility = 25,
+        -- 从数值系统中的NPC属性获取经验值
+        exp = 150
     },
-    -- skills是NPC的技能，即可以使用的技能id列表
+    -- 灵狐的技能列表
     skills = {
-        "快速扑击",
-        "爪击",
-        "敏捷闪避",
+        "迅捷扑击",
+        "幽光爪",
+        "灵气闪避"
     },
-    -- faction表示阵营，灵狐是敌对NPC，选择faction_npc
+    -- 灵狐是敌对NPC，设置为敌对阵营
     faction = 'faction_npc',
-    -- aiRoot是NPC的AI行为的根目录
+    -- 使用默认AI
     aiRoot = 'default',
-    -- 仇恨范围8米，根据AI描述中的感知范围
-    hatredRange = 8,
-    -- 灵狐可以移动
+    -- 根据AI描述，灵狐在玩家进入5米范围内开始攻击，设置仇恨范围为5
+    hatredRange = 5,
+    -- 灵狐能够移动
     canMove = true,
-    -- 灵狐可以释放技能
+    -- 灵狐能够释放技能
     canCastSkill = true,
-    -- 灵狐可以被攻击
+    -- 灵狐能够被攻击
     canBeAttack = true,
 }
 return M
