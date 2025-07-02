@@ -12,16 +12,24 @@
 			"terrains": [
 				{
 					"eid": "terrain_valley_entrance_ground",
-					"desc": "谷口平地草地",
+					"desc": "谷口平地",
 					"type": 1,
 					"vertices": [
 						{
-							"x": 44,
-							"y": 25
+							"x": 64,
+							"y": 15
 						},
 						{
-							"x": 64,
-							"y": 25
+							"x": 84,
+							"y": 20
+						},
+						{
+							"x": 86,
+							"y": 30
+						},
+						{
+							"x": 84,
+							"y": 40
 						},
 						{
 							"x": 64,
@@ -29,7 +37,15 @@
 						},
 						{
 							"x": 44,
-							"y": 45
+							"y": 40
+						},
+						{
+							"x": 42,
+							"y": 30
+						},
+						{
+							"x": 44,
+							"y": 20
 						}
 					]
 				},
@@ -40,28 +56,44 @@
 					"height": 3,
 					"vertices": [
 						{
-							"x": 45,
+							"x": 48,
 							"y": 28
 						},
 						{
-							"x": 50,
+							"x": 54,
 							"y": 32
 						},
 						{
-							"x": 58,
-							"y": 30
+							"x": 60,
+							"y": 29
 						},
 						{
-							"x": 62,
+							"x": 68,
+							"y": 31
+						},
+						{
+							"x": 74,
 							"y": 35
 						},
 						{
-							"x": 55,
-							"y": 40
+							"x": 70,
+							"y": 38
 						},
 						{
-							"x": 48,
+							"x": 64,
+							"y": 36
+						},
+						{
+							"x": 58,
 							"y": 38
+						},
+						{
+							"x": 52,
+							"y": 36
+						},
+						{
+							"x": 46,
+							"y": 32
 						}
 					]
 				},
@@ -69,27 +101,31 @@
 					"eid": "terrain_left_mountain",
 					"desc": "左侧山壁",
 					"type": 7,
-					"height": 20,
+					"height": 25,
 					"vertices": [
 						{
 							"x": 0,
 							"y": 0
 						},
 						{
-							"x": 15,
+							"x": 20,
 							"y": 10
 						},
 						{
-							"x": 20,
+							"x": 25,
 							"y": 30
 						},
 						{
-							"x": 15,
+							"x": 20,
 							"y": 60
 						},
 						{
-							"x": 10,
+							"x": 15,
 							"y": 90
+						},
+						{
+							"x": 10,
+							"y": 110
 						},
 						{
 							"x": 0,
@@ -101,27 +137,31 @@
 					"eid": "terrain_right_mountain",
 					"desc": "右侧山壁",
 					"type": 7,
-					"height": 20,
+					"height": 25,
 					"vertices": [
 						{
 							"x": 128,
 							"y": 0
 						},
 						{
-							"x": 113,
+							"x": 108,
 							"y": 10
 						},
 						{
-							"x": 108,
+							"x": 103,
 							"y": 30
 						},
 						{
-							"x": 113,
+							"x": 108,
 							"y": 60
 						},
 						{
-							"x": 118,
+							"x": 113,
 							"y": 90
+						},
+						{
+							"x": 118,
+							"y": 110
 						},
 						{
 							"x": 128,
@@ -131,7 +171,7 @@
 				},
 				{
 					"eid": "terrain_middle_hills",
-					"desc": "谷中段丘陵地带",
+					"desc": "谷中段丘陵",
 					"type": 1,
 					"height": 2,
 					"vertices": [
@@ -140,20 +180,20 @@
 							"y": 45
 						},
 						{
-							"x": 85,
+							"x": 93,
 							"y": 45
 						},
 						{
-							"x": 90,
+							"x": 98,
 							"y": 65
 						},
 						{
-							"x": 85,
-							"y": 75
+							"x": 93,
+							"y": 80
 						},
 						{
-							"x": 40,
-							"y": 78
+							"x": 45,
+							"y": 83
 						},
 						{
 							"x": 30,
@@ -167,6 +207,14 @@
 					"type": 11,
 					"height": -0.5,
 					"vertices": [
+						{
+							"x": 108,
+							"y": 85
+						},
+						{
+							"x": 95,
+							"y": 82
+						},
 						{
 							"x": 85,
 							"y": 75
@@ -190,6 +238,10 @@
 						{
 							"x": 35,
 							"y": 55
+						},
+						{
+							"x": 25,
+							"y": 50
 						}
 					]
 				},
@@ -307,7 +359,7 @@
 					"eid": "terrain_valley_bottom_mist",
 					"desc": "谷底灵雾区",
 					"type": 5,
-					"radius": 17.5,
+					"radius": 20,
 					"vertices": [
 						{
 							"x": 64,
@@ -319,39 +371,31 @@
 					"eid": "terrain_central_platform",
 					"desc": "中央石台",
 					"type": 6,
-					"height": 2,
+					"height": 2.5,
 					"vertices": [
 						{
-							"x": 58,
-							"y": 104
-						},
-						{
-							"x": 64,
-							"y": 106
-						},
-						{
-							"x": 70,
-							"y": 104
-						},
-						{
-							"x": 72,
+							"x": 57,
 							"y": 98
 						},
 						{
-							"x": 70,
-							"y": 92
+							"x": 64,
+							"y": 102
+						},
+						{
+							"x": 71,
+							"y": 98
+						},
+						{
+							"x": 71,
+							"y": 91
 						},
 						{
 							"x": 64,
-							"y": 90
+							"y": 87
 						},
 						{
-							"x": 58,
-							"y": 92
-						},
-						{
-							"x": 56,
-							"y": 98
+							"x": 57,
+							"y": 91
 						}
 					]
 				}
@@ -364,12 +408,12 @@
 					"end_eid": "terrain_valley_entrance_ground",
 					"vertices": [
 						{
-							"x": 54,
-							"y": 10
+							"x": 64,
+							"y": 5
 						},
 						{
-							"x": 54,
-							"y": 25
+							"x": 64,
+							"y": 15
 						}
 					]
 				},
@@ -381,15 +425,11 @@
 					"end_eid": "terrain_middle_hills",
 					"vertices": [
 						{
-							"x": 54,
-							"y": 35
+							"x": 64,
+							"y": 45
 						},
 						{
-							"x": 58,
-							"y": 42
-						},
-						{
-							"x": 62,
+							"x": 64,
 							"y": 50
 						}
 					]
@@ -419,20 +459,24 @@
 					"end_eid": "terrain_valley_bottom_mist",
 					"vertices": [
 						{
+							"x": 64,
+							"y": 83
+						},
+						{
 							"x": 62,
-							"y": 78
-						},
-						{
-							"x": 58,
-							"y": 82
-						},
-						{
-							"x": 60,
-							"y": 86
+							"y": 87
 						},
 						{
 							"x": 64,
-							"y": 90
+							"y": 91
+						},
+						{
+							"x": 68,
+							"y": 94
+						},
+						{
+							"x": 69,
+							"y": 98
 						}
 					]
 				}
@@ -441,7 +485,7 @@
 				{
 					"eid": "river_spirit_spring",
 					"desc": "灵泉溪",
-					"width": 4,
+					"width": 5,
 					"depth": 0.5,
 					"start_eid": "terrain_right_mountain",
 					"end_eid": "terrain_left_mountain",
@@ -494,8 +538,8 @@
 						"type": 0,
 						"vertices": [
 							{
-								"x": 60,
-								"y": 30
+								"x": 70,
+								"y": 32
 							}
 						]
 					}
@@ -536,44 +580,44 @@
 					"desc": "玩家初始出生点，位于谷口主道起始处面向谷内",
 					"priority": 1,
 					"center": {
-						"x": 54,
-						"y": 15
+						"x": 64,
+						"y": 10
 					}
 				},
 				{
 					"eid": "locator_valley_entrance_elder",
-					"english": "elder_spawn_point",
-					"desc": "老修士出现位置，古老石亭附近开阔地带",
+					"english": "elder_guide_spawn",
+					"desc": "老修士出现位置，谷口入口处约10米开阔地带",
 					"priority": 2,
 					"center": {
-						"x": 58,
-						"y": 32
+						"x": 64,
+						"y": 20
 					}
 				},
 				{
 					"eid": "locator_valley_entrance_foxes",
-					"english": "foxes_spawn_area",
-					"desc": "灵狐群出生点，巨石群左中右三个隐蔽位置",
+					"english": "fox_trial_spawn",
+					"desc": "灵狐群出生点，谷口巨石群周围左中右三处位置",
 					"priority": 3,
 					"center": {
-						"x": 52,
-						"y": 35
+						"x": 54,
+						"y": 32
 					}
 				},
 				{
 					"eid": "locator_valley_entrance_apes",
-					"english": "apes_spawn_area",
-					"desc": "山猿出生点，巨石群较高岩石顶部",
+					"english": "ape_trial_spawn",
+					"desc": "山猿出生点，谷口高地岩石上居高临下位置",
 					"priority": 3,
 					"center": {
-						"x": 58,
-						"y": 38
+						"x": 70,
+						"y": 36
 					}
 				},
 				{
 					"eid": "locator_valley_middle_leopards",
-					"english": "leopards_ambush_area",
-					"desc": "灵豹群伏击点，丘陵地带草丛岩石后方",
+					"english": "leopard_middle_spawn",
+					"desc": "灵豹群伏击点，谷中段溪流附近密林中隐蔽位置",
 					"priority": 4,
 					"center": {
 						"x": 70,
@@ -582,8 +626,8 @@
 				},
 				{
 					"eid": "locator_valley_middle_bears",
-					"english": "bears_guard_area",
-					"desc": "石熊把守位置，溪谷石桥两端",
+					"english": "bear_middle_spawn",
+					"desc": "石熊把守位置，谷中段石桥两端阻挡道路位置",
 					"priority": 5,
 					"center": {
 						"x": 62,
@@ -592,18 +636,18 @@
 				},
 				{
 					"eid": "locator_valley_bottom_boss",
-					"english": "dragon_boss_area",
-					"desc": "千年蛟龙Boss位置，中央石台灵草祭台周围",
+					"english": "dragon_boss_spawn",
+					"desc": "千年蛟龙Boss位置，谷底中央石台上盘绕灵草周围",
 					"priority": 6,
 					"center": {
 						"x": 64,
-						"y": 98
+						"y": 95
 					}
 				},
 				{
 					"eid": "locator_middle_herbs_spawn1",
 					"english": "middle_herb_point_1",
-					"desc": "中级灵草采集点1，溪流左岸平台中段",
+					"desc": "中级灵草采集点1，溪流左岸中段肥沃土地",
 					"priority": 7,
 					"center": {
 						"x": 50,
@@ -613,7 +657,7 @@
 				{
 					"eid": "locator_middle_herbs_spawn2",
 					"english": "middle_herb_point_2",
-					"desc": "中级灵草采集点2，溪流右岸平台近石桥",
+					"desc": "中级灵草采集点2，溪流右岸近石桥灵气充沛草地",
 					"priority": 7,
 					"center": {
 						"x": 70,
@@ -623,7 +667,7 @@
 				{
 					"eid": "locator_middle_herbs_spawn3",
 					"english": "middle_herb_point_3",
-					"desc": "中级灵草采集点3，丘陵地带高地平台",
+					"desc": "中级灵草采集点3，丘陵地带高地平台视野开阔处",
 					"priority": 7,
 					"center": {
 						"x": 75,
@@ -652,7 +696,7 @@
 				},
 				{
 					"eid": "locator_final_herb",
-					"english": "legendary_herb_location",
+					"english": "legendary_herb_spot",
 					"desc": "千年灵草位置，中央石台灵草祭台正中央",
 					"priority": 9,
 					"center": {
@@ -662,12 +706,12 @@
 				},
 				{
 					"eid": "locator_elder_exit",
-					"english": "elder_exit_point",
-					"desc": "老修士离开位置，向谷口入口方向离去",
+					"english": "elder_exit_path",
+					"desc": "老修士离开位置，传授技能后向谷口入口方向离去",
 					"priority": 9,
 					"center": {
-						"x": 54,
-						"y": 20
+						"x": 64,
+						"y": 12
 					}
 				}
 			]
