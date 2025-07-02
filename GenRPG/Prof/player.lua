@@ -2,11 +2,11 @@ local M = {
     -- player的id为player，必须填写player
     id = "player",
     -- desc是Player的描述，会显示在Player信息中
-    desc = "筑基期修仙者，初入仙途的修士",
-    type = "player", -- 所有类型有: boss、junior、senior、player(当前是player类型必须填写player,禁止填其他类型)
-    attackType = "ranged", -- 攻击类型有 melee(近战) 和 ranged(远程)，修仙者使用法术攻击，因此为远程
-    prefab = "Assets/PolygonFantasyCharacters/Prefabs/Character_Male_Wizard_01.prefab", -- 预制体名称
-    avatar = "Assets/Avatars/Assets_PolygonFantasyCharacters_Prefabs_Character_Male_Wizard_01.png", -- 立绘头像
+    desc = "筑基期修仙者，初入仙途的修士具备扎实的仙术修为基础",
+    type = "player", -- 所有类型有: boss、junior、senior、player(当前是player类型必须填写player)
+    attackType = "ranged", -- 攻击类型有 melee(近战) 和 ranged(远程)，修仙者使用远程仙术攻击
+    prefab = "Assets/PolygonFantasyCharacters/Prefabs/FixedScaleCharacters/Character_Male_Sorcerer.prefab",
+    avatar = "Assets/Avatars/Assets_PolygonFantasyCharacters_Prefabs_FixedScaleCharacters_Character_Male_Sorcerer.png",
     -- prop是Player的属性，根据设计文档和数值系统设计完成
     prop = {
         -- hpMax是最大生命值
@@ -20,9 +20,9 @@ local M = {
         -- speed是速度
         speed = 6,
         -- strength是力量
-        strength = 60,
+        strength = 70,
         -- defense是防御
-        defense = 25,
+        defense = 30,
         -- agility是敏捷
         agility = 40,
         -- exp字段对player无效，固定为0
@@ -35,7 +35,7 @@ local M = {
         "御风术",
         "烈焰符",
         "护体金光",
-        "天雷诀",
+        "天雷诀"
     },
     -- faction表示阵营，player必须填写 'faction_player'（玩家）
     faction = 'faction_player',
