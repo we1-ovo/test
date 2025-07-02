@@ -2,116 +2,172 @@ local M = {}
 
 function M.cb()
     -- 获取自身信息
-    local selfPos = NPC_GetPos("")
-    local currentHP = NPC_GetHP("")
-    local maxHP = NPC_GetMaxHP("")
-    local hpPercent = currentHP / maxHP
+    local myPos = NPC_GetPos("")
+    local myHP = NPC_GetHP("")
+    local myMaxHP = NPC_GetMaxHP("")
+    local mySpeed = NPC_GetSpeed("")
+    local HPPercent = myHP / myMaxHP * 100
     
-    -- 检测自身状态，低于40%生命值且岩石护盾可用时优先使用
-    if hpPercent < 0.4 then
-        local buffed, isNegative = NPC_IsBuffed("", "岩石护盾")
-        if not buffed then
-            NPC_CastSkill("岩石护盾")
-            return
+    -- 获取目标信息
+    local targetUUID = NPC_BlackboardGet("targetUUID") or ""
+    if targetUUID == "" or not NPC_IsAlive(targetUUID) then
+        -- 自动选择新目标
+        targetUUID = NPC_AutoSelectTarget(10)
+        if targetUUID ~= "" then
+            NPC_BlackboardSet("targetUUID", targetUUID)
         end
     end
     
-    -- 获取附近敌人
-    local nearbyEnemies = NPC_GetNearbyEnemies(selfPos, 10)
-    local enemyCount = #nearbyEnemies
+    -- 检查是否处于战斗状态
+    local inCombat = targetUUID ~= ""
     
-    -- 没有敌人时，返回防守位置
-    if enemyCount == 0 then
-        local guardX = NPC_BlackboardGet("guard_x")
-        local guardY = NPC_BlackboardGet("guard_y") 
-        local guardZ = NPC_BlackboardGet("guard_z")
-        
-        if guardX and guardX ~= "" then
-            local guardPosObj = {x=tonumber(guardX), y=tonumber(guardY), z=tonumber(guardZ)}
-            if NPC_Distance(selfPos, guardPosObj) > 2 then
-                NPC_MoveToPos({x=0,y=0,z=1}, "返回守卫位置", guardPosObj, 15)
-                return
-            else
-                NPC_Defend({x=0,y=0,z=1}, "守卫位置")
-                return
-            end
-        else
-            -- 如果没有守卫位置记录，默认守卫石桥位置
-            NPC_MoveToLocator({x=0,y=0,z=1}, "移动到石桥", "locator_valley_middle_bears", 15)
-            -- 记录当前位置为守卫位置
-            NPC_BlackboardSet("guard_x", tostring(selfPos.x))
-            NPC_BlackboardSet("guard_y", tostring(selfPos.y))
-            NPC_BlackboardSet("guard_z", tostring(selfPos.z))
-            return
-        end
+    -- 检查是否进入狂暴状态(血量低于30%)
+    local isEnraged = HPPercent <= 30
+    if isEnraged and NPC_BlackboardGet("isEnraged") ~= "true" then
+        NPC_BlackboardSet("isEnraged", "true")
+        -- 狂暴状态提升攻击力(通过移动速度和技能频率表现)
+        NPC_SetSpeed(mySpeed * 0.8) -- 移动更慢但攻击更频繁
+        NPC_Say("吼！！！")
     end
     
-    -- 有敌人时开始追击并战斗
-    if enemyCount > 0 then
-        local targetUUID = nearbyEnemies[1]
+    -- 处理战斗状态
+    if inCombat then
         local targetPos = NPC_GetPos(targetUUID)
-        local distance = NPC_Distance(selfPos, targetPos)
+        local distToTarget = NPC_Distance(myPos, targetPos)
+        local skillCastTime = tonumber(NPC_BlackboardGet("lastSkillCastTime") or "0")
+        local currentTime = NPC_GetElapsedTime()
         
-        -- 检查是否有友军，实现包围战术
-        local nearbyFriends = NPC_GetNearbyFriends(selfPos, 15)
-        local friendCount = #nearbyFriends
-        
-        -- 如果有友军，尝试包围战术
-        if friendCount > 0 then
-            -- 检查友军位置，判断是否需要调整自己的位置来形成包围
-            local friendPos = NPC_GetPos(nearbyFriends[1])
-            local friendToTargetDistance = NPC_Distance(friendPos, targetPos)
-            
-            -- 如果友军距离目标较近，石熊尝试从另一侧接近
-            if friendToTargetDistance <= 5 and distance > 3 then
-                -- 计算包围位置：目标的相对位置
-                local dirToTarget = {
-                    x = (targetPos.x - selfPos.x),
-                    y = 0,
-                    z = (targetPos.z - selfPos.z)
-                }
-                -- 移动到目标侧面形成包围
-                local surroundPos = {
-                    x = targetPos.x + dirToTarget.z * 0.5,
-                    y = targetPos.y,
-                    z = targetPos.z - dirToTarget.x * 0.5
-                }
-                NPC_MoveToPos({x=0,y=0,z=1}, "包围战术移动", surroundPos, 8)
-                return
+        -- 战斗逻辑
+        if distToTarget <= 8 then -- 在战斗范围内
+            -- 血量低于50%时优先使用护盾技能
+            if HPPercent <= 50 and currentTime - skillCastTime > 15 then -- 岩肤护盾冷却15秒
+                NPC_CastSkill("岩肤护盾")
+                NPC_BlackboardSet("lastSkillCastTime", tostring(currentTime))
+                NPC_Say("岩石为盾！")
+            -- 当有2个以上敌人在附近时使用群体技能
+            elseif NPC_GetNearbyEnemyCount(myPos, 4) >= 2 and currentTime - skillCastTime > 8 then -- 地裂践踏冷却8秒
+                NPC_CastSkill("地裂践踏")
+                NPC_BlackboardSet("lastSkillCastTime", tostring(currentTime))
+                NPC_Say("大地震颤！")
+            -- 优先使用主要输出技能
+            elseif distToTarget <= 3 and currentTime - skillCastTime > (isEnraged and 4.8 or 6) then -- 岩石砸击冷却6秒(狂暴时缩短20%)
+                NPC_CastSkill("岩石砸击")
+                NPC_BlackboardSet("lastSkillCastTime", tostring(currentTime))
+                NPC_Say("粉碎！")
+            -- 当技能都在冷却中时使用普通攻击
+            elseif distToTarget <= 2 and currentTime - skillCastTime > (isEnraged and 1.6 or 2) then -- 普通攻击间隔约2秒(狂暴时缩短20%)
+                NPC_CastSkill("普通攻击")
+                NPC_BlackboardSet("lastSkillCastTime", tostring(currentTime))
             end
-        end
-        
-        -- 如果目标距离超过15米，返回防守位置
-        if distance > 15 then
-            local guardX = NPC_BlackboardGet("guard_x")
-            local guardY = NPC_BlackboardGet("guard_y")
-            local guardZ = NPC_BlackboardGet("guard_z")
             
-            if guardX and guardX ~= "" then
-                local guardPosObj = {x=tonumber(guardX), y=tonumber(guardY), z=tonumber(guardZ)}
-                NPC_MoveToPos({x=0,y=0,z=1}, "返回守卫位置", guardPosObj, 15)
-                return
+            -- 追击目标但保持在技能攻击范围内
+            if distToTarget > 3 then
+                NPC_Chase({x=0, y=0, z=1}, "chasing_target", targetUUID, 2)
             else
-                NPC_MoveToLocator({x=0,y=0,z=1}, "移动到石桥", "locator_valley_middle_bears", 15)
-                return
+                -- 已经在攻击范围内，尝试将目标逼向石桥或其他石熊
+                local bridgePos = NPC_GetPos(NPC_BlackboardGet("otherBearUUID") or "")
+                if NPC_BlackboardGet("otherBearUUID") and NPC_IsAlive(NPC_BlackboardGet("otherBearUUID")) then
+                    -- 如果有其他石熊活着，尝试将目标逼向它
+                    local dirToOther = {
+                        x = bridgePos.x - myPos.x,
+                        y = 0,
+                        z = bridgePos.z - myPos.z
+                    }
+                    NPC_Defend(dirToOther, "coordinating_with_other_bear")
+                else
+                    -- 否则尝试将目标逼向石桥
+                    local locatorPos = {}
+                    if NPC_IsReached("locator_valley_middle_bears", 5) then
+                        locatorPos = NPC_GetPos("") -- 如果已经在石桥附近，就原地防守
+                    else
+                        -- 尝试回到石桥防守点
+                        NPC_MoveToLocator({x=0, y=0, z=1}, "returning_to_bridge", "locator_valley_middle_bears", 15)
+                        return
+                    end
+                    NPC_Defend({x=0, y=0, z=1}, "defending_bridge")
+                end
+            end
+        else -- 目标太远，无法立即接近
+            -- 如果被远程攻击且无法立即接近目标，回到石桥防守
+            if not NPC_IsReached("locator_valley_middle_bears", 10) then
+                NPC_MoveToLocator({x=0, y=0, z=1}, "returning_to_bridge", "locator_valley_middle_bears", 15)
+            else
+                -- 在石桥附近巡逻并等待敌人接近
+                if not NPC_BlackboardGet("patrolDirection") then
+                    NPC_BlackboardSet("patrolDirection", "1")
+                end
+                
+                local patrolDirection = NPC_BlackboardGet("patrolDirection")
+                if patrolDirection == "1" then
+                    -- 向石桥一端巡逻
+                    local patrolPos = {
+                        x = myPos.x + 5, 
+                        y = myPos.y, 
+                        z = myPos.z
+                    }
+                    NPC_MoveToPos({x=1, y=0, z=0}, "patrolling_bridge_side_1", patrolPos, 5)
+                    NPC_BlackboardSet("patrolDirection", "2")
+                else
+                    -- 向石桥另一端巡逻
+                    local patrolPos = {
+                        x = myPos.x - 5, 
+                        y = myPos.y, 
+                        z = myPos.z
+                    }
+                    NPC_MoveToPos({x=-1, y=0, z=0}, "patrolling_bridge_side_2", patrolPos, 5)
+                    NPC_BlackboardSet("patrolDirection", "1")
+                end
+            end
+        end
+    else -- 非战斗状态
+        -- 检测其他石熊
+        local otherBears = NPC_GetNearbyFriends(myPos, 20)
+        local foundOtherBear = false
+        for _, bearUUID in ipairs(otherBears) do
+            if bearUUID ~= NPC_BlackboardGet("selfUUID") and NPC_IsAlive(bearUUID) then
+                NPC_BlackboardSet("otherBearUUID", bearUUID)
+                foundOtherBear = true
+                break
             end
         end
         
-        -- 如果周围有2个及以上敌人且在攻击范围内，优先使用大地践踏
-        local nearbyCloseEnemies = NPC_GetNearbyEnemies(selfPos, 3)
-        if #nearbyCloseEnemies >= 2 then
-            NPC_CastSkill("大地践踏")
-            return
+        -- 如果没有找到其他石熊，记录自己的UUID
+        if not foundOtherBear and not NPC_BlackboardGet("selfUUID") then
+            -- 生成一个唯一标识用于自身识别
+            local uniqueID = tostring(NPC_GetElapsedTime())
+            NPC_BlackboardSet("selfUUID", uniqueID)
         end
         
-        -- 如果目标距离小于2米，使用岩石拳击进行基础攻击
-        if distance <= 2 then
-            NPC_CastSkill("岩石拳击")
-            return
+        -- 在石桥两端巡逻
+        if not NPC_IsReached("locator_valley_middle_bears", 15) then
+            -- 如果不在石桥附近，先回到石桥
+            NPC_MoveToLocator({x=0, y=0, z=1}, "returning_to_bridge", "locator_valley_middle_bears", 10)
         else
-            -- 追击目标
-            NPC_Chase({x=0,y=0,z=1}, "追击敌人", targetUUID, 2)
-            return
+            -- 在石桥附近巡逻
+            if not NPC_BlackboardGet("patrolDirection") then
+                NPC_BlackboardSet("patrolDirection", "1")
+            end
+            
+            local patrolDirection = NPC_BlackboardGet("patrolDirection")
+            if patrolDirection == "1" then
+                -- 向石桥一端巡逻
+                local patrolPos = {
+                    x = myPos.x + 5, 
+                    y = myPos.y, 
+                    z = myPos.z
+                }
+                NPC_MoveToPos({x=1, y=0, z=0}, "patrolling_bridge_side_1", patrolPos, 5)
+                NPC_BlackboardSet("patrolDirection", "2")
+            else
+                -- 向石桥另一端巡逻
+                local patrolPos = {
+                    x = myPos.x - 5, 
+                    y = myPos.y, 
+                    z = myPos.z
+                }
+                NPC_MoveToPos({x=-1, y=0, z=0}, "patrolling_bridge_side_2", patrolPos, 5)
+                NPC_BlackboardSet("patrolDirection", "1")
+            end
         end
     end
 end

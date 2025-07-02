@@ -1,155 +1,129 @@
 local M = {}
 
 function M.cb()
-    -- 获取自身状态信息
+    -- 获取玩家位置和自身位置
+    local playerUUID = "player"
+    local playerPos = NPC_GetPos(playerUUID)
     local selfPos = NPC_GetPos("")
     local selfHP = NPC_GetHP("")
     local selfMaxHP = NPC_GetMaxHP("")
-    local hpPercent = selfHP / selfMaxHP
+    local hpPercent = selfHP / selfMaxHP * 100
     
-    -- 获取出生位置信息（从黑板存储中获取，如果没有则使用当前位置）
-    local spawnPos = NPC_BlackboardGet("spawn_pos")
-    if spawnPos == "" then
-        spawnPos = selfPos.x .. "," .. selfPos.y .. "," .. selfPos.z
-        NPC_BlackboardSet("spawn_pos", spawnPos)
+    -- 计算与玩家的距离
+    local distanceToPlayer = NPC_Distance(selfPos, playerPos)
+    
+    -- 检查玩家是否还活着
+    local playerAlive = NPC_IsAlive(playerUUID)
+    if not playerAlive then
+        -- 如果玩家已死亡，保持防守状态
+        local stateDir = {x = 0, y = 0, z = 1} -- 面向前方
+        NPC_Defend(stateDir, "玩家已死亡，保持防守")
+        return
     end
     
-    -- 尝试获取目标
-    local targetUUID = NPC_BlackboardGet("target_uuid")
-    if targetUUID ~= "" then
-        -- 检查目标是否还活着
-        if not NPC_IsAlive(targetUUID) then
-            targetUUID = ""
-            NPC_BlackboardSet("target_uuid", "")
-        end
-    end
-    
-    -- 如果没有目标，尝试选择一个新目标
-    if targetUUID == "" then
-        targetUUID = NPC_AutoSelectTarget(8) -- 感知范围为8米
-        if targetUUID ~= "" then
-            NPC_BlackboardSet("target_uuid", targetUUID)
-            -- 发现目标时，发出警告
-            NPC_Say("呜~")
-        end
-    end
-    
-    -- 如果有目标，执行战斗逻辑
-    if targetUUID ~= "" then
-        -- 获取目标位置
-        local targetPos = NPC_GetPos(targetUUID)
-        local distanceToTarget = NPC_Distance(selfPos, targetPos)
-        
-        -- 超出追击范围，放弃目标返回出生点
-        if distanceToTarget > 12 then
-            targetUUID = ""
-            NPC_BlackboardSet("target_uuid", "")
+    -- 战斗策略基于血量百分比
+    if hpPercent > 60 then
+        -- 血量充足时，主动攻击
+        if distanceToPlayer <= 5 then
+            -- 进入攻击范围，开始进攻
+            local targetUUID = playerUUID
             
-            -- 解析出生点坐标
-            local x, y, z = string.match(spawnPos, "([^,]+),([^,]+),([^,]+)")
-            local spawnPosTable = {x = tonumber(x), y = tonumber(y), z = tonumber(z)}
+            -- 选择技能进行攻击
+            if math.random() < 0.6 then
+                -- 60%几率使用基础攻击技能
+                NPC_CastSkill("迅捷扑击")
+            else
+                -- 40%几率使用控制技能
+                NPC_CastSkill("幽光爪")
+            end
             
-            -- 返回出生点
-            NPC_MoveToPos({x=0, y=0, z=1}, "返回出生点", spawnPosTable, 20)
-            return
-        end
-        
-        -- 当血量低于20%时，有50%几率尝试逃跑
-        if hpPercent < 0.2 and math.random() < 0.5 then
-            -- 解析出生点坐标
-            local x, y, z = string.match(spawnPos, "([^,]+),([^,]+),([^,]+)")
-            local spawnPosTable = {x = tonumber(x), y = tonumber(y), z = tonumber(z)}
-            
-            -- 逃向出生点
-            NPC_SetSpeed(6) -- 逃跑时速度稍快
-            NPC_MoveToPos({x=0, y=0, z=1}, "逃跑", spawnPosTable, 5)
-            return
-        end
-        
-        -- 当血量低于50%时，尝试后撤拉开距离
-        if hpPercent < 0.5 and distanceToTarget < 3 then
-            -- 计算后撤方向（远离目标）
-            local retreatDir = {
-                x = selfPos.x - targetPos.x,
-                y = 0,
-                z = selfPos.z - targetPos.z
-            }
-            
-            -- 计算后撤目标位置（后撤2-3米）
-            local retreatDistance = 2 + math.random()
-            local retreatPos = {
-                x = selfPos.x + retreatDir.x * retreatDistance / NPC_Distance(selfPos, targetPos),
-                y = selfPos.y,
-                z = selfPos.z + retreatDir.z * retreatDistance / NPC_Distance(selfPos, targetPos)
-            }
-            
-            -- 后撤
-            NPC_MoveToPos({x=retreatDir.x, y=0, z=retreatDir.z}, "后撤", retreatPos, 2)
-            return
-        end
-        
-        -- 战斗逻辑
-        if distanceToTarget <= 2 then
-            -- 在近战范围内优先使用爪击
-            NPC_CastSkill("爪击")
-        elseif distanceToTarget <= 5 then
-            -- 在中距离使用快速扑击
-            NPC_CastSkill("快速扑击")
+            -- 战斗中靠近目标
+            if distanceToPlayer > 2 then
+                local stateDir = {x = playerPos.x - selfPos.x, y = 0, z = playerPos.z - selfPos.z}
+                NPC_Chase(stateDir, "追击玩家", targetUUID, 2)
+            end
+        elseif distanceToPlayer <= 8 then
+            -- 在观察距离内但未进入攻击范围，保持观察状态
+            local stateDir = {x = playerPos.x - selfPos.x, y = 0, z = playerPos.z - selfPos.z}
+            NPC_Defend(stateDir, "观察玩家")
         else
-            -- 接近目标
-            local approachDir = {
-                x = targetPos.x - selfPos.x,
-                y = 0,
-                z = targetPos.z - selfPos.z
-            }
-            
-            -- 不是直线接近，而是尝试从侧面接近目标
-            local sideApproachAngle = math.random() * 40 - 20 -- -20到20度的随机偏移
-            local rad = math.rad(sideApproachAngle)
-            local cosVal = math.cos(rad)
-            local sinVal = math.sin(rad)
-            
-            -- 计算侧面接近的方向
-            local sideApproachDir = {
-                x = approachDir.x * cosVal - approachDir.z * sinVal,
-                y = 0,
-                z = approachDir.x * sinVal + approachDir.z * cosVal
-            }
-            
-            -- 确定目标位置
-            local targetDistance = math.min(distanceToTarget - 1, 4) -- 不要完全接近，留一点距离
-            local moveToPos = {
-                x = selfPos.x + sideApproachDir.x * targetDistance / distanceToTarget,
-                y = selfPos.y,
-                z = selfPos.z + sideApproachDir.z * targetDistance / distanceToTarget
-            }
-            
-            -- 移动接近目标
-            NPC_MoveToPos(approachDir, "接近目标", moveToPos, 3)
+            -- 玩家不在感知范围内，进入巡逻状态
+            local randomPos = NPC_GetRandomPos(selfPos, 5)
+            local stateDir = {x = randomPos.x - selfPos.x, y = 0, z = randomPos.z - selfPos.z}
+            NPC_MoveToPos(stateDir, "巡逻", randomPos, 3)
+        end
+    elseif hpPercent > 30 then
+        -- 血量中等时，保持距离战术
+        if distanceToPlayer <= 7 then
+            -- 尝试与玩家保持2-3米的安全距离
+            if distanceToPlayer < 2 then
+                -- 太近了，后退
+                local moveAwayPos = NPC_GetRandomPos(selfPos, 3)
+                local moveDir = {x = moveAwayPos.x - selfPos.x, y = 0, z = moveAwayPos.z - selfPos.z}
+                NPC_MoveToPos(moveDir, "拉开距离", moveAwayPos, 1)
+            elseif distanceToPlayer > 3 then
+                -- 太远了，无法攻击，靠近一点
+                local stateDir = {x = playerPos.x - selfPos.x, y = 0, z = playerPos.z - selfPos.z}
+                NPC_Chase(stateDir, "谨慎接近", playerUUID, 3)
+            else
+                -- 在理想距离，使用技能
+                if math.random() < 0.7 then
+                    -- 优先使用幽光爪进行减速控制
+                    NPC_CastSkill("幽光爪")
+                else
+                    NPC_CastSkill("迅捷扑击")
+                end
+            end
+        else
+            -- 玩家不在感知范围内，保持防守
+            local stateDir = {x = 0, y = 0, z = 1}
+            NPC_Defend(stateDir, "谨慎防守")
         end
     else
-        -- 无目标时巡逻或待机
-        local elapsedTime = NPC_GetElapsedTime()
-        local patrolTime = tonumber(NPC_BlackboardGet("patrol_time") or "0")
-        
-        -- 每10秒更新一次巡逻状态
-        if elapsedTime > patrolTime + 10 then
-            NPC_BlackboardSet("patrol_time", tostring(elapsedTime))
+        -- 血量低，尝试逃跑
+        if hpPercent <= 20 and math.random() < 0.5 then
+            -- 血量危险且有50%几率触发闪避技能
+            NPC_CastSkill("灵气闪避")
             
-            -- 解析出生点坐标
-            local x, y, z = string.match(spawnPos, "([^,]+),([^,]+),([^,]+)")
-            local spawnPosTable = {x = tonumber(x), y = tonumber(y), z = tonumber(z)}
-            
-            -- 在出生点附近随机选择一个巡逻点
-            local patrolPos = NPC_GetRandomPos(spawnPosTable, 3)
-            
-            -- 移动到巡逻点
-            local patrolDir = {
-                x = patrolPos.x - selfPos.x,
-                y = 0,
-                z = patrolPos.z - selfPos.z
+            -- 获取远离玩家的位置
+            local escapeDir = {x = selfPos.x - playerPos.x, y = 0, z = selfPos.z - playerPos.z}
+            local escapePos = {
+                x = selfPos.x + escapeDir.x * 2,
+                y = selfPos.y,
+                z = selfPos.z + escapeDir.z * 2
             }
-            NPC_MoveToPos(patrolDir, "巡逻", patrolPos, 5)
+            NPC_MoveToPos(escapeDir, "紧急逃跑", escapePos, 3)
+        else
+            -- 普通逃跑
+            local escapeDir = {x = selfPos.x - playerPos.x, y = 0, z = selfPos.z - playerPos.z}
+            local escapePos = {
+                x = selfPos.x + escapeDir.x * 3,
+                y = selfPos.y,
+                z = selfPos.z + escapeDir.z * 3
+            }
+            NPC_MoveToPos(escapeDir, "逃跑", escapePos, 2)
+            
+            -- 如果玩家追得太近，尝试使用控制技能减速玩家
+            if distanceToPlayer <= 3 then
+                NPC_CastSkill("幽光爪")
+            end
+        end
+    end
+    
+    -- 检查周围是否有其他灵狐或山猿被攻击，如果有则加入战斗
+    if distanceToPlayer > 10 then
+        local nearbyEnemies = NPC_GetNearbyEnemies(selfPos, 10)
+        for _, enemyUUID in ipairs(nearbyEnemies) do
+            if enemyUUID ~= playerUUID and NPC_IsAlive(enemyUUID) then
+                local enemyPos = NPC_GetPos(enemyUUID)
+                if NPC_Distance(enemyPos, playerPos) < 5 and math.random() < 0.7 then
+                    -- 70%概率加入战斗
+                    local stateDir = {x = playerPos.x - selfPos.x, y = 0, z = playerPos.z - selfPos.z}
+                    NPC_Chase(stateDir, "支援同伴", playerUUID, 2)
+                    NPC_Say("发现入侵者！同伴们，一起上！")
+                    break
+                end
+            end
         end
     end
 end
