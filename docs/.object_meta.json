@@ -15,6 +15,10 @@
 		"WriteLevelTasks": {
 			"name": "write_level_tasks.LevelTasks",
 			"is_ptr": false
+		},
+		"WriteMapPrd": {
+			"name": "write_map_prd.MapPrd",
+			"is_ptr": false
 		}
 	}
 }
