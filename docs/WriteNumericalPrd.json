@@ -1,0 +1,73 @@
+{
+	"property": {
+		"Player": {
+			"numerical_desc": "筑基期修仙者，拥有仙术修为的初阶修士。具备较强的战斗能力和法力储备，能够连续释放多个仙术技能。在灵草谷的历练中将不断成长，最终有能力挑战强大的守护兽。MP设计确保无药剂情况下可连续释放4-5个核心仙术。",
+			"type": "player",
+			"prop": {
+				"level": 1,
+				"hpMax": 1200,
+				"hpGen": 12,
+				"mpMax": 600,
+				"mpGen": 8,
+				"speed": 6,
+				"strength": 60,
+				"defense": 25,
+				"agility": 40,
+				"exp": 0
+			},
+			"canMove": true,
+			"canCastSkill": true,
+			"canBeAttack": true,
+			"hatredRange": 0,
+			"damagePerSecond": 180,
+			"castSkillPerSecond": 1.2,
+			"power": 5
+		},
+		"NPC": {
+			"numerical_desc": "低级妖兽代表，如灵狐、山猿等谷口区域的普通妖兽。实力较弱，主要用于让玩家熟悉仙术战斗。玩家使用仙术攻击时1-2秒即可击败，属于练手级别的对手。会给予玩家基础修炼经验。",
+			"type": "junior",
+			"prop": {
+				"level": 1,
+				"hpMax": 300,
+				"hpGen": 3,
+				"mpMax": 80,
+				"mpGen": 4,
+				"speed": 5,
+				"strength": 15,
+				"defense": 5,
+				"agility": 20,
+				"exp": 120
+			},
+			"canMove": true,
+			"canCastSkill": true,
+			"canBeAttack": true,
+			"hatredRange": 8,
+			"damagePerSecond": 15,
+			"castSkillPerSecond": 0.6,
+			"power": 1
+		},
+		"Boss": {
+			"numerical_desc": "千年守护兽，盘踞在灵草谷谷底守护千年灵草的强大妖兽。拥有深厚的妖力修为，攻防兼备，需要玩家运用所有仙术技能和策略才能击败。战斗时间设计为30-40秒，体现Boss级挑战的策略性和观赏性。",
+			"type": "boss",
+			"prop": {
+				"level": 3,
+				"hpMax": 6000,
+				"hpGen": 30,
+				"mpMax": 1500,
+				"mpGen": 15,
+				"speed": 8,
+				"strength": 180,
+				"defense": 80,
+				"agility": 60,
+				"exp": 3000
+			},
+			"canMove": true,
+			"canCastSkill": true,
+			"canBeAttack": true,
+			"hatredRange": 15,
+			"damagePerSecond": 180,
+			"castSkillPerSecond": 0.4,
+			"power": 8
+		}
+	}
+}
