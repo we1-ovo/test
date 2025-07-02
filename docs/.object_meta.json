@@ -11,6 +11,10 @@
 		"WriteLevelPrd": {
 			"name": "write_level_prd.LevelPrd",
 			"is_ptr": false
+		},
+		"WriteLevelTasks": {
+			"name": "write_level_tasks.LevelTasks",
+			"is_ptr": false
 		}
 	}
 }
