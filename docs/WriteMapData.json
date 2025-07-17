@@ -12,40 +12,24 @@
 			"terrains": [
 				{
 					"eid": "terrain_valley_entrance_ground",
-					"desc": "谷口平地",
+					"desc": "谷口平地草地",
 					"type": 1,
 					"vertices": [
 						{
-							"x": 64,
-							"y": 15
+							"x": 43,
+							"y": 16
 						},
 						{
-							"x": 84,
-							"y": 20
+							"x": 85,
+							"y": 16
 						},
 						{
-							"x": 86,
-							"y": 30
+							"x": 85,
+							"y": 44
 						},
 						{
-							"x": 84,
-							"y": 40
-						},
-						{
-							"x": 64,
-							"y": 45
-						},
-						{
-							"x": 44,
-							"y": 40
-						},
-						{
-							"x": 42,
-							"y": 30
-						},
-						{
-							"x": 44,
-							"y": 20
+							"x": 43,
+							"y": 44
 						}
 					]
 				},
@@ -56,76 +40,88 @@
 					"height": 3,
 					"vertices": [
 						{
-							"x": 48,
-							"y": 28
+							"x": 46,
+							"y": 20
 						},
 						{
 							"x": 54,
-							"y": 32
+							"y": 25
 						},
 						{
-							"x": 60,
-							"y": 29
-						},
-						{
-							"x": 68,
-							"y": 31
-						},
-						{
-							"x": 74,
-							"y": 35
+							"x": 62,
+							"y": 22
 						},
 						{
 							"x": 70,
+							"y": 28
+						},
+						{
+							"x": 78,
+							"y": 24
+						},
+						{
+							"x": 82,
+							"y": 32
+						},
+						{
+							"x": 74,
 							"y": 38
 						},
 						{
-							"x": 64,
-							"y": 36
+							"x": 66,
+							"y": 35
 						},
 						{
 							"x": 58,
-							"y": 38
+							"y": 40
 						},
 						{
-							"x": 52,
+							"x": 50,
 							"y": 36
 						},
 						{
 							"x": 46,
-							"y": 32
+							"y": 28
 						}
 					]
 				},
 				{
 					"eid": "terrain_left_mountain",
-					"desc": "左侧山壁",
+					"desc": "左侧山壁屏障",
 					"type": 7,
-					"height": 25,
+					"height": 30,
 					"vertices": [
 						{
 							"x": 0,
 							"y": 0
 						},
 						{
+							"x": 18,
+							"y": 8
+						},
+						{
+							"x": 22,
+							"y": 25
+						},
+						{
 							"x": 20,
-							"y": 10
+							"y": 45
 						},
 						{
-							"x": 25,
-							"y": 30
+							"x": 18,
+							"y": 65
 						},
 						{
-							"x": 20,
-							"y": 60
+							"x": 16,
+							"y": 85
 						},
 						{
-							"x": 15,
-							"y": 90
+							"x": 12,
+							"y": 105
 						},
 						{
-							"x": 10,
-							"y": 110
+							"x": 8,
+							"y": 120
 						},
 						{
 							"x": 0,
@@ -135,33 +131,41 @@
 				},
 				{
 					"eid": "terrain_right_mountain",
-					"desc": "右侧山壁",
+					"desc": "右侧山壁屏障",
 					"type": 7,
-					"height": 25,
+					"height": 30,
 					"vertices": [
 						{
 							"x": 128,
 							"y": 0
 						},
 						{
+							"x": 110,
+							"y": 8
+						},
+						{
+							"x": 106,
+							"y": 25
+						},
+						{
 							"x": 108,
-							"y": 10
+							"y": 45
 						},
 						{
-							"x": 103,
-							"y": 30
+							"x": 110,
+							"y": 65
 						},
 						{
-							"x": 108,
-							"y": 60
+							"x": 112,
+							"y": 85
 						},
 						{
-							"x": 113,
-							"y": 90
+							"x": 116,
+							"y": 105
 						},
 						{
-							"x": 118,
-							"y": 110
+							"x": 120,
+							"y": 120
 						},
 						{
 							"x": 128,
@@ -171,77 +175,33 @@
 				},
 				{
 					"eid": "terrain_middle_hills",
-					"desc": "谷中段丘陵",
+					"desc": "谷中段丘陵地带",
 					"type": 1,
 					"height": 2,
 					"vertices": [
 						{
-							"x": 35,
-							"y": 45
-						},
-						{
-							"x": 93,
-							"y": 45
-						},
-						{
-							"x": 98,
-							"y": 65
-						},
-						{
-							"x": 93,
-							"y": 80
-						},
-						{
-							"x": 45,
-							"y": 83
-						},
-						{
 							"x": 30,
-							"y": 65
-						}
-					]
-				},
-				{
-					"eid": "terrain_stream_bed",
-					"desc": "溪流河床",
-					"type": 11,
-					"height": -0.5,
-					"vertices": [
-						{
-							"x": 108,
-							"y": 85
+							"y": 44
 						},
 						{
 							"x": 95,
-							"y": 82
+							"y": 44
 						},
 						{
-							"x": 85,
-							"y": 75
-						},
-						{
-							"x": 75,
-							"y": 70
-						},
-						{
-							"x": 65,
-							"y": 68
-						},
-						{
-							"x": 55,
+							"x": 100,
 							"y": 65
 						},
 						{
-							"x": 45,
-							"y": 60
+							"x": 95,
+							"y": 85
 						},
 						{
-							"x": 35,
-							"y": 55
+							"x": 30,
+							"y": 85
 						},
 						{
 							"x": 25,
-							"y": 50
+							"y": 65
 						}
 					]
 				},
@@ -251,52 +211,36 @@
 					"type": 1,
 					"vertices": [
 						{
-							"x": 30,
+							"x": 22,
 							"y": 50
 						},
 						{
-							"x": 45,
-							"y": 55
-						},
-						{
 							"x": 55,
-							"y": 60
-						},
-						{
-							"x": 65,
-							"y": 63
-						},
-						{
-							"x": 75,
-							"y": 65
-						},
-						{
-							"x": 85,
-							"y": 70
-						},
-						{
-							"x": 80,
-							"y": 75
-						},
-						{
-							"x": 70,
-							"y": 73
-						},
-						{
-							"x": 60,
-							"y": 70
-						},
-						{
-							"x": 50,
-							"y": 67
-						},
-						{
-							"x": 40,
 							"y": 62
 						},
 						{
-							"x": 25,
-							"y": 57
+							"x": 75,
+							"y": 68
+						},
+						{
+							"x": 90,
+							"y": 78
+						},
+						{
+							"x": 85,
+							"y": 83
+						},
+						{
+							"x": 70,
+							"y": 75
+						},
+						{
+							"x": 50,
+							"y": 69
+						},
+						{
+							"x": 30,
+							"y": 58
 						}
 					]
 				},
@@ -306,96 +250,88 @@
 					"type": 1,
 					"vertices": [
 						{
-							"x": 90,
-							"y": 80
+							"x": 95,
+							"y": 82
 						},
 						{
 							"x": 80,
-							"y": 78
-						},
-						{
-							"x": 70,
-							"y": 75
+							"y": 72
 						},
 						{
 							"x": 60,
-							"y": 73
+							"y": 66
 						},
 						{
-							"x": 50,
-							"y": 70
+							"x": 35,
+							"y": 54
 						},
 						{
 							"x": 40,
-							"y": 67
-						},
-						{
-							"x": 45,
-							"y": 62
-						},
-						{
-							"x": 55,
-							"y": 65
+							"y": 49
 						},
 						{
 							"x": 65,
-							"y": 68
-						},
-						{
-							"x": 75,
-							"y": 70
+							"y": 59
 						},
 						{
 							"x": 85,
-							"y": 75
+							"y": 65
 						},
 						{
-							"x": 95,
-							"y": 85
+							"x": 100,
+							"y": 75
 						}
 					]
 				},
 				{
 					"eid": "terrain_valley_bottom_mist",
-					"desc": "谷底灵雾区",
+					"desc": "谷底灵雾区域",
 					"type": 5,
-					"radius": 20,
+					"radius": 19,
 					"vertices": [
 						{
 							"x": 64,
-							"y": 98
+							"y": 100
 						}
 					]
 				},
 				{
 					"eid": "terrain_central_platform",
-					"desc": "中央石台",
+					"desc": "中央八角石台",
 					"type": 6,
 					"height": 2.5,
 					"vertices": [
 						{
-							"x": 57,
-							"y": 98
+							"x": 64,
+							"y": 107
 						},
 						{
-							"x": 64,
-							"y": 102
+							"x": 69,
+							"y": 105
 						},
 						{
 							"x": 71,
-							"y": 98
+							"y": 100
 						},
 						{
-							"x": 71,
-							"y": 91
+							"x": 69,
+							"y": 95
 						},
 						{
 							"x": 64,
-							"y": 87
+							"y": 93
+						},
+						{
+							"x": 59,
+							"y": 95
 						},
 						{
 							"x": 57,
-							"y": 91
+							"y": 100
+						},
+						{
+							"x": 59,
+							"y": 105
 						}
 					]
 				}
@@ -403,80 +339,80 @@
 			"roads": [
 				{
 					"eid": "road_entrance_main",
-					"desc": "谷口主道",
+					"desc": "入谷主道",
 					"width": 8,
 					"end_eid": "terrain_valley_entrance_ground",
 					"vertices": [
 						{
 							"x": 64,
-							"y": 5
+							"y": 0
 						},
 						{
 							"x": 64,
-							"y": 15
+							"y": 16
 						}
 					]
 				},
 				{
-					"eid": "road_valley_path",
-					"desc": "山谷步道",
+					"eid": "road_ascend_path",
+					"desc": "升阶山径",
 					"width": 8,
 					"start_eid": "terrain_valley_entrance_ground",
 					"end_eid": "terrain_middle_hills",
 					"vertices": [
 						{
 							"x": 64,
-							"y": 45
+							"y": 44
 						},
 						{
-							"x": 64,
+							"x": 62,
 							"y": 50
+						},
+						{
+							"x": 65,
+							"y": 56
 						}
 					]
 				},
 				{
 					"eid": "road_stone_bridge",
-					"desc": "溪谷石桥",
+					"desc": "跨溪石桥",
 					"width": 6,
 					"start_eid": "terrain_stream_left_bank",
 					"end_eid": "terrain_stream_right_bank",
 					"vertices": [
 						{
-							"x": 60,
-							"y": 67
+							"x": 62,
+							"y": 64
 						},
 						{
-							"x": 65,
-							"y": 70
+							"x": 66,
+							"y": 66
 						}
 					]
 				},
 				{
-					"eid": "road_ascend_path",
-					"desc": "登仙小径",
+					"eid": "road_cloud_path",
+					"desc": "登仙云径",
 					"width": 8,
 					"start_eid": "terrain_middle_hills",
 					"end_eid": "terrain_valley_bottom_mist",
 					"vertices": [
 						{
 							"x": 64,
-							"y": 83
+							"y": 85
 						},
 						{
 							"x": 62,
-							"y": 87
+							"y": 88
 						},
 						{
-							"x": 64,
+							"x": 66,
 							"y": 91
 						},
 						{
-							"x": 68,
+							"x": 64,
 							"y": 94
-						},
-						{
-							"x": 69,
-							"y": 98
 						}
 					]
 				}
@@ -484,43 +420,43 @@
 			"rivers": [
 				{
 					"eid": "river_spirit_spring",
-					"desc": "灵泉溪",
-					"width": 5,
+					"desc": "灵泉溪流",
+					"width": 6,
 					"depth": 0.5,
 					"start_eid": "terrain_right_mountain",
 					"end_eid": "terrain_left_mountain",
 					"vertices": [
 						{
-							"x": 108,
-							"y": 85
+							"x": 105,
+							"y": 80
 						},
 						{
 							"x": 95,
-							"y": 82
-						},
-						{
-							"x": 85,
 							"y": 75
 						},
 						{
-							"x": 75,
-							"y": 70
+							"x": 85,
+							"y": 72
 						},
 						{
-							"x": 65,
+							"x": 75,
 							"y": 68
 						},
 						{
-							"x": 55,
+							"x": 65,
 							"y": 65
 						},
 						{
+							"x": 55,
+							"y": 62
+						},
+						{
 							"x": 45,
-							"y": 60
+							"y": 58
 						},
 						{
 							"x": 35,
-							"y": 55
+							"y": 54
 						},
 						{
 							"x": 25,
@@ -531,43 +467,43 @@
 			],
 			"buildings": [
 				{
-					"eid": "building_ancient_pavilion",
-					"desc": "古老石亭",
+					"eid": "building_valley_pavilion",
+					"desc": "观谷石亭",
 					"distribution": {
 						"shape": 2,
 						"type": 0,
 						"vertices": [
 							{
-								"x": 70,
-								"y": 32
+								"x": 76,
+								"y": 30
 							}
 						]
 					}
 				},
 				{
 					"eid": "building_stream_pavilion",
-					"desc": "溪边水榭",
+					"desc": "临溪水榭",
 					"distribution": {
 						"shape": 2,
 						"type": 0,
 						"vertices": [
 							{
-								"x": 45,
+								"x": 42,
 								"y": 58
 							}
 						]
 					}
 				},
 				{
-					"eid": "building_herb_altar",
-					"desc": "灵草祭台",
+					"eid": "building_sacred_altar",
+					"desc": "千草祭坛",
 					"distribution": {
 						"shape": 2,
 						"type": 0,
 						"vertices": [
 							{
 								"x": 64,
-								"y": 98
+								"y": 100
 							}
 						]
 					}
@@ -577,137 +513,137 @@
 				{
 					"eid": "locator_player_spawn",
 					"english": "player_spawn_point",
-					"desc": "玩家初始出生点，位于谷口主道起始处面向谷内",
+					"desc": "玩家初始出生点，位于入谷主道起始处面向谷内的开阔地带",
 					"priority": 1,
 					"center": {
 						"x": 64,
-						"y": 10
+						"y": 8
 					}
 				},
 				{
 					"eid": "locator_valley_entrance_elder",
-					"english": "elder_guide_spawn",
-					"desc": "老修士出现位置，谷口入口处约10米开阔地带",
+					"english": "elder_guide_position",
+					"desc": "老修士现身位置，在观谷石亭前开阔地带，便于对话交流",
 					"priority": 2,
 					"center": {
 						"x": 64,
-						"y": 20
+						"y": 22
 					}
 				},
 				{
 					"eid": "locator_valley_entrance_foxes",
-					"english": "fox_trial_spawn",
-					"desc": "灵狐群出生点，谷口巨石群周围左中右三处位置",
+					"english": "fox_trial_spawn_area",
+					"desc": "灵狐群出生点，隐藏在谷口巨石群的分散位置形成群组",
 					"priority": 3,
 					"center": {
-						"x": 54,
+						"x": 58,
 						"y": 32
 					}
 				},
 				{
 					"eid": "locator_valley_entrance_apes",
-					"english": "ape_trial_spawn",
-					"desc": "山猿出生点，谷口高地岩石上居高临下位置",
+					"english": "ape_trial_spawn_area",
+					"desc": "山猿出生点，占据谷口巨石群高地便于远程投掷攻击",
 					"priority": 3,
 					"center": {
-						"x": 70,
-						"y": 36
+						"x": 74,
+						"y": 35
 					}
 				},
 				{
 					"eid": "locator_valley_middle_leopards",
-					"english": "leopard_middle_spawn",
-					"desc": "灵豹群伏击点，谷中段溪流附近密林中隐蔽位置",
+					"english": "leopard_ambush_area",
+					"desc": "灵豹群伏击点，潜伏在谷中段丘陵地带隐蔽位置",
 					"priority": 4,
 					"center": {
-						"x": 70,
+						"x": 75,
 						"y": 60
 					}
 				},
 				{
 					"eid": "locator_valley_middle_bears",
-					"english": "bear_middle_spawn",
-					"desc": "石熊把守位置，谷中段石桥两端阻挡道路位置",
+					"english": "bear_guard_position",
+					"desc": "石熊据守位置，把守跨溪石桥两端阻挡前进道路",
 					"priority": 5,
 					"center": {
-						"x": 62,
-						"y": 68
+						"x": 64,
+						"y": 65
 					}
 				},
 				{
 					"eid": "locator_valley_bottom_boss",
-					"english": "dragon_boss_spawn",
-					"desc": "千年蛟龙Boss位置，谷底中央石台上盘绕灵草周围",
+					"english": "dragon_boss_arena",
+					"desc": "千年蛟龙Boss位置，环绕中央石台千草祭坛守护千年灵草",
 					"priority": 6,
 					"center": {
 						"x": 64,
-						"y": 95
+						"y": 100
 					}
 				},
 				{
-					"eid": "locator_middle_herbs_spawn1",
-					"english": "middle_herb_point_1",
-					"desc": "中级灵草采集点1，溪流左岸中段肥沃土地",
+					"eid": "locator_middle_herbs_1",
+					"english": "middle_herb_spot_1",
+					"desc": "中级灵草采集点1，位于灵泉溪左岸平台中段肥沃土地",
 					"priority": 7,
 					"center": {
-						"x": 50,
+						"x": 45,
 						"y": 62
 					}
 				},
 				{
-					"eid": "locator_middle_herbs_spawn2",
-					"english": "middle_herb_point_2",
-					"desc": "中级灵草采集点2，溪流右岸近石桥灵气充沛草地",
-					"priority": 7,
-					"center": {
-						"x": 70,
-						"y": 72
-					}
-				},
-				{
-					"eid": "locator_middle_herbs_spawn3",
-					"english": "middle_herb_point_3",
-					"desc": "中级灵草采集点3，丘陵地带高地平台视野开阔处",
+					"eid": "locator_middle_herbs_2",
+					"english": "middle_herb_spot_2",
+					"desc": "中级灵草采集点2，位于灵泉溪右岸平台靠近石桥位置",
 					"priority": 7,
 					"center": {
 						"x": 75,
+						"y": 68
+					}
+				},
+				{
+					"eid": "locator_middle_herbs_3",
+					"english": "middle_herb_spot_3",
+					"desc": "中级灵草采集点3，位于谷中段丘陵地带小高地平台",
+					"priority": 7,
+					"center": {
+						"x": 85,
 						"y": 55
 					}
 				},
 				{
-					"eid": "locator_pills_spawn1",
-					"english": "pill_point_1",
-					"desc": "修炼丹药采集点1，溪边水榭附近隐蔽角落",
+					"eid": "locator_pills_1",
+					"english": "pill_spot_1",
+					"desc": "修炼丹药采集点1，隐藏在临溪水榭附近岩石缝隙中",
 					"priority": 8,
 					"center": {
-						"x": 42,
+						"x": 38,
 						"y": 56
 					}
 				},
 				{
-					"eid": "locator_pills_spawn2",
-					"english": "pill_point_2",
-					"desc": "修炼丹药采集点2，登仙小径入口岩石缝隙",
+					"eid": "locator_pills_2",
+					"english": "pill_spot_2",
+					"desc": "修炼丹药采集点2，位于登仙云径入口处隐蔽角落",
 					"priority": 8,
 					"center": {
-						"x": 60,
-						"y": 80
+						"x": 62,
+						"y": 82
 					}
 				},
 				{
 					"eid": "locator_final_herb",
-					"english": "legendary_herb_spot",
-					"desc": "千年灵草位置，中央石台灵草祭台正中央",
+					"english": "legendary_herb_location",
+					"desc": "千年灵草生长位置，扎根在中央石台千草祭坛正中央",
 					"priority": 9,
 					"center": {
 						"x": 64,
-						"y": 98
+						"y": 100
 					}
 				},
 				{
 					"eid": "locator_elder_exit",
-					"english": "elder_exit_path",
-					"desc": "老修士离开位置，传授技能后向谷口入口方向离去",
+					"english": "elder_departure_path",
+					"desc": "老修士离开位置，传授技能后向入谷主道方向飘然离去",
 					"priority": 9,
 					"center": {
 						"x": 64,
