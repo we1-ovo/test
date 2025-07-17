@@ -8,13 +8,13 @@
 				"begin": 1751359888,
 				"estimated_time": 1,
 				"real_time": 1,
-				"count": 11,
+				"count": 12,
 				"finished": true
 			},
 			{
 				"node_id": "PrepareDocuments",
 				"desc": "LeadDesigner:PrepareDocuments",
-				"begin": 1751449583,
+				"begin": 1752719945,
 				"estimated_time": 60,
 				"real_time": 1,
 				"count": 1,
@@ -23,135 +23,126 @@
 			{
 				"node_id": "WriteGamePrd",
 				"desc": "GameDesigner:WriteGamePrd",
-				"begin": 1751449583,
+				"begin": 1752719945,
 				"estimated_time": 164,
-				"real_time": 66,
+				"real_time": 59,
 				"count": 1,
 				"finished": true
 			},
 			{
 				"node_id": "WriteLevelPrd",
 				"desc": "LevelDesigner:WriteLevelPrd",
-				"begin": 1751449750,
+				"begin": 1752720076,
 				"estimated_time": 464,
-				"real_time": 90,
-				"count": 1,
-				"finished": true
-			},
-			{
-				"node_id": "WriteLevelTasks",
-				"desc": "LevelProgrammer:WriteLevelTasks",
-				"begin": 1751449840,
-				"estimated_time": 82,
-				"real_time": 69,
-				"count": 1,
-				"finished": true
-			},
-			{
-				"node_id": "WriteNpcPrd",
-				"desc": "NpcDesigner:WriteNpcPrd",
-				"begin": 1751449909,
-				"estimated_time": 75,
-				"real_time": 40,
-				"count": 1,
-				"finished": true
-			},
-			{
-				"node_id": "WritePlayerPrd",
-				"desc": "PlayerDesigner:WritePlayerPrd",
-				"begin": 1751449909,
-				"estimated_time": 60,
-				"real_time": 42,
+				"real_time": 108,
 				"count": 1,
 				"finished": true
 			},
 			{
 				"node_id": "WriteMapPrd",
 				"desc": "MapDesigner:WriteMapPrd",
-				"begin": 1751449840,
+				"begin": 1752720184,
 				"estimated_time": 236,
-				"real_time": 118,
+				"real_time": 133,
 				"count": 1,
 				"finished": true
 			},
 			{
-				"node_id": "WritePlayerCode",
-				"desc": "PlayerProgrammer:WritePlayerCode",
-				"begin": 1751449951,
-				"estimated_time": 60,
-				"real_time": 39,
-				"count": 1,
-				"finished": true
-			},
-			{
-				"node_id": "WriteNpcCode",
-				"desc": "NpcProgrammer:WriteNpcCode",
-				"begin": 1751449950,
-				"estimated_time": 60,
-				"real_time": 68,
+				"node_id": "WriteLevelTasks",
+				"desc": "LevelProgrammer:WriteLevelTasks",
+				"begin": 1752720317,
+				"estimated_time": 82,
+				"real_time": 63,
 				"count": 1,
 				"finished": true
 			},
 			{
 				"node_id": "WriteMapData",
 				"desc": "MapDesigner:WriteMapData",
-				"begin": 1751449958,
+				"begin": 1752720317,
 				"estimated_time": 79,
-				"real_time": 69,
+				"real_time": 79,
 				"count": 1,
 				"finished": true
 			},
 			{
 				"node_id": "WaitMakeMap",
 				"desc": "灵草谷",
-				"begin": 1751450031,
+				"begin": 1752720399,
 				"estimated_time": 60,
 				"real_time": 1,
 				"count": 1,
 				"finished": true
 			},
 			{
-				"node_id": "WriteSkillPrd",
-				"desc": "SkillDesigner:WriteSkillPrd",
-				"begin": 1751449949,
-				"estimated_time": 117,
-				"real_time": 102,
-				"count": 2,
+				"node_id": "WritePlayerPrd",
+				"desc": "PlayerDesigner:WritePlayerPrd",
+				"begin": 1752720380,
+				"estimated_time": 60,
+				"real_time": 35,
+				"count": 1,
 				"finished": true
 			},
 			{
-				"node_id": "WriteAICode",
-				"desc": "AIProgrammer:WriteAICode",
-				"begin": 1751450018,
-				"estimated_time": 60,
-				"real_time": 87,
+				"node_id": "WriteNpcPrd",
+				"desc": "NpcDesigner:WriteNpcPrd",
+				"begin": 1752720380,
+				"estimated_time": 75,
+				"real_time": 43,
 				"count": 1,
+				"finished": true
+			},
+			{
+				"node_id": "WritePlayerCode",
+				"desc": "PlayerProgrammer:WritePlayerCode",
+				"begin": 1752720415,
+				"estimated_time": 60,
+				"real_time": 35,
+				"count": 1,
+				"finished": true
+			},
+			{
+				"node_id": "WriteSkillPrd",
+				"desc": "SkillDesigner:WriteSkillPrd",
+				"begin": 1752720415,
+				"estimated_time": 101,
+				"real_time": 88,
+				"count": 2,
 				"finished": true
 			},
 			{
 				"node_id": "WriteSkillCode",
 				"desc": "SkillProgrammer:WriteSkillCode",
-				"begin": 1751450006,
-				"estimated_time": 152,
-				"real_time": 160,
+				"begin": 1752720456,
+				"estimated_time": 127,
+				"real_time": 158,
 				"count": 2,
 				"finished": true
 			},
 			{
 				"node_id": "WriteLevelCode",
 				"desc": "LevelProgrammer:WriteLevelCode",
-				"begin": 1751450027,
+				"begin": 1752720396,
 				"estimated_time": 146,
-				"real_time": 258,
+				"real_time": 223,
 				"count": 1,
 				"finished": true
 			},
 			{
 				"node_id": "MakeGameMap",
 				"desc": "CreateMap:MakeGameMap",
-				"begin": 1751450027,
+				"begin": 1752720396,
 				"estimated_time": 900,
-				"real_time": 362,
+				"real_time": 373,
+				"count": 1,
+				"finished": true
+			},
+			{
+				"node_id": "WriteNpcCode",
+				"desc": "NpcProgrammer:WriteNpcCode",
+				"begin": 1752720423,
+				"estimated_time": 60,
+				"real_time": 348,
 				"count": 1,
 				"finished": true
 			}
@@ -1089,6 +1080,303 @@
 					"content": "生成工作已经完成，请试玩一下!"
 				}
 			]
+		},
+		{
+			"role": "ai",
+			"timestamp": 1752719945,
+			"messages": [
+				{
+					"type": "file",
+					"content": "🎯 开始生成整个游戏"
+				}
+			]
+		},
+		{
+			"role": "ai",
+			"timestamp": 1752720004,
+			"messages": [
+				{
+					"type": "file",
+					"content": "GameDesigner:WriteGamePrd",
+					"extra_info": {
+						"docs/WriteGamePrd.json": "docs/WriteGamePrd.json",
+						"docs/WriteGamePrd.md": "docs/WriteGamePrd.md"
+					}
+				}
+			]
+		},
+		{
+			"role": "ai",
+			"timestamp": 1752720076,
+			"messages": [
+				{
+					"type": "file",
+					"content": "LevelDesigner:WriteNumericalPrd",
+					"extra_info": {
+						"docs/WriteNumericalPrd.json": "docs/WriteNumericalPrd.json"
+					}
+				}
+			]
+		},
+		{
+			"role": "ai",
+			"timestamp": 1752720184,
+			"messages": [
+				{
+					"type": "file",
+					"content": "LevelDesigner:WriteLevelPrd",
+					"extra_info": {
+						"docs/WriteLevelPrd.json": "docs/WriteLevelPrd.json",
+						"docs/WriteLevelPrd.md": "docs/WriteLevelPrd.md"
+					}
+				}
+			]
+		},
+		{
+			"role": "ai",
+			"timestamp": 1752720261,
+			"messages": [
+				{
+					"type": "file",
+					"content": "ItemProgrammer:WriteItemCode",
+					"extra_info": {
+						"Item/中级灵草.lua": "GenRPG/Item/中级灵草.lua",
+						"Item/修炼丹药.lua": "GenRPG/Item/修炼丹药.lua",
+						"Item/初级灵草.lua": "GenRPG/Item/初级灵草.lua",
+						"Item/千年灵草.lua": "GenRPG/Item/千年灵草.lua"
+					}
+				}
+			]
+		},
+		{
+			"role": "ai",
+			"timestamp": 1752720317,
+			"messages": [
+				{
+					"type": "file",
+					"content": "MapDesigner:WriteMapPrd",
+					"extra_info": {
+						"docs/WriteMapPrd.json": "docs/WriteMapPrd.json",
+						"docs/WriteMapPrd.md": "docs/WriteMapPrd.md"
+					}
+				}
+			]
+		},
+		{
+			"role": "ai",
+			"timestamp": 1752720380,
+			"messages": [
+				{
+					"type": "file",
+					"content": "LevelProgrammer:WriteLevelTasks",
+					"extra_info": {
+						"docs/WriteLevelTasks.json": "docs/WriteLevelTasks.json",
+						"docs/WriteLevelTasks.md": "docs/WriteLevelTasks.md"
+					}
+				}
+			]
+		},
+		{
+			"role": "ai",
+			"timestamp": 1752720396,
+			"messages": [
+				{
+					"type": "file",
+					"content": "WriteMapData",
+					"extra_info": {
+						"/docs/map_data_pcg/灵草谷.png": "/docs/map_data_pcg/灵草谷.png"
+					}
+				}
+			]
+		},
+		{
+			"role": "ai",
+			"timestamp": 1752720396,
+			"messages": [
+				{
+					"type": "file",
+					"content": "MapDesigner:WriteMapData",
+					"extra_info": {
+						"docs/WriteMapData.json": "docs/WriteMapData.json"
+					}
+				}
+			]
+		},
+		{
+			"role": "ai",
+			"timestamp": 1752720415,
+			"messages": [
+				{
+					"type": "file",
+					"content": "PlayerDesigner:WritePlayerPrd",
+					"extra_info": {
+						"docs/WritePlayerPrd.json": "docs/WritePlayerPrd.json",
+						"docs/WritePlayerPrd.md": "docs/WritePlayerPrd.md"
+					}
+				}
+			]
+		},
+		{
+			"role": "ai",
+			"timestamp": 1752720423,
+			"messages": [
+				{
+					"type": "file",
+					"content": "NpcDesigner:WriteNpcPrd",
+					"extra_info": {
+						"npcs/千年蛟龙.json": "docs/npcs/千年蛟龙.json",
+						"npcs/千年蛟龙.md": "docs/npcs/千年蛟龙.md",
+						"npcs/山猿.json": "docs/npcs/山猿.json",
+						"npcs/山猿.md": "docs/npcs/山猿.md",
+						"npcs/灵狐.json": "docs/npcs/灵狐.json",
+						"npcs/灵狐.md": "docs/npcs/灵狐.md",
+						"npcs/灵豹.json": "docs/npcs/灵豹.json",
+						"npcs/灵豹.md": "docs/npcs/灵豹.md",
+						"npcs/石熊.json": "docs/npcs/石熊.json",
+						"npcs/石熊.md": "docs/npcs/石熊.md",
+						"npcs/老修士.json": "docs/npcs/老修士.json",
+						"npcs/老修士.md": "docs/npcs/老修士.md"
+					}
+				}
+			]
+		},
+		{
+			"role": "ai",
+			"timestamp": 1752720450,
+			"messages": [
+				{
+					"type": "file",
+					"content": "PlayerProgrammer:WritePlayerCode",
+					"extra_info": {
+						"Prof/player.lua": "GenRPG/Prof/player.lua"
+					}
+				}
+			]
+		},
+		{
+			"role": "ai",
+			"timestamp": 1752720456,
+			"messages": [
+				{
+					"type": "file",
+					"content": "SkillDesigner:WriteSkillPrd",
+					"extra_info": {
+						"Skill/天雷诀.json": "docs/Skill/天雷诀.json",
+						"Skill/御风术.json": "docs/Skill/御风术.json",
+						"Skill/护体金光.json": "docs/Skill/护体金光.json",
+						"Skill/治疗术.json": "docs/Skill/治疗术.json",
+						"Skill/灵气弹.json": "docs/Skill/灵气弹.json",
+						"Skill/烈焰符.json": "docs/Skill/烈焰符.json"
+					}
+				}
+			]
+		},
+		{
+			"role": "ai",
+			"timestamp": 1752720503,
+			"messages": [
+				{
+					"type": "file",
+					"content": "SkillDesigner:WriteSkillPrd",
+					"extra_info": {
+						"Skill/仙气屏障.json": "docs/Skill/仙气屏障.json",
+						"Skill/传授御风术.json": "docs/Skill/传授御风术.json",
+						"Skill/尾击扫荡.json": "docs/Skill/尾击扫荡.json",
+						"Skill/岩石护盾.json": "docs/Skill/岩石护盾.json",
+						"Skill/幻影步.json": "docs/Skill/幻影步.json",
+						"Skill/快速扑击.json": "docs/Skill/快速扑击.json",
+						"Skill/怒吼.json": "docs/Skill/怒吼.json",
+						"Skill/投掷石块.json": "docs/Skill/投掷石块.json",
+						"Skill/爪击攻击.json": "docs/Skill/爪击攻击.json",
+						"Skill/猿啸.json": "docs/Skill/猿啸.json",
+						"Skill/猿拳击.json": "docs/Skill/猿拳击.json",
+						"Skill/疾风扑击.json": "docs/Skill/疾风扑击.json",
+						"Skill/瞬移.json": "docs/Skill/瞬移.json",
+						"Skill/石爪击.json": "docs/Skill/石爪击.json",
+						"Skill/能量弹.json": "docs/Skill/能量弹.json",
+						"Skill/践踏.json": "docs/Skill/践踏.json",
+						"Skill/雷电攻击.json": "docs/Skill/雷电攻击.json",
+						"Skill/龙息.json": "docs/Skill/龙息.json",
+						"Skill/龙爪突袭.json": "docs/Skill/龙爪突袭.json",
+						"Skill/龙鳞护体.json": "docs/Skill/龙鳞护体.json"
+					}
+				}
+			]
+		},
+		{
+			"role": "ai",
+			"timestamp": 1752720523,
+			"messages": [
+				{
+					"type": "file",
+					"content": "SkillProgrammer:WriteSkillCode",
+					"extra_info": {
+						"Skill/天雷诀.lua": "GenRPG/Skill/天雷诀.lua",
+						"Skill/御风术.lua": "GenRPG/Skill/御风术.lua",
+						"Skill/护体金光.lua": "GenRPG/Skill/护体金光.lua",
+						"Skill/治疗术.lua": "GenRPG/Skill/治疗术.lua",
+						"Skill/灵气弹.lua": "GenRPG/Skill/灵气弹.lua",
+						"Skill/烈焰符.lua": "GenRPG/Skill/烈焰符.lua"
+					}
+				}
+			]
+		},
+		{
+			"role": "ai",
+			"timestamp": 1752720614,
+			"messages": [
+				{
+					"type": "file",
+					"content": "SkillProgrammer:WriteSkillCode",
+					"extra_info": {
+						"Skill/仙气屏障.lua": "GenRPG/Skill/仙气屏障.lua",
+						"Skill/传授御风术.lua": "GenRPG/Skill/传授御风术.lua",
+						"Skill/尾击扫荡.lua": "GenRPG/Skill/尾击扫荡.lua",
+						"Skill/岩石护盾.lua": "GenRPG/Skill/岩石护盾.lua",
+						"Skill/幻影步.lua": "GenRPG/Skill/幻影步.lua",
+						"Skill/快速扑击.lua": "GenRPG/Skill/快速扑击.lua",
+						"Skill/怒吼.lua": "GenRPG/Skill/怒吼.lua",
+						"Skill/投掷石块.lua": "GenRPG/Skill/投掷石块.lua",
+						"Skill/爪击攻击.lua": "GenRPG/Skill/爪击攻击.lua",
+						"Skill/猿啸.lua": "GenRPG/Skill/猿啸.lua",
+						"Skill/猿拳击.lua": "GenRPG/Skill/猿拳击.lua",
+						"Skill/疾风扑击.lua": "GenRPG/Skill/疾风扑击.lua",
+						"Skill/瞬移.lua": "GenRPG/Skill/瞬移.lua",
+						"Skill/石爪击.lua": "GenRPG/Skill/石爪击.lua",
+						"Skill/能量弹.lua": "GenRPG/Skill/能量弹.lua",
+						"Skill/践踏.lua": "GenRPG/Skill/践踏.lua",
+						"Skill/雷电攻击.lua": "GenRPG/Skill/雷电攻击.lua",
+						"Skill/龙息.lua": "GenRPG/Skill/龙息.lua",
+						"Skill/龙爪突袭.lua": "GenRPG/Skill/龙爪突袭.lua",
+						"Skill/龙鳞护体.lua": "GenRPG/Skill/龙鳞护体.lua"
+					}
+				}
+			]
+		},
+		{
+			"role": "ai",
+			"timestamp": 1752720619,
+			"messages": [
+				{
+					"type": "file",
+					"content": "LevelProgrammer:WriteLevelCode",
+					"extra_info": {
+						"stage1/onStageFailed.lua": "GenRPG/Level/stage1/onStageFailed.lua",
+						"stage1/onStageSuccess.lua": "GenRPG/Level/stage1/onStageSuccess.lua",
+						"stage1/process.lua": "GenRPG/Level/stage1/process.lua"
+					}
+				}
+			]
+		},
+		{
+			"role": "ai",
+			"timestamp": 1752720771,
+			"messages": [
+				{
+					"type": "file",
+					"content": "✅ 生成工作已经完成，请试玩一下!"
+				}
+			]
 		}
 	],
 	"kv": {
@@ -1127,6 +1415,14 @@
 				"llm_select_type": "smarter",
 				"llm": "claude-thinking",
 				"llm_review": "deepseek-reasoner",
+				"max_review_step": 0
+			},
+			"WriteItemCode": {
+				"open": false,
+				"multi_step": false,
+				"llm_select_type": "coder",
+				"llm": "claude-latest",
+				"llm_review": "",
 				"max_review_step": 0
 			},
 			"WriteLevelCode": {
@@ -1227,5 +1523,5 @@
 			}
 		}
 	},
-	"config_schema": "{\n\t\"additionalProperties\": false,\n\t\"properties\": {\n\t\t\"actions\": {\n\t\t\t\"additionalProperties\": {\n\t\t\t\t\"additionalProperties\": false,\n\t\t\t\t\"properties\": {\n\t\t\t\t\t\"llm\": {\n\t\t\t\t\t\t\"description\": \"基础大模型类型\",\n\t\t\t\t\t\t\"enum\": [\n\t\t\t\t\t\t\t\"deepseek-reasoner\",\n\t\t\t\t\t\t\t\"deepseek-chat\",\n\t\t\t\t\t\t\t\"gpt-4o\",\n\t\t\t\t\t\t\t\"claude3dot7\",\n\t\t\t\t\t\t\t\"claude3dot7-thinking\",\n\t\t\t\t\t\t\t\"gpt-4o-mini\"\n\t\t\t\t\t\t],\n\t\t\t\t\t\t\"type\": \"string\"\n\t\t\t\t\t},\n\t\t\t\t\t\"llm_review\": {\n\t\t\t\t\t\t\"description\": \"review模型\",\n\t\t\t\t\t\t\"enum\": [\n\t\t\t\t\t\t\t\"deepseek-reasoner\",\n\t\t\t\t\t\t\t\"deepseek-chat\",\n\t\t\t\t\t\t\t\"gpt-4o\",\n\t\t\t\t\t\t\t\"claude3dot7\",\n\t\t\t\t\t\t\t\"claude3dot7-thinking\",\n\t\t\t\t\t\t\t\"gpt-4o-mini\"\n\t\t\t\t\t\t],\n\t\t\t\t\t\t\"type\": \"string\"\n\t\t\t\t\t},\n\t\t\t\t\t\"llm_select_type\": {\n\t\t\t\t\t\t\"description\": \"LLM选择类型(设置无效)\",\n\t\t\t\t\t\t\"enum\": [\n\t\t\t\t\t\t\t\"normal\",\n\t\t\t\t\t\t\t\"coder\",\n\t\t\t\t\t\t\t\"smartCoder\",\n\t\t\t\t\t\t\t\"cheep\",\n\t\t\t\t\t\t\t\"reviewer\",\n\t\t\t\t\t\t\t\"faster\"\n\t\t\t\t\t\t],\n\t\t\t\t\t\t\"type\": \"string\"\n\t\t\t\t\t},\n\t\t\t\t\t\"max_review_step\": {\n\t\t\t\t\t\t\"description\": \"最大review次数\",\n\t\t\t\t\t\t\"type\": \"integer\"\n\t\t\t\t\t},\n\t\t\t\t\t\"multi_step\": {\n\t\t\t\t\t\t\"description\": \"是否使用复杂多步骤模式\",\n\t\t\t\t\t\t\"type\": \"boolean\"\n\t\t\t\t\t},\n\t\t\t\t\t\"open\": {\n\t\t\t\t\t\t\"description\": \"是否启用当前配置\",\n\t\t\t\t\t\t\"type\": \"boolean\"\n\t\t\t\t\t}\n\t\t\t\t},\n\t\t\t\t\"required\": [\n\t\t\t\t\t\"open\",\n\t\t\t\t\t\"multi_step\",\n\t\t\t\t\t\"llm_select_type\",\n\t\t\t\t\t\"llm\",\n\t\t\t\t\t\"llm_review\",\n\t\t\t\t\t\"max_review_step\"\n\t\t\t\t],\n\t\t\t\t\"type\": \"object\"\n\t\t\t},\n\t\t\t\"description\": \"指定的action配置(优先级高)\",\n\t\t\t\"type\": \"object\"\n\t\t},\n\t\t\"default_action\": {\n\t\t\t\"additionalProperties\": false,\n\t\t\t\"description\": \"默认的action配置(优先级低)\",\n\t\t\t\"properties\": {\n\t\t\t\t\"llm\": {\n\t\t\t\t\t\"description\": \"基础大模型类型\",\n\t\t\t\t\t\"enum\": [\n\t\t\t\t\t\t\"deepseek-reasoner\",\n\t\t\t\t\t\t\"deepseek-chat\",\n\t\t\t\t\t\t\"gpt-4o\",\n\t\t\t\t\t\t\"claude3dot7\",\n\t\t\t\t\t\t\"claude3dot7-thinking\",\n\t\t\t\t\t\t\"gpt-4o-mini\"\n\t\t\t\t\t],\n\t\t\t\t\t\"type\": \"string\"\n\t\t\t\t},\n\t\t\t\t\"llm_review\": {\n\t\t\t\t\t\"description\": \"review模型\",\n\t\t\t\t\t\"enum\": [\n\t\t\t\t\t\t\"deepseek-reasoner\",\n\t\t\t\t\t\t\"deepseek-chat\",\n\t\t\t\t\t\t\"gpt-4o\",\n\t\t\t\t\t\t\"claude3dot7\",\n\t\t\t\t\t\t\"claude3dot7-thinking\",\n\t\t\t\t\t\t\"gpt-4o-mini\"\n\t\t\t\t\t],\n\t\t\t\t\t\"type\": \"string\"\n\t\t\t\t},\n\t\t\t\t\"llm_select_type\": {\n\t\t\t\t\t\"description\": \"LLM选择类型(设置无效)\",\n\t\t\t\t\t\"enum\": [\n\t\t\t\t\t\t\"normal\",\n\t\t\t\t\t\t\"coder\",\n\t\t\t\t\t\t\"smartCoder\",\n\t\t\t\t\t\t\"cheep\",\n\t\t\t\t\t\t\"reviewer\",\n\t\t\t\t\t\t\"faster\"\n\t\t\t\t\t],\n\t\t\t\t\t\"type\": \"string\"\n\t\t\t\t},\n\t\t\t\t\"max_review_step\": {\n\t\t\t\t\t\"description\": \"最大review次数\",\n\t\t\t\t\t\"type\": \"integer\"\n\t\t\t\t},\n\t\t\t\t\"multi_step\": {\n\t\t\t\t\t\"description\": \"是否使用复杂多步骤模式\",\n\t\t\t\t\t\"type\": \"boolean\"\n\t\t\t\t},\n\t\t\t\t\"open\": {\n\t\t\t\t\t\"description\": \"是否启用当前配置\",\n\t\t\t\t\t\"type\": \"boolean\"\n\t\t\t\t}\n\t\t\t},\n\t\t\t\"required\": [\n\t\t\t\t\"open\",\n\t\t\t\t\"multi_step\",\n\t\t\t\t\"llm_select_type\",\n\t\t\t\t\"llm\",\n\t\t\t\t\"llm_review\",\n\t\t\t\t\"max_review_step\"\n\t\t\t],\n\t\t\t\"type\": \"object\"\n\t\t},\n\t\t\"default_llm\": {\n\t\t\t\"description\": \"默认LLM\",\n\t\t\t\"enum\": [\n\t\t\t\t\"deepseek-reasoner\",\n\t\t\t\t\"deepseek-chat\",\n\t\t\t\t\"gpt-4o\",\n\t\t\t\t\"claude3dot7\",\n\t\t\t\t\"claude3dot7-thinking\",\n\t\t\t\t\"gpt-4o-mini\"\n\t\t\t],\n\t\t\t\"type\": \"string\"\n\t\t},\n\t\t\"default_llm_cheep\": {\n\t\t\t\"description\": \"默认低成本LLM\",\n\t\t\t\"enum\": [\n\t\t\t\t\"deepseek-reasoner\",\n\t\t\t\t\"deepseek-chat\",\n\t\t\t\t\"gpt-4o\",\n\t\t\t\t\"claude3dot7\",\n\t\t\t\t\"claude3dot7-thinking\",\n\t\t\t\t\"gpt-4o-mini\"\n\t\t\t],\n\t\t\t\"type\": \"string\"\n\t\t},\n\t\t\"default_llm_coder\": {\n\t\t\t\"description\": \"默认CoderLLM\",\n\t\t\t\"enum\": [\n\t\t\t\t\"deepseek-reasoner\",\n\t\t\t\t\"deepseek-chat\",\n\t\t\t\t\"gpt-4o\",\n\t\t\t\t\"claude3dot7\",\n\t\t\t\t\"claude3dot7-thinking\",\n\t\t\t\t\"gpt-4o-mini\"\n\t\t\t],\n\t\t\t\"type\": \"string\"\n\t\t},\n\t\t\"default_llm_coder_smart\": {\n\t\t\t\"description\": \"默认SmartCoderLLM\",\n\t\t\t\"enum\": [\n\t\t\t\t\"deepseek-reasoner\",\n\t\t\t\t\"deepseek-chat\",\n\t\t\t\t\"gpt-4o\",\n\t\t\t\t\"claude3dot7\",\n\t\t\t\t\"claude3dot7-thinking\",\n\t\t\t\t\"gpt-4o-mini\"\n\t\t\t],\n\t\t\t\"type\": \"string\"\n\t\t},\n\t\t\"default_llm_smart\": {\n\t\t\t\"description\": \"默认最聪明LLM\",\n\t\t\t\"enum\": [\n\t\t\t\t\"deepseek-reasoner\",\n\t\t\t\t\"deepseek-chat\",\n\t\t\t\t\"gpt-4o\",\n\t\t\t\t\"claude3dot7\",\n\t\t\t\t\"claude3dot7-thinking\",\n\t\t\t\t\"gpt-4o-mini\"\n\t\t\t],\n\t\t\t\"type\": \"string\"\n\t\t},\n\t\t\"default_review_llm\": {\n\t\t\t\"description\": \"默认reviewLLM\",\n\t\t\t\"enum\": [\n\t\t\t\t\"deepseek-reasoner\",\n\t\t\t\t\"deepseek-chat\",\n\t\t\t\t\"gpt-4o\",\n\t\t\t\t\"claude3dot7\",\n\t\t\t\t\"claude3dot7-thinking\",\n\t\t\t\t\"gpt-4o-mini\"\n\t\t\t],\n\t\t\t\"type\": \"string\"\n\t\t},\n\t\t\"open\": {\n\t\t\t\"description\": \"是否启用\",\n\t\t\t\"type\": \"boolean\"\n\t\t},\n\t\t\"use_tts\": {\n\t\t\t\"description\": \"是否启用语音合成\",\n\t\t\t\"type\": \"boolean\"\n\t\t}\n\t},\n\t\"required\": [\n\t\t\"open\",\n\t\t\"use_tts\"\n\t],\n\t\"type\": \"object\"\n}"
+	"config_schema": "{\n\t\"additionalProperties\": false,\n\t\"properties\": {\n\t\t\"actions\": {\n\t\t\t\"additionalProperties\": {\n\t\t\t\t\"additionalProperties\": false,\n\t\t\t\t\"properties\": {\n\t\t\t\t\t\"llm\": {\n\t\t\t\t\t\t\"description\": \"基础大模型类型\",\n\t\t\t\t\t\t\"enum\": [\n\t\t\t\t\t\t\t\"deepseek-reasoner\",\n\t\t\t\t\t\t\t\"deepseek-chat\",\n\t\t\t\t\t\t\t\"gpt-4o\",\n\t\t\t\t\t\t\t\"claude-fast\",\n\t\t\t\t\t\t\t\"claude-thinking\",\n\t\t\t\t\t\t\t\"gpt-4o-mini\"\n\t\t\t\t\t\t],\n\t\t\t\t\t\t\"type\": \"string\"\n\t\t\t\t\t},\n\t\t\t\t\t\"llm_review\": {\n\t\t\t\t\t\t\"description\": \"review模型\",\n\t\t\t\t\t\t\"enum\": [\n\t\t\t\t\t\t\t\"deepseek-reasoner\",\n\t\t\t\t\t\t\t\"deepseek-chat\",\n\t\t\t\t\t\t\t\"gpt-4o\",\n\t\t\t\t\t\t\t\"claude-fast\",\n\t\t\t\t\t\t\t\"claude-thinking\",\n\t\t\t\t\t\t\t\"gpt-4o-mini\"\n\t\t\t\t\t\t],\n\t\t\t\t\t\t\"type\": \"string\"\n\t\t\t\t\t},\n\t\t\t\t\t\"llm_select_type\": {\n\t\t\t\t\t\t\"description\": \"LLM选择类型(设置无效)\",\n\t\t\t\t\t\t\"enum\": [\n\t\t\t\t\t\t\t\"normal\",\n\t\t\t\t\t\t\t\"coder\",\n\t\t\t\t\t\t\t\"smartCoder\",\n\t\t\t\t\t\t\t\"cheep\",\n\t\t\t\t\t\t\t\"reviewer\",\n\t\t\t\t\t\t\t\"faster\"\n\t\t\t\t\t\t],\n\t\t\t\t\t\t\"type\": \"string\"\n\t\t\t\t\t},\n\t\t\t\t\t\"max_review_step\": {\n\t\t\t\t\t\t\"description\": \"最大review次数\",\n\t\t\t\t\t\t\"type\": \"integer\"\n\t\t\t\t\t},\n\t\t\t\t\t\"multi_step\": {\n\t\t\t\t\t\t\"description\": \"是否使用复杂多步骤模式\",\n\t\t\t\t\t\t\"type\": \"boolean\"\n\t\t\t\t\t},\n\t\t\t\t\t\"open\": {\n\t\t\t\t\t\t\"description\": \"是否启用当前配置\",\n\t\t\t\t\t\t\"type\": \"boolean\"\n\t\t\t\t\t}\n\t\t\t\t},\n\t\t\t\t\"required\": [\n\t\t\t\t\t\"open\",\n\t\t\t\t\t\"multi_step\",\n\t\t\t\t\t\"llm_select_type\",\n\t\t\t\t\t\"llm\",\n\t\t\t\t\t\"llm_review\",\n\t\t\t\t\t\"max_review_step\"\n\t\t\t\t],\n\t\t\t\t\"type\": \"object\"\n\t\t\t},\n\t\t\t\"description\": \"指定的action配置(优先级高)\",\n\t\t\t\"type\": \"object\"\n\t\t},\n\t\t\"default_action\": {\n\t\t\t\"additionalProperties\": false,\n\t\t\t\"description\": \"默认的action配置(优先级低)\",\n\t\t\t\"properties\": {\n\t\t\t\t\"llm\": {\n\t\t\t\t\t\"description\": \"基础大模型类型\",\n\t\t\t\t\t\"enum\": [\n\t\t\t\t\t\t\"deepseek-reasoner\",\n\t\t\t\t\t\t\"deepseek-chat\",\n\t\t\t\t\t\t\"gpt-4o\",\n\t\t\t\t\t\t\"claude-fast\",\n\t\t\t\t\t\t\"claude-thinking\",\n\t\t\t\t\t\t\"gpt-4o-mini\"\n\t\t\t\t\t],\n\t\t\t\t\t\"type\": \"string\"\n\t\t\t\t},\n\t\t\t\t\"llm_review\": {\n\t\t\t\t\t\"description\": \"review模型\",\n\t\t\t\t\t\"enum\": [\n\t\t\t\t\t\t\"deepseek-reasoner\",\n\t\t\t\t\t\t\"deepseek-chat\",\n\t\t\t\t\t\t\"gpt-4o\",\n\t\t\t\t\t\t\"claude-fast\",\n\t\t\t\t\t\t\"claude-thinking\",\n\t\t\t\t\t\t\"gpt-4o-mini\"\n\t\t\t\t\t],\n\t\t\t\t\t\"type\": \"string\"\n\t\t\t\t},\n\t\t\t\t\"llm_select_type\": {\n\t\t\t\t\t\"description\": \"LLM选择类型(设置无效)\",\n\t\t\t\t\t\"enum\": [\n\t\t\t\t\t\t\"normal\",\n\t\t\t\t\t\t\"coder\",\n\t\t\t\t\t\t\"smartCoder\",\n\t\t\t\t\t\t\"cheep\",\n\t\t\t\t\t\t\"reviewer\",\n\t\t\t\t\t\t\"faster\"\n\t\t\t\t\t],\n\t\t\t\t\t\"type\": \"string\"\n\t\t\t\t},\n\t\t\t\t\"max_review_step\": {\n\t\t\t\t\t\"description\": \"最大review次数\",\n\t\t\t\t\t\"type\": \"integer\"\n\t\t\t\t},\n\t\t\t\t\"multi_step\": {\n\t\t\t\t\t\"description\": \"是否使用复杂多步骤模式\",\n\t\t\t\t\t\"type\": \"boolean\"\n\t\t\t\t},\n\t\t\t\t\"open\": {\n\t\t\t\t\t\"description\": \"是否启用当前配置\",\n\t\t\t\t\t\"type\": \"boolean\"\n\t\t\t\t}\n\t\t\t},\n\t\t\t\"required\": [\n\t\t\t\t\"open\",\n\t\t\t\t\"multi_step\",\n\t\t\t\t\"llm_select_type\",\n\t\t\t\t\"llm\",\n\t\t\t\t\"llm_review\",\n\t\t\t\t\"max_review_step\"\n\t\t\t],\n\t\t\t\"type\": \"object\"\n\t\t},\n\t\t\"default_llm\": {\n\t\t\t\"description\": \"默认LLM\",\n\t\t\t\"enum\": [\n\t\t\t\t\"deepseek-reasoner\",\n\t\t\t\t\"deepseek-chat\",\n\t\t\t\t\"gpt-4o\",\n\t\t\t\t\"claude-fast\",\n\t\t\t\t\"claude-thinking\",\n\t\t\t\t\"gpt-4o-mini\",\n\t\t\t\t\"gemini-pro\",\n\t\t\t\t\"gemini-flash\"\n\t\t\t],\n\t\t\t\"type\": \"string\"\n\t\t},\n\t\t\"default_llm_cheep\": {\n\t\t\t\"description\": \"默认低成本LLM\",\n\t\t\t\"enum\": [\n\t\t\t\t\"deepseek-reasoner\",\n\t\t\t\t\"deepseek-chat\",\n\t\t\t\t\"gpt-4o\",\n\t\t\t\t\"claude-fast\",\n\t\t\t\t\"claude-thinking\",\n\t\t\t\t\"gpt-4o-mini\",\n\t\t\t\t\"gemini-pro\",\n\t\t\t\t\"gemini-flash\"\n\t\t\t],\n\t\t\t\"type\": \"string\"\n\t\t},\n\t\t\"default_llm_coder\": {\n\t\t\t\"description\": \"默认CoderLLM\",\n\t\t\t\"enum\": [\n\t\t\t\t\"deepseek-reasoner\",\n\t\t\t\t\"deepseek-chat\",\n\t\t\t\t\"gpt-4o\",\n\t\t\t\t\"claude-fast\",\n\t\t\t\t\"claude-thinking\",\n\t\t\t\t\"gpt-4o-mini\",\n\t\t\t\t\"gemini-pro\",\n\t\t\t\t\"gemini-flash\"\n\t\t\t],\n\t\t\t\"type\": \"string\"\n\t\t},\n\t\t\"default_llm_coder_smart\": {\n\t\t\t\"description\": \"默认SmartCoderLLM\",\n\t\t\t\"enum\": [\n\t\t\t\t\"deepseek-reasoner\",\n\t\t\t\t\"deepseek-chat\",\n\t\t\t\t\"gpt-4o\",\n\t\t\t\t\"claude-fast\",\n\t\t\t\t\"claude-thinking\",\n\t\t\t\t\"gpt-4o-mini\",\n\t\t\t\t\"gemini-pro\",\n\t\t\t\t\"gemini-flash\"\n\t\t\t],\n\t\t\t\"type\": \"string\"\n\t\t},\n\t\t\"default_llm_smart\": {\n\t\t\t\"description\": \"默认最聪明LLM\",\n\t\t\t\"enum\": [\n\t\t\t\t\"deepseek-reasoner\",\n\t\t\t\t\"deepseek-chat\",\n\t\t\t\t\"gpt-4o\",\n\t\t\t\t\"claude-fast\",\n\t\t\t\t\"claude-thinking\",\n\t\t\t\t\"gpt-4o-mini\",\n\t\t\t\t\"gemini-pro\",\n\t\t\t\t\"gemini-flash\"\n\t\t\t],\n\t\t\t\"type\": \"string\"\n\t\t},\n\t\t\"default_review_llm\": {\n\t\t\t\"description\": \"默认reviewLLM\",\n\t\t\t\"enum\": [\n\t\t\t\t\"deepseek-reasoner\",\n\t\t\t\t\"deepseek-chat\",\n\t\t\t\t\"gpt-4o\",\n\t\t\t\t\"claude-fast\",\n\t\t\t\t\"claude-thinking\",\n\t\t\t\t\"gpt-4o-mini\",\n\t\t\t\t\"gemini-pro\",\n\t\t\t\t\"gemini-flash\"\n\t\t\t],\n\t\t\t\"type\": \"string\"\n\t\t},\n\t\t\"open\": {\n\t\t\t\"description\": \"是否启用\",\n\t\t\t\"type\": \"boolean\"\n\t\t},\n\t\t\"use_tts\": {\n\t\t\t\"description\": \"是否启用语音合成\",\n\t\t\t\"type\": \"boolean\"\n\t\t}\n\t},\n\t\"required\": [\n\t\t\"open\",\n\t\t\"use_tts\"\n\t],\n\t\"type\": \"object\"\n}"
 }
