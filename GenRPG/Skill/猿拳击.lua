@@ -1,27 +1,26 @@
 local M = {}
 
 function M.init()
-    -- 按照设计文档的init_desc部分设置技能基础属性
-    Skill_SetMPCost(15, "设置魔法消耗为15点")
-    Skill_SetCooldown(3, "设置技能冷却时间为3秒")
-    Skill_SetCastRange(2, "设置技能施法范围为2米")
-    Skill_SetMainTargetType("enemy", "设置目标类型为敌人")
-    Skill_SetDesc("山猿挥动强壮的手臂进行近身拳击攻击，造成物理伤害")
+    -- 基础攻击技能不消耗魔法值
+    Skill_SetMPCost(0, "基础攻击不消耗魔法")
+    -- 设置冷却时间为1.5秒
+    Skill_SetCooldown(1500, "冷却时间1.5秒")
+    -- 设置攻击距离为2米
+    Skill_SetCastRange(2, "近战攻击距离2米")
+    -- 设置目标类型为敌人
+    Skill_SetMainTargetType("enemy", "攻击敌人")
+    -- 设置技能描述
+    Skill_SetDesc("近战攻击，对目标造成物理伤害，伤害值为自身攻击力的1.2倍。", "山猿基础攻击")
 end
 
 function M.cb()
-    -- 实现蓄力动作，持续0.5秒
-    Skill_Sleep(500, "山猿蓄力0.5秒，挥动手臂准备攻击")
+    -- 选择主要目标(敌人)
+    Skill_CollectMainTarget("选择攻击目标")
     
-    -- 选择前方扇形区域内的敌人目标
-    -- 扇形半径2米，角度60度，最多选择3个目标
-    Skill_CollectSectorTargets(2, 60, 3, "选择前方扇形区域内最多3个敌人")
+    -- 对目标造成物理伤害，伤害为自身攻击力的1.2倍
+    Skill_TargetScaleDamage("damage_physical", 1.2, "造成1.2倍物理伤害")
     
-    -- 对选中的目标造成物理伤害，伤害值为自身攻击力的1.2倍
-    Skill_TargetScaleDamage("damage_physical", 1.2, "造成1.2倍攻击力的物理伤害")
-    
-    -- 释放技能结束
-    Skill_Say("呃啊！", 1)
+    -- 由于无前摇后摇，技能释放后立即结束
 end
 
 return M

@@ -1,30 +1,26 @@
 local M = {}
 
 function M.init()
-    -- 初始化技能属性
-    Skill_SetMPCost(100, "设置技能消耗为100点魔法值")
-    Skill_SetCooldown(3, "设置技能冷却时间为3秒")
-    Skill_SetCastRange(8, "设置施法范围为8米")
-    Skill_SetMainTargetType("enemy", "设置技能目标类型为敌人")
-    Skill_SetDesc("千年蛟龙的主要攻击技能，从口中喷出灼热气息，形成60度扇形范围攻击，射程8米。造成150点魔法伤害，并有30%概率使敌人受到持续灼烧效果，每秒受到20点伤害，持续3秒。")
+    -- 初始化技能参数
+    Skill_SetMPCost(40, "设置魔法消耗为40点")
+    Skill_SetCooldown(4000, "设置技能冷却时间为4秒")
+    Skill_SetCastRange(8, "设置技能射程为8米")
+    Skill_SetMainTargetType("enemy", "设置目标类型为敌人")
+    Skill_SetDesc("千年蛟龙的基础攻击技能，从口中喷射出炽热龙息，形成扇形范围攻击。攻击范围为前方30度角、射程8米的扇形区域，造成基础攻击力1.2倍的物理伤害。", "蛟龙喷射炽热龙息")
 end
 
 function M.cb()
-    -- 技能释放前的1秒蓄力动作
-    Skill_Say("蓄力中...", 1)
-    Skill_Sleep(1000, "播放1秒蓄力动作")
+    -- 模拟吸气动作前摇
+    Skill_Sleep(1000, "吸气动作前摇1秒")
     
-    -- 选择前方60度扇形8米范围内的所有敌人
-    Skill_CollectSectorTargets(8, 60, 10, "选择前方60度扇形范围内的敌人")
+    -- 选择扇形范围内的敌人
+    Skill_CollectSectorTargets(8, 30, 10, "选择前方30度角8米范围内的敌人")
     
-    -- 对选中目标造成150点魔法伤害
-    Skill_TargetDamage("damage_magic", 150, "对敌人造成150点魔法伤害")
+    -- 对选中的敌人造成1.2倍基础攻击力的物理伤害
+    Skill_TargetScaleDamage("damage_physical", 1.2, "造成1.2倍基础攻击力的物理伤害")
     
-    -- 有30%概率对选中目标施加持续伤害效果，每秒20点，持续3秒
-    Skill_TargetEnemyAddBuff("buff_damage_over_time", 0.3, 3, {20}, "30%概率造成每秒20点的持续灼烧伤害，持续3秒")
-    
-    -- 技能释放完成后的动作表现
-    Skill_Say("龙息！", 1)
+    -- 播放咆哮音效
+    Skill_Say("吼！", 1000, "龙息咆哮音效")
 end
 
 return M
