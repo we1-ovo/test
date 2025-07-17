@@ -1,10 +1,9 @@
 {
 	"property": {
 		"Player": {
-			"numerical_desc": "筑基期修仙者，初入仙途的修士具备扎实的仙术修为基础。拥有较强的法力储备和持续战斗能力，MP设计确保无药剂下可连续释放4-5个核心仙术技能。通过在灵草谷的历练将不断成长，最终具备挑战千年守护兽的实力。",
+			"numerical_desc": "筑基期修仙者，修仙界初入仙途的修士，具备扎实的仙术修为基础和较强的法力储备。设计为能够持续战斗的角色，MP容量确保无丹药情况下可连续释放4-5个核心仙术技能。通过在灵草谷的历练获得经验提升，逐步解锁三种递进式仙术技能，最终具备挑战千年守护兽的实力。战斗风格以仙术输出为主，需要灵活走位配合技能释放时机。",
 			"type": "player",
 			"prop": {
-				"level": 1,
 				"hpMax": 1200,
 				"hpGen": 12,
 				"mpMax": 600,
@@ -15,42 +14,18 @@
 				"agility": 40,
 				"exp": 0
 			},
-			"canMove": true,
 			"canCastSkill": true,
 			"canBeAttack": true,
 			"hatredRange": 0,
 			"damagePerSecond": 140,
-			"castSkillPerSecond": 1.0,
-			"power": 5
-		},
-		"NPC": {
-			"numerical_desc": "灵草谷中的普通妖兽群体，包括谷口的低级妖兽（灵狐、山猿）和深谷的中级妖兽（灵豹、石熊）。作为修仙者历练路上的对手，实力适中能够提供合理挑战。玩家运用仙术攻击2-4秒可击败单只妖兽，成群出现时需要策略性应对。",
-			"type": "junior",
-			"prop": {
-				"level": 2,
-				"hpMax": 350,
-				"hpGen": 4,
-				"mpMax": 100,
-				"mpGen": 5,
-				"speed": 5,
-				"strength": 30,
-				"defense": 15,
-				"agility": 25,
-				"exp": 150
-			},
-			"canMove": true,
-			"canCastSkill": true,
-			"canBeAttack": true,
-			"hatredRange": 8,
-			"damagePerSecond": 30,
-			"castSkillPerSecond": 0.5,
-			"power": 2
+			"castSkillPerSecond": 1,
+			"power": 5,
+			"level": 1
 		},
 		"Boss": {
-			"numerical_desc": "千年蛟龙王，盘踞谷底守护千年灵草的强大妖兽。经过千年修炼积累了深厚的妖力修为，攻防兼备且拥有特殊技能。需要玩家综合运用三种仙术技能配合精准走位和时机把握才能击败。战斗设计为40-50秒，充分体现仙侠Boss战的策略性和观赏性。",
+			"numerical_desc": "千年蛟龙王，盘踞灵草谷底守护千年灵草的强大妖兽Boss，经过千年修炼积累了深厚的妖力修为。拥有强大的攻防属性和特殊技能，移动速度略快于玩家以产生压迫感。需要玩家综合运用三种仙术技能、精准走位和时机把握才能击败。战斗设计为40-50秒，充分体现仙侠Boss战的策略性和观赏性，为整个5分钟流程的高潮部分。",
 			"type": "boss",
 			"prop": {
-				"level": 5,
 				"hpMax": 7000,
 				"hpGen": 35,
 				"mpMax": 1800,
@@ -61,13 +36,35 @@
 				"agility": 50,
 				"exp": 4000
 			},
-			"canMove": true,
 			"canCastSkill": true,
 			"canBeAttack": true,
 			"hatredRange": 15,
 			"damagePerSecond": 210,
 			"castSkillPerSecond": 0.35,
-			"power": 8
+			"power": 8,
+			"level": 1
+		},
+		"NPC": {
+			"numerical_desc": "灵草谷中的普通妖兽群体，包括谷口的低级妖兽（灵狐、山猿）和深谷的中级妖兽（灵豹、石熊）。作为修仙者历练路上的主要对手，实力设计为玩家运用仙术攻击2-4秒可击败单只，成群出现时提供合理挑战。拥有基础的妖术攻击能力，主要通过数量优势和群体配合来考验玩家的战术运用和技能释放时机。",
+			"type": "junior",
+			"prop": {
+				"hpMax": 350,
+				"hpGen": 4,
+				"mpMax": 100,
+				"mpGen": 5,
+				"speed": 5,
+				"strength": 30,
+				"defense": 15,
+				"agility": 25,
+				"exp": 150
+			},
+			"canCastSkill": true,
+			"canBeAttack": true,
+			"hatredRange": 8,
+			"damagePerSecond": 30,
+			"castSkillPerSecond": 0.5,
+			"power": 2,
+			"level": 1
 		}
 	}
 }
