@@ -2,57 +2,81 @@
 	"task_list": [
 		{
 			"file_path": "stage1/process.lua",
-			"analysis_detail": [
-				"设置阶段超时时间300秒，将Player传送到locator_player_spawn出生点",
-				"序章剧情：显示旁白介绍灵草谷背景，召唤老修士NPC进行对话引导",
-				"老修士技能传授：通过对话系统让老修士教授玩家'御风术'技能，然后让老修士离开场景",
-				"谷口试炼战斗：在指定位置召唤3只灵狐和2只山猿，使用LEVEL_RegisterStageNPCNeedBeat注册这5只妖兽必须被击败",
-				"第一阶段胜利处理：检测妖兽全部死亡后，处理初级灵草掉落，玩家升级并学会'烈焰符'技能",
-				"深谷探索准备：在谷中段随机位置生成3个中级灵草和2个修炼丹药供玩家收集",
-				"中级妖兽战斗：召唤4只灵豹和2只石熊，同样注册为必击败目标",
-				"第二阶段胜利处理：中级妖兽死亡后掉落对应物品，玩家再次升级学会'天雷诀'",
-				"Boss战准备：在谷底召唤千年蛟龙Boss，生成千年灵草道具但设为不可直接拾取",
-				"Boss战对话和战斗：千年蛟龙威胁对话，注册Boss为必击败目标",
-				"胜利结算：Boss死亡后的遗言对话，玩家获得千年灵草，显示胜利旁白",
-				"流程同步控制：使用LEVEL_DoProcess在各个关键节点实现阻塞等待，确保剧情和战斗的顺序进行"
+			"level_logic": [
+				"使用LEVEL_SetStageTimeout设置阶段超时时间为300秒(5分钟)。",
+				"使用LEVEL_PlayerTeleportTo将玩家传送到出生点locator_player_spawn。",
+				"使用LEVEL_ShowDialog显示开场旁白:'旁白(,AutoSpeed): 筑基期修仙者，踏入神秘的灵草谷。传说谷底有千年灵草，得之可大幅提升修为，然谷中妖兽盘踞，危险重重...'。",
+				"节点任务1:使用LEVEL_DoProcess+LEVEL_AddTask给玩家发放指引任务，寻找老修士学习仙术。对话:'老修士(TalkSpeed:0.8X,TalkTarget:Player): 小友，前方便是灵草谷，谷中妖兽横行，切勿轻敌。老夫传你一门御风术，助你闯荡此谷。'。",
+				"使用LEVEL_SummonWithType在locator_valley_entrance_elder召唤老修士，设置LEVEL_BlackboardSet存储UUID供其他系统使用。",
+				"通过LEVEL_DoProcess等待玩家与老修士对话完成，老修士传授御风术技能后使用LEVEL_TeleportTo将其传送到locator_elder_exit位置离场。",
+				"节点任务2:使用LEVEL_DoProcess+LEVEL_AddTask给玩家发放战斗指引任务，击败谷口妖兽群(5只)。对话:'旁白(TalkSpeed:1.2X,AutoSpeed): 谷口妖兽察觉到修士气息，纷纷现身阻拦...'。",
+				"使用LEVEL_SummonNPCsWithType在locator_valley_entrance_foxes召唤3只灵狐，在locator_valley_entrance_apes召唤2只山猿，使用LEVEL_RegisterStageNPCNeedBeat注册为必须击败的敌人。",
+				"使用LEVEL_NPCBattle激活所有谷口妖兽主动攻击玩家。",
+				"通过LEVEL_AddTimerAsyncProcess监控妖兽死亡，每只妖兽死亡时使用LEVEL_DropItem在其位置掉落初级灵草。",
+				"通过LEVEL_DoProcess等待玩家击败所有谷口妖兽，完成后显示升级提示并解锁烈焰符技能。",
+				"使用LEVEL_ShowDialog显示阶段过渡:'旁白(,AutoSpeed): 初战告捷，修为有所精进。深谷之中，更大的挑战正在等待...'。",
+				"节点任务3:使用LEVEL_DoProcess+LEVEL_AddTask给玩家发放探索任务，收集谷中段的灵草和丹药资源。",
+				"使用LEVEL_DropItem在locator_middle_herbs_1~3位置各生成1个中级灵草，在locator_pills_1~2位置各生成1个修炼丹药。",
+				"使用LEVEL_SummonNPCsWithType在locator_valley_middle_leopards召唤4只灵豹，在locator_valley_middle_bears召唤2只石熊，使用LEVEL_RegisterStageNPCNeedBeat注册为必须击败的敌人。",
+				"使用LEVEL_NPCBattle激活中级妖兽群主动攻击玩家。",
+				"通过LEVEL_AddTimerAsyncProcess监控中级妖兽死亡，灵豹死亡掉落中级灵草，石熊死亡掉落修炼丹药。",
+				"通过LEVEL_DoProcess等待玩家击败所有中级妖兽(6只)，完成后再次升级解锁天雷诀技能。",
+				"使用LEVEL_ShowDialog显示Boss战前置:'旁白(TalkSpeed:0.8X,AutoSpeed): 前路已通，谷底灵雾缭绕，千年灵草的金光隐约可见，然而一股强大的妖气扑面而来...'。",
+				"节点任务4:使用LEVEL_DoProcess+LEVEL_AddTask给玩家发放Boss挑战任务，击败千年蛟龙获得千年灵草。",
+				"使用LEVEL_SummonWithType在locator_valley_bottom_boss召唤千年蛟龙Boss，使用LEVEL_DropItem在locator_final_herb生成千年灵草(但设置为Boss死亡后才能拾取)。",
+				"使用LEVEL_RegisterStageNPCNeedBeat注册千年蛟龙为必须击败的Boss。",
+				"Boss开场对话后使用LEVEL_NPCBattle激活Boss主动攻击玩家。",
+				"通过LEVEL_DoProcess等待玩家击败千年蛟龙Boss，Boss死亡后玩家自动获得千年灵草并大幅提升属性。",
+				"使用LEVEL_ShowDialog显示胜利结语:'旁白(TalkSpeed:0.8X,AutoSpeed): 千年灵草入手，修为大进。这次灵草谷之行，不仅获得了珍贵的天材地宝，更是在实战中磨砺了道心。修仙路漫漫，此番历练必将成为日后飞升的重要基石。'。"
 			]
 		},
 		{
 			"file_path": "stage1/onStageSuccess.lua",
-			"analysis_detail": [
-				"播放符合仙侠风格的胜利旁白，描述玩家成功获得千年灵草的成就",
-				"展现修仙者通过历练提升修为的成长感受",
-				"使用古典文言和现代白话结合的语言风格，营造仙侠意境"
+			"level_logic": [
+				"使用LEVEL_ShowDialog显示阶段成功的祝贺信息:'旁白(,AutoSpeed): 恭喜！成功闯荡灵草谷，获得千年灵草，修为大幅提升！'。",
+				"使用LEVEL_Award给玩家发放额外奖励，包括高级修炼丹药和经验值。",
+				"调用游戏结束成功界面。"
 			]
 		},
 		{
 			"file_path": "stage1/onStageFailed.lua",
-			"analysis_detail": [
-				"显示符合仙侠修炼主题的失败对话，体现修仙路上的挫折与坚持",
-				"鼓励玩家重新挑战，符合修仙者不断精进的精神品质",
-				"保持与成功结局相同的仙侠语言风格"
+			"level_logic": [
+				"使用LEVEL_ShowDialog显示失败信息:'旁白(,AutoSpeed): 修仙路充满艰险，此次失败乃是修行路上的磨砺。重新来过，定能成功！'。",
+				"调用游戏结束失败界面。"
 			]
 		}
 	],
 	"ai_for_level_logic": {
 		"千年蛟龙": {
 			"NpcTID": "千年蛟龙",
-			"ai_for_special_level_logic": "实现Boss多阶段战斗AI：正常阶段循环使用龙息和雷电攻击技能，监控自身血量当降至50%以下时进入狂暴模式，开始使用尾击扫荡等更强技能。需要合理控制技能释放间隔，确保战斗持续40-50秒，给玩家足够的策略空间和挑战感。"
+			"ai_for_special_level_logic": "实现Boss多阶段战斗AI：正常阶段循环使用龙息和雷电攻击技能，监控自身血量当降至50%以下时进入狂暴模式，开始使用尾击扫荡等更强技能。需要合理控制技能释放间隔，确保战斗持续40-50秒，给玩家足够的策略空间和挑战感。狂暴模式下攻击频率提升，优先使用高伤害技能。"
 		}
 	},
 	"skill_for_level_logic": {
+		"天雷诀": {
+			"SkillTID": "天雷诀",
+			"skill_for_special_level_logic": "玩家击败中级妖兽群后解锁的最强雷系技能，范围伤害且伤害极高，是挑战Boss的核心输出技能，有雷电轰鸣特效。"
+		},
 		"尾击扫荡": {
 			"SkillTID": "尾击扫荡",
-			"skill_for_special_level_logic": "Boss血量50%以下释放的终极技能，360度环形攻击范围约6米，超高伤害但有3秒前摇时间，考验玩家的反应和走位能力。"
+			"skill_for_special_level_logic": "Boss血量50%以下释放的终极技能，360度环形攻击范围约6米，超高伤害但有3秒前摇时间，考验玩家的反应和走位能力。释放时Boss会有明显的蓄力动作。"
+		},
+		"御风术": {
+			"SkillTID": "御风术",
+			"skill_for_special_level_logic": "玩家从老修士处学习的移动技能，提供短距离快速位移能力，帮助玩家在战斗中灵活走位躲避敌人攻击，特别是在Boss战中的生存技能。"
+		},
+		"烈焰符": {
+			"SkillTID": "烈焰符",
+			"skill_for_special_level_logic": "玩家击败谷口妖兽后解锁的火系攻击技能，单体高伤害远程攻击，适合对付中级妖兽群体，有燃烧特效。"
 		},
 		"雷电攻击": {
 			"SkillTID": "雷电攻击",
-			"skill_for_special_level_logic": "Boss的远程单体高伤害技能，需要锁定目标后有1-2秒的蓄力时间，伤害极高但可以通过移动躲避，增加战斗的技巧性。"
+			"skill_for_special_level_logic": "Boss的远程单体高伤害技能，需要锁定目标后有1-2秒的蓄力时间，伤害极高但可以通过移动躲避，增加战斗的技巧性。释放前有雷电聚集特效。"
 		},
 		"龙息": {
 			"SkillTID": "龙息",
-			"skill_for_special_level_logic": "Boss主要攻击技能，设计为扇形AOE攻击，射程8-10米，伤害较高但有明显前摇动画，让玩家有机会通过走位躲避，体现仙侠战斗的策略性。"
+			"skill_for_special_level_logic": "Boss主要攻击技能，设计为扇形AOE攻击，射程8-10米，伤害较高但有明显前摇动画，让玩家有机会通过走位躲避，体现仙侠战斗的策略性。释放时有火焰特效和咆哮音效。"
 		}
 	},
-	"anything_unclear": "设计方案基本完整。需要在实现时注意：1.妖兽死亡掉落物品的具体触发时机和自动拾取距离；2.玩家技能学习的API调用方式；3.Boss血量监控和阶段切换的实现方法；4.地面道具生成的随机分布算法。这些技术细节将通过现有Level系统API合理实现。"
+	"anything_unclear": "设计方案已完善。需要注意的技术细节：1.妖兽死亡掉落的物品需要通过LEVEL_AddTimerAsyncProcess监控NPC死亡状态来触发LEVEL_DropItem；2.玩家技能学习可能需要通过AI系统或其他方式实现，暂时在对话中说明；3.Boss血量阶段切换通过AI系统监控实现；4.千年灵草的获取需要在Boss死亡后通过LEVEL_Award自动给予玩家。所有逻辑都能通过现有Level系统API实现。"
 }
