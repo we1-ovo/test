@@ -1,18 +1,17 @@
 {
 	"SkillTID": "烈焰符",
-	"origin_desc": "击败谷口妖兽后解锁的火系攻击仙术。制作符咒投掷后产生烈焰爆炸，对范围内敌人造成魔法伤害。施法距离8米，爆炸半径3米，MP消耗100点，冷却时间6秒。对范围内最多5个敌人造成攻击力2倍的火焰伤害，约140点。使用Skill_CollectCircleTargets选择半径3米内最多5个敌人，然后Skill_TargetScaleDamage造成2倍攻击力的魔法伤害。",
+	"origin_desc": "击败谷口妖兽后解锁的火系攻击仙术。投掷符咒产生烈焰爆炸，造成范围伤害。MP消耗100点，冷却时间6秒，施法距离8米，爆炸半径3米，对最多5个敌人造成攻击力2倍(约140点)的魔法伤害。技能实现：使用Skill_CollectCircleTargets选择半径3米内最多5个敌人，然后Skill_TargetScaleDamage造成damage_magic类型、系数2倍的伤害。",
 	"init_desc": [
-		"设置魔法消耗为100点MP",
-		"设置技能冷却时间为6秒",
-		"设置施法距离为8米",
-		"设置目标类型为敌人",
+		"设置技能魔法消耗为100点",
+		"设置技能冷却时间为6000毫秒(6秒)",
+		"设置施法范围为8米",
+		"设置主目标类型为敌人",
 		"设置技能描述为火系范围攻击仙术"
 	],
 	"cast_desc": [
-		"使用Skill_CollectMainTarget()先选择主要目标确定投掷方向",
-		"使用Skill_CollectCircleTargets(3, 5, '选择爆炸范围内的敌人')选择半径3米内最多5个敌人",
-		"使用Skill_TargetScaleDamage('damage_magic', 2.0, '造成2倍攻击力的火焰伤害')对所有选中敌人造成伤害",
-		"每个敌人受到攻击力2倍的魔法伤害，约140点",
-		"技能为投掷类型，符咒命中目标位置后产生范围爆炸"
+		"使用Skill_CollectMainTarget()选择主要目标确定爆炸中心",
+		"使用Skill_CollectCircleTargets(3, 5, '烈焰符范围伤害')选择爆炸半径3米内最多5个敌人",
+		"使用Skill_TargetScaleDamage('damage_magic', 2, '烈焰符伤害')对所有选中目标造成2倍攻击力的魔法伤害",
+		"技能为瞬发范围伤害技能"
 	]
 }
