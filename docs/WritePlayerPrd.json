@@ -1,45 +1,45 @@
 {
-  "TID": "player",
-  "appearance_desc": "角色、奇幻、卡通、中国、古代、温暖、中等纹理细节、中等复杂度、现实比例、织物、站立、盔甲、中性",
-  "attributes_desc": [
-    "筑基期修仙者，初入仙途的修士，拥有扎实的仙术修为基础和较强的法力储备",
-    "生命值HP：1200点，足够承受多次战斗伤害，体现修仙者的强健体魄",
-    "法力值MP：600点，足够连续释放4-5个核心仙术技能，维持持续战斗能力",
-    "生命恢复：每秒恢复12点HP，具备修仙者基础的自我修复能力",
-    "法力恢复：每秒恢复8点MP，能够自然吸收天地灵气恢复法力",
-    "移动速度：6米/秒，保持灵活机动性，适合仙侠战斗中的走位闪避",
-    "攻击力：70点，配合仙术技能对妖兽造成有效伤害",
-    "防御力：30点，能够减轻来自妖兽的伤害，提供基础生存能力",
-    "敏捷度：40点，影响技能冷却和反应速度，适合灵活的仙术战斗",
-    "初始等级：1级，在灵草谷历练中逐渐成长提升修为",
-    "战斗输出：每秒平均造成140点伤害，每秒可释放1次技能",
-    "力量评级：Power等级5，适合挑战普通Boss级别的妖兽"
-  ],
-  "skills_desc": [
-    {
-      "SkillTID": "灵气弹",
-      "desc": "基础远程仙术，凝聚天地灵气形成能量弹投射向目标。MP消耗50点，冷却时间2秒，施法距离8米，造成攻击力1.5倍(约105点)的魔法伤害。作为初始技能，既可远程消耗又可连续输出。技能实现：使用Skill_CollectMainTarget选择目标，然后通过Skill_TargetScaleDamage造成damage_magic类型、系数1.5倍的伤害。"
-    },
-    {
-      "SkillTID": "治疗术",
-      "desc": "基础治疗仙术，运用生命灵气为自身疗伤。MP消耗80点，冷却时间8秒，瞬间恢复360点生命值(最大生命的30%)。关键时刻的保命技能，提高生存能力。技能实现：使用Skill_SelfDamage传入damage_physical类型、数值-360的参数实现治疗效果。"
-    },
-    {
-      "SkillTID": "御风术",
-      "desc": "老修士传授的身法仙术，提升移动速度。MP消耗60点，冷却时间15秒，使用后移动速度提升50%，持续8秒(8000毫秒)。既可用于追击敌人，也是躲避Boss技能的关键。技能实现：使用Skill_SelfAddBuff添加buff_speed类型buff，参数{50}，持续8000毫秒。"
-    },
-    {
-      "SkillTID": "烈焰符",
-      "desc": "击败谷口妖兽后解锁的火系攻击仙术。投掷符咒产生烈焰爆炸，造成范围伤害。MP消耗100点，冷却时间6秒，施法距离8米，爆炸半径3米，对最多5个敌人造成攻击力2倍(约140点)的魔法伤害。技能实现：使用Skill_CollectCircleTargets选择半径3米内最多5个敌人，然后Skill_TargetScaleDamage造成damage_magic类型、系数2倍的伤害。"
-    },
-    {
-      "SkillTID": "护体金光",
-      "desc": "中级防护仙术，形成金色护盾吸收伤害并反震敌人。MP消耗120点，冷却时间20秒，生成500点全伤害护盾，持续15秒(15000毫秒)，护盾破碎时对4米范围敌人造成200点反震伤害。技能实现：使用Skill_SelfAddBuff添加buff_shield类型buff，参数{500, 'shield_all', 200, 4}，持续15000毫秒。"
-    },
-    {
-      "SkillTID": "天雷诀",
-      "desc": "最终解锁的强力雷系仙术，召唤天雷轰击敌人。MP消耗150点，冷却时间12秒，施法距离10米，造成攻击力3倍(约210点)的魔法伤害，30%概率眩晕敌人2秒。击败中级妖兽后解锁，挑战Boss的核心输出技能。技能实现：使用Skill_CollectMainTarget选择目标，Skill_TargetScaleDamage造成damage_magic类型、系数3倍的伤害，然后Skill_TargetEnemyAddBuff添加buff_stun，概率0.3，持续2000毫秒。"
-    }
-  ],
-  "anything_unclear": ""
+	"TID": "player",
+	"appearance_desc": "角色、奇幻、卡通、中国、古代、温暖、中等纹理细节、中等复杂度、现实比例、织物、站立、盔甲、中性",
+	"attributes_desc": [
+		"筑基期修仙者，初入仙途的修士，拥有扎实的仙术修为基础和较强的法力储备",
+		"生命值HP：1000点，足够承受多次战斗伤害，体现修仙者的强健体魄",
+		"法力值MP：600点，足够连续释放4-5个核心仙术技能，维持持续战斗能力",
+		"生命恢复：每秒恢复10点HP，具备修仙者基础的自我修复能力",
+		"法力恢复：每秒恢复8点MP，能够自然吸收天地灵气恢复法力",
+		"移动速度：6米/秒，保持灵活机动性，适合仙侠战斗中的走位闪避",
+		"攻击力：75点，配合仙术技能对妖兽造成有效伤害",
+		"防御力：20点，能够减轻来自妖兽的伤害，提供基础生存能力",
+		"敏捷度：50点，影响技能冷却和反应速度，适合灵活的仙术战斗",
+		"初始等级：1级，在灵草谷历练中逐渐成长提升修为",
+		"战斗输出：每秒平均造成150点伤害，每秒可释放1.2次技能",
+		"力量评级：Power等级5，适合挑战普通Boss级别的妖兽"
+	],
+	"skills_desc": [
+		{
+			"SkillTID": "灵气弹",
+			"desc": "基础远程仙术，凝聚天地灵气形成能量弹投射向目标。MP消耗50点，冷却时间2秒，施法距离8米，造成攻击力1.5倍(约112点)的魔法伤害。作为初始技能，既可远程消耗又可连续输出。技能实现：使用Skill_SetMPCost(50)、Skill_SetCooldown(2000)、Skill_SetCastRange(8)、Skill_SetMainTargetType('enemy')设置基础参数，然后使用Skill_CollectMainTarget选择目标，通过Skill_TargetScaleDamage造成damage_magic类型、系数1.5倍的伤害。"
+		},
+		{
+			"SkillTID": "治疗术",
+			"desc": "基础治疗仙术，运用生命灵气为自身疗伤。MP消耗80点，冷却时间8秒，瞬间恢复300点生命值(最大生命的30%)。关键时刻的保命技能，提高生存能力。技能实现：使用Skill_SetMPCost(80)、Skill_SetCooldown(8000)、Skill_SetCastRange(0)、Skill_SetMainTargetType('self')设置基础参数，然后使用Skill_SelfDamage传入damage_physical类型、数值-300的参数实现治疗效果。"
+		},
+		{
+			"SkillTID": "御风术",
+			"desc": "老修士传授的身法仙术，提升移动速度和位移能力。MP消耗60点，冷却时间5秒，瞬间向前方冲刺8米距离，移动速度提升至正常的1.5倍。既可用于追击敌人，也是躲避Boss技能的关键位移技能。技能实现：使用Skill_SetMPCost(60)、Skill_SetCooldown(5000)、Skill_SetCastRange(0)、Skill_SetMainTargetType('self')设置基础参数，然后使用Skill_MoveTo(0, 9, 8)实现向前方快速移动8米。"
+		},
+		{
+			"SkillTID": "烈焰符",
+			"desc": "击败谷口妖兽后解锁的火系攻击仙术。投掷符咒产生烈焰爆炸，造成范围伤害。MP消耗100点，冷却时间3秒，施法距离8米，爆炸半径3米，对最多5个敌人造成攻击力2倍(约150点)的魔法伤害。技能实现：使用Skill_SetMPCost(100)、Skill_SetCooldown(3000)、Skill_SetCastRange(8)、Skill_SetMainTargetType('enemy')设置基础参数，然后使用Skill_CollectCircleTargets(3, 5)选择半径3米内最多5个敌人，Skill_TargetScaleDamage造成damage_magic类型、系数2倍的伤害。"
+		},
+		{
+			"SkillTID": "护体金光",
+			"desc": "中级防护仙术，形成金色护盾吸收伤害并反震敌人。MP消耗120点，冷却时间20秒，生成500点全伤害护盾，持续15秒，护盾破碎时对4米范围敌人造成200点反震伤害。技能实现：使用Skill_SetMPCost(120)、Skill_SetCooldown(20000)、Skill_SetCastRange(0)、Skill_SetMainTargetType('self')设置基础参数，然后使用Skill_SelfAddBuff添加buff_shield类型buff，参数{500, 'shield_all', 200, 4}，持续15000毫秒。"
+		},
+		{
+			"SkillTID": "天雷诀",
+			"desc": "最终解锁的强力雷系仙术，召唤天雷轰击敌人。MP消耗150点，冷却时间8秒，施法距离10米，造成攻击力3倍(约225点)的魔法伤害，30%概率眩晕敌人2秒。击败中级妖兽后解锁，挑战Boss的核心输出技能。技能实现：使用Skill_SetMPCost(150)、Skill_SetCooldown(8000)、Skill_SetCastRange(10)、Skill_SetMainTargetType('enemy')设置基础参数，然后使用Skill_CollectMainTarget选择目标，Skill_TargetScaleDamage造成damage_magic类型、系数3倍的伤害，再使用Skill_TargetEnemyAddBuff添加buff_stun，概率0.3，持续2000毫秒。"
+		}
+	],
+	"anything_unclear": ""
 }
