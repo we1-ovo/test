@@ -1,29 +1,23 @@
 local M = {}
 
 function M.init()
-    -- 根据设计文档设置技能基础属性
-    Skill_SetMPCost(15, "设置魔法消耗为15点")
-    Skill_SetCooldown(5, "设置技能冷却时间为5秒")
-    Skill_SetCastRange(2, "设置技能施法距离为2米，符合近战技能设计")
-    Skill_SetMainTargetType("enemy", "设置目标类型为敌人")
-    Skill_SetDesc("对目标进行两次连续爪击，每次10点伤害，共20点伤害")
+    -- 技能初始化设置
+    Skill_SetMPCost(0, "技能不消耗魔法值")
+    Skill_SetCooldown(2000, "技能冷却时间为2秒")
+    Skill_SetCastRange(2, "近战攻击距离2米")
+    Skill_SetMainTargetType("enemy", "目标类型为敌人")
+    Skill_SetDesc("灵狐使用锋利的爪子攻击目标，造成物理伤害", "基础攻击技能描述")
 end
 
 function M.cb()
-    -- 选择敌方目标作为主目标
-    Skill_CollectMainTarget("选择敌方目标作为主目标")
+    -- 选择主目标进行攻击
+    Skill_CollectMainTarget("选择爪击的目标")
     
-    -- 执行第一次爪击
-    Skill_TargetDamage("damage_physical", 10, "第一次爪击造成10点物理伤害")
+    -- 对目标造成1.0倍攻击力的物理伤害
+    Skill_TargetScaleDamage("damage_physical", 1.0, "造成1.0倍攻击力物理伤害")
     
-    -- 等待0.5秒，实现两次攻击的间隔效果
-    Skill_Sleep(500, "等待0.5秒，实现两次攻击的间隔")
-    
-    -- 执行第二次爪击
-    Skill_TargetDamage("damage_physical", 10, "第二次爪击造成10点物理伤害")
-    
-    -- 技能完成，两次爪击总共造成20点物理伤害
-    Skill_Say("爪击连击完成！", 1)
+    -- 可以添加简单的攻击音效或视觉效果（通过子物体实现）
+    Skill_CreateStaticSubObjAtTargetPos(500, "创建爪击效果")
 end
 
 return M
