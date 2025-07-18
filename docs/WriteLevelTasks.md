@@ -5,52 +5,49 @@
 - 使用LEVEL_SetStageTimeout设置阶段超时时间为300秒(5分钟)。
 - 使用LEVEL_PlayerTeleportTo将玩家传送到出生点locator_player_spawn。
 - 使用LEVEL_ShowDialog显示开场旁白:'旁白(,AutoSpeed): 筑基期修仙者，踏入神秘的灵草谷。传说谷底有千年灵草，得之可大幅提升修为，然谷中妖兽盘踞，危险重重...'。
-- 节点任务1:使用LEVEL_DoProcess+LEVEL_AddTask给玩家发放指引任务，寻找老修士学习仙术。对话:'老修士(TalkSpeed:0.8X,TalkTarget:Player): 小友，前方便是灵草谷，谷中妖兽横行，切勿轻敌。老夫传你一门御风术，助你闯荡此谷。'。
-- 使用LEVEL_SummonWithType在locator_valley_entrance_elder召唤老修士，设置LEVEL_BlackboardSet存储UUID供其他系统使用。
-- 通过LEVEL_DoProcess等待玩家与老修士对话完成，老修士传授御风术技能后使用LEVEL_TeleportTo将其传送到locator_elder_exit位置离场。
-- 节点任务2:使用LEVEL_DoProcess+LEVEL_AddTask给玩家发放战斗指引任务，击败谷口妖兽群(5只)。对话:'旁白(TalkSpeed:1.2X,AutoSpeed): 谷口妖兽察觉到修士气息，纷纷现身阻拦...'。
-- 使用LEVEL_SummonNPCsWithType在locator_valley_entrance_foxes召唤3只灵狐，在locator_valley_entrance_apes召唤2只山猿，使用LEVEL_RegisterStageNPCNeedBeat注册为必须击败的敌人。
+- 节点任务1:使用LEVEL_DoProcess+LEVEL_AddTask给玩家发放指引任务，寻找老修士学习仙术。任务描述:'寻找谷口的老修士，获得仙术指导'。
+- 使用LEVEL_SummonWithType在locator_valley_entrance_elder召唤老修士，设置LEVEL_BlackboardSet('elder_uuid', elderUUID)存储UUID供其他系统使用。
+- 通过LEVEL_DoProcess等待玩家与老修士对话完成任务，对话内容:'老修士(TalkSpeed:0.8X): 小友，前方便是灵草谷，谷中妖兽横行，切勿轻敌。老夫传你一门御风术，助你闯荡此谷。'。完成后老修士使用LEVEL_TeleportTo传送到locator_elder_exit位置离场。
+- 节点任务2:使用LEVEL_DoProcess+LEVEL_AddTask给玩家发放战斗指引任务，击败谷口妖兽群。任务类型TaskType.KillMonster，参数为击败5只妖兽。显示旁白:'旁白(TalkSpeed:1.2X,AutoSpeed): 谷口妖兽察觉到修士气息，纷纷现身阻拦...'。
+- 使用LEVEL_SummonNPCsWithType在locator_valley_entrance_foxes召唤3只灵狐，在locator_valley_entrance_apes召唤2只山猿。使用LEVEL_RegisterStageNPCNeedBeat将所有谷口妖兽(5只)注册为必须击败的敌人。
 - 使用LEVEL_NPCBattle激活所有谷口妖兽主动攻击玩家。
-- 通过LEVEL_AddTimerAsyncProcess监控妖兽死亡，每只妖兽死亡时使用LEVEL_DropItem在其位置掉落初级灵草。
-- 通过LEVEL_DoProcess等待玩家击败所有谷口妖兽，完成后显示升级提示并解锁烈焰符技能。
-- 使用LEVEL_ShowDialog显示阶段过渡:'旁白(,AutoSpeed): 初战告捷，修为有所精进。深谷之中，更大的挑战正在等待...'。
-- 节点任务3:使用LEVEL_DoProcess+LEVEL_AddTask给玩家发放探索任务，收集谷中段的灵草和丹药资源。
+- 通过LEVEL_AddTimerAsyncProcess定时检查妖兽死亡状态，每只妖兽死亡时使用LEVEL_DropItem在其位置掉落初级灵草，间隔1秒检查。
+- 通过LEVEL_DoProcess等待玩家击败所有谷口妖兽任务完成。完成后使用LEVEL_ShowDialog显示升级提示:'旁白(,AutoSpeed): 初战告捷，修为有所精进。深谷之中，更大的挑战正在等待...'。
+- 节点任务3:使用LEVEL_DoProcess+LEVEL_AddTask给玩家发放探索任务，收集谷中段的资源并击败中级妖兽。任务描述:'深入谷中段，收集灵草资源并击败守护的妖兽'。
 - 使用LEVEL_DropItem在locator_middle_herbs_1~3位置各生成1个中级灵草，在locator_pills_1~2位置各生成1个修炼丹药。
-- 使用LEVEL_SummonNPCsWithType在locator_valley_middle_leopards召唤4只灵豹，在locator_valley_middle_bears召唤2只石熊，使用LEVEL_RegisterStageNPCNeedBeat注册为必须击败的敌人。
+- 使用LEVEL_SummonNPCsWithType在locator_valley_middle_leopards召唤4只灵豹，在locator_valley_middle_bears召唤2只石熊。使用LEVEL_RegisterStageNPCNeedBeat注册这6只中级妖兽为必须击败的敌人。
 - 使用LEVEL_NPCBattle激活中级妖兽群主动攻击玩家。
-- 通过LEVEL_AddTimerAsyncProcess监控中级妖兽死亡，灵豹死亡掉落中级灵草，石熊死亡掉落修炼丹药。
-- 通过LEVEL_DoProcess等待玩家击败所有中级妖兽(6只)，完成后再次升级解锁天雷诀技能。
-- 使用LEVEL_ShowDialog显示Boss战前置:'旁白(TalkSpeed:0.8X,AutoSpeed): 前路已通，谷底灵雾缭绕，千年灵草的金光隐约可见，然而一股强大的妖气扑面而来...'。
-- 节点任务4:使用LEVEL_DoProcess+LEVEL_AddTask给玩家发放Boss挑战任务，击败千年蛟龙获得千年灵草。
-- 使用LEVEL_SummonWithType在locator_valley_bottom_boss召唤千年蛟龙Boss，使用LEVEL_DropItem在locator_final_herb生成千年灵草(但设置为Boss死亡后才能拾取)。
-- 使用LEVEL_RegisterStageNPCNeedBeat注册千年蛟龙为必须击败的Boss。
-- Boss开场对话后使用LEVEL_NPCBattle激活Boss主动攻击玩家。
-- 通过LEVEL_DoProcess等待玩家击败千年蛟龙Boss，Boss死亡后玩家自动获得千年灵草并大幅提升属性。
-- 使用LEVEL_ShowDialog显示胜利结语:'旁白(TalkSpeed:0.8X,AutoSpeed): 千年灵草入手，修为大进。这次灵草谷之行，不仅获得了珍贵的天材地宝，更是在实战中磨砺了道心。修仙路漫漫，此番历练必将成为日后飞升的重要基石。'。
+- 通过LEVEL_AddTimerAsyncProcess监控中级妖兽死亡，灵豹死亡使用LEVEL_DropItem掉落中级灵草，石熊死亡掉落修炼丹药，间隔1秒检查。
+- 通过LEVEL_DoProcess等待玩家击败所有中级妖兽(6只)完成探索任务。完成后使用LEVEL_ShowDialog显示:'旁白(TalkSpeed:0.8X,AutoSpeed): 前路已通，谷底灵雾缭绕，千年灵草的金光隐约可见，然而一股强大的妖气扑面而来...'。
+- 节点任务4:使用LEVEL_DoProcess+LEVEL_AddTask给玩家发放Boss挑战任务，击败千年蛟龙。任务类型TaskType.KillMonster，参数为击败1只千年蛟龙。任务描述:'挑战谷底的千年蛟龙，夺取千年灵草'。
+- 使用LEVEL_SummonWithType在locator_valley_bottom_boss召唤千年蛟龙Boss，设置LEVEL_BlackboardSet('dragon_uuid', dragonUUID)存储UUID。使用LEVEL_RegisterStageNPCNeedBeat注册千年蛟龙为必须击败的Boss。
+- Boss开场对话:'千年蛟龙(TalkSpeed:0.7X): 何方修士，胆敢窥视本座守护的千年灵草！今日便是你的死期！'。对话完成后使用LEVEL_NPCBattle激活Boss主动攻击玩家。
+- 通过LEVEL_DoProcess等待玩家击败千年蛟龙Boss任务完成。Boss死亡后显示对话:'千年蛟龙(TalkSpeed:0.6X,AutoSpeed): 想不到你这小修士竟有如此实力...千年灵草...便是你的了...'。
+- Boss死亡后使用LEVEL_Award发放千年灵草奖励，使用LEVEL_ShowDialog显示胜利结语:'旁白(TalkSpeed:0.8X,AutoSpeed): 千年灵草入手，修为大进。这次灵草谷之行，不仅获得了珍贵的天材地宝，更是在实战中磨砺了道心。修仙路漫漫，此番历练必将成为日后飞升的重要基石。'。
 
 ### stage1/onStageSuccess.lua
 - 使用LEVEL_ShowDialog显示阶段成功的祝贺信息:'旁白(,AutoSpeed): 恭喜！成功闯荡灵草谷，获得千年灵草，修为大幅提升！'。
-- 使用LEVEL_Award给玩家发放额外奖励，包括高级修炼丹药和经验值。
-- 调用游戏结束成功界面。
+- 使用LEVEL_Award给玩家发放额外成功奖励，包括修炼丹药3个作为额外奖励。
+- 调用游戏胜利结束流程。
 
 ### stage1/onStageFailed.lua
 - 使用LEVEL_ShowDialog显示失败信息:'旁白(,AutoSpeed): 修仙路充满艰险，此次失败乃是修行路上的磨砺。重新来过，定能成功！'。
-- 调用游戏结束失败界面。
+- 调用游戏失败结束流程。
 
 ## AIForLevelLogic
 ### 千年蛟龙
-实现Boss多阶段战斗AI：正常阶段循环使用龙息和雷电攻击技能，监控自身血量当降至50%以下时进入狂暴模式，开始使用尾击扫荡等更强技能。需要合理控制技能释放间隔，确保战斗持续40-50秒，给玩家足够的策略空间和挑战感。狂暴模式下攻击频率提升，优先使用高伤害技能。
+实现Boss多阶段战斗AI：第一阶段(血量100%-50%)循环使用龙息和雷电攻击技能，攻击间隔适中；第二阶段(血量50%-0%)进入狂暴模式，开始使用尾击扫荡等更强技能，攻击频率提升。通过NPC_GetHP监控自身血量变化，当血量降至50%以下时切换AI模式，优先使用高伤害技能如尾击扫荡。战斗全程保持对玩家的主动攻击，确保Boss战持续40-50秒的激烈体验。
 
 ## SkillForLevelLogic
-### 龙息
-Boss主要攻击技能，设计为扇形AOE攻击，射程8-10米，伤害较高但有明显前摇动画，让玩家有机会通过走位躲避，体现仙侠战斗的策略性。释放时有火焰特效和咆哮音效。
-### 雷电攻击
-Boss的远程单体高伤害技能，需要锁定目标后有1-2秒的蓄力时间，伤害极高但可以通过移动躲避，增加战斗的技巧性。释放前有雷电聚集特效。
-### 尾击扫荡
-Boss血量50%以下释放的终极技能，360度环形攻击范围约6米，超高伤害但有3秒前摇时间，考验玩家的反应和走位能力。释放时Boss会有明显的蓄力动作。
-### 御风术
-玩家从老修士处学习的移动技能，提供短距离快速位移能力，帮助玩家在战斗中灵活走位躲避敌人攻击，特别是在Boss战中的生存技能。
 ### 烈焰符
-玩家击败谷口妖兽后解锁的火系攻击技能，单体高伤害远程攻击，适合对付中级妖兽群体，有燃烧特效。
+玩家击败谷口妖兽后解锁的火系攻击技能。设计为单体高伤害远程技能，使用Skill_CollectMainTarget选择目标，Skill_TargetDamage造成火焰伤害。攻击距离8米，伤害值200-250，冷却3秒。适合对付中级妖兽群体，释放时有燃烧特效和火符咒文动画。
 ### 天雷诀
-玩家击败中级妖兽群后解锁的最强雷系技能，范围伤害且伤害极高，是挑战Boss的核心输出技能，有雷电轰鸣特效。
+玩家击败中级妖兽群后解锁的最强雷系技能。设计为范围AOE技能，使用Skill_CollectCircleTargets选择半径5米内多个目标，Skill_TargetDamage造成雷电伤害。伤害值300-350，冷却8秒，MP消耗较高。是挑战Boss的核心输出技能，释放时有雷电轰鸣特效和雷云动画。
+### 龙息
+Boss主要攻击技能，设计为扇形AOE攻击。使用Skill_CollectSectorTargets选择扇形范围内目标，角度120度，射程10米。使用Skill_TargetDamage造成火焰伤害，伤害值180-220。技能有2秒前摇时间通过Skill_Sleep实现，让玩家有机会通过走位躲避。释放时有火焰龙息特效和咆哮音效。
+### 雷电攻击
+Boss的远程单体高伤害技能，设计为精准打击技能。使用Skill_CollectMainTarget锁定目标，需要1.5秒蓄力时间通过Skill_Sleep实现。使用Skill_TargetDamage造成雷电伤害，伤害值250-300。伤害极高但可以通过移动躲避，增加战斗技巧性。释放前有雷电聚集特效，命中时有雷电爆炸效果。
+### 尾击扫荡
+Boss血量50%以下释放的终极技能，设计为环形AOE攻击。使用Skill_CollectCircleTargets选择以自身为中心半径8米内所有目标。使用Skill_TargetDamage造成物理伤害，伤害值400-450。技能有3秒前摇时间通过Skill_Sleep实现，考验玩家反应和走位能力。释放时Boss有明显蓄力动作，伴随龙尾横扫动画和震地音效。
+### 御风术
+玩家从老修士处学习的移动技能，设计为快速位移技能。使用Skill_MoveTo实现短距离快速冲刺，移动距离8-10米，冷却时间5秒。帮助玩家在战斗中灵活走位躲避敌人攻击，特别是Boss战中的生存技能。释放时有风系特效。
