@@ -1,120 +1,126 @@
 local M = {}
-
 function M.cb()
-    -- 获取山猿当前状态
+    -- 获取自身位置
     local myPos = NPC_GetPos("")
+    -- 获取自身血量和最大血量
     local myHP = NPC_GetHP("")
     local myMaxHP = NPC_GetMaxHP("")
-    local hpPercent = myHP / myMaxHP
-    local elapsedTime = NPC_GetElapsedTime()
+    -- 计算当前血量百分比
+    local hpPercent = myHP / myMaxHP * 100
     
-    -- 检测附近的敌人
-    local nearbyEnemies = NPC_GetNearbyEnemies(myPos, 10)
-    local hasEnemyInRange = #nearbyEnemies > 0
+    -- 自动选择最近的目标(玩家)
+    local targetNpcUUID = NPC_AutoSelectTarget(8)
     
-    -- 当前状态标记获取
-    local currentState = NPC_BlackboardGet("currentState") or "patrol"
-    local lastSkillTime = tonumber(NPC_BlackboardGet("lastSkillTime") or "0")
-    local lastHowlTime = tonumber(NPC_BlackboardGet("lastHowlTime") or "0")
-    local patrolLocator = NPC_BlackboardGet("patrolLocator") or "locator_valley_entrance_apes"
+    -- 如果没有目标或者目标已死亡，则在周围巡逻
+    if targetNpcUUID == nil or not NPC_IsAlive(targetNpcUUID) then
+        -- 检查是否需要巡逻
+        local patrolTime = tonumber(NPC_BlackboardGet("patrol_time") or "0")
+        local currentTime = NPC_GetElapsedTime()
+        
+        if currentTime - patrolTime > 3000 then -- 每3秒改变一次巡逻位置
+            -- 在原始位置附近获取随机位置进行巡逻
+            local randomPos = NPC_GetRandomPos(myPos, 5)
+            NPC_MoveToPos({0, 0, 1}, "巡逻中", randomPos, 3000)
+            NPC_BlackboardSet("patrol_time", tostring(currentTime))
+        end
+        return
+    end
     
-    -- 创建向前的方向向量
-    local forwardDir = {x = 0, y = 0, z = 1}
+    -- 获取目标位置
+    local targetPos = NPC_GetPos(targetNpcUUID)
+    -- 计算与目标的距离
+    local distance = NPC_Distance(myPos, targetPos)
     
-    -- AI决策逻辑
-    if not hasEnemyInRange then
-        -- 没有敌人时的巡逻行为
-        if currentState ~= "patrol" then
-            NPC_BlackboardSet("currentState", "patrol")
-            NPC_SetSpeed(5)  -- 恢复默认速度
+    -- 检查周围的友方单位数量和位置
+    local nearbyFriendCount = NPC_GetNearbyFriendCount(myPos, 5)
+    local nearbyFriends = NPC_GetNearbyFriends(myPos, 5)
+    
+    -- 与友方单位保持位置分散
+    if nearbyFriendCount > 0 and #nearbyFriends > 0 then
+        -- 检查与最近友方单位的距离
+        local closestFriendUUID = nearbyFriends[1] -- 数组中第一个是最近的友方
+        local closestFriendPos = NPC_GetPos(closestFriendUUID)
+        local distanceToFriend = NPC_Distance(myPos, closestFriendPos)
+        
+        -- 如果与友方距离过近，需要分散位置
+        if distanceToFriend < 3 then
+            -- 计算远离友方单位的方向
+            local disperseDir = {
+                myPos.x - closestFriendPos.x,
+                myPos.y - closestFriendPos.y,
+                myPos.z - closestFriendPos.z
+            }
+            -- 计算分散位置
+            local dispersePos = {
+                x = myPos.x + disperseDir[1] * 2,
+                y = myPos.y + disperseDir[2] * 2,
+                z = myPos.z + disperseDir[3] * 2
+            }
+            NPC_MoveToPos(disperseDir, "与友方保持分散", dispersePos, 2000)
+            return
+        end
+    end
+    
+    -- 检查猿啸技能使用时间
+    local lastHowlTime = tonumber(NPC_BlackboardGet("last_howl_time") or "0")
+    local currentTime = NPC_GetElapsedTime()
+    local isLastAlive = (NPC_BlackboardGet("is_last_alive") == "true")
+    
+    -- 检查是否是战斗中最后一个存活单位
+    if not isLastAlive and nearbyFriendCount == 0 then
+        NPC_BlackboardSet("is_last_alive", "true")
+    end
+    
+    -- 使用猿啸技能的条件：周围有友方单位，且距离上次使用超过60秒或者是战斗开始
+    if nearbyFriendCount > 0 and (currentTime - lastHowlTime > 60000 or lastHowlTime == 0) then
+        NPC_CastSkill("猿啸")
+        NPC_BlackboardSet("last_howl_time", tostring(currentTime))
+    end
+    
+    -- 根据血量低于30%时的行为变化
+    if hpPercent < 30 then
+        -- 低血量时尝试拉开距离
+        if distance < 4 then
+            -- 获取远离玩家的位置
+            local retreatDir = {
+                myPos.x - targetPos.x,
+                myPos.y - targetPos.y,
+                myPos.z - targetPos.z
+            }
+            -- 计算后退位置
+            local retreatPos = {
+                x = myPos.x + retreatDir[1],
+                y = myPos.y + retreatDir[2],
+                z = myPos.z + retreatDir[3]
+            }
+            NPC_MoveToPos(retreatDir, "撤退中", retreatPos, 2000)
+            return
         end
         
-        -- 巡逻逻辑：在高地岩石上来回巡逻
-        if not NPC_IsReached(patrolLocator, 2) then
-            NPC_MoveToLocator(forwardDir, "移动到巡逻点", patrolLocator, 10)
-        else
-            -- 切换巡逻点
-            if patrolLocator == "locator_valley_entrance_apes" then
-                NPC_BlackboardSet("patrolLocator", "locator_middle_herbs_spawn3")
-            else
-                NPC_BlackboardSet("patrolLocator", "locator_valley_entrance_apes")
-            end
+        -- 尝试使用远程技能
+        if distance <= 6 then
+            NPC_CastSkill("石块投掷")
         end
     else
-        -- 有敌人时的战斗行为
-        local targetUUID = nearbyEnemies[1]
-        local targetPos = NPC_GetPos(targetUUID)
-        local distanceToTarget = NPC_Distance(myPos, targetPos)
+        -- 正常血量下的战斗逻辑
         
-        -- 根据血量状态调整战斗策略
-        if hpPercent < 0.3 then
-            -- 血量低于30%时撤退到高地
-            if currentState ~= "retreat" then
-                NPC_BlackboardSet("currentState", "retreat")
-                NPC_Say("我要找个高地重整旗鼓！")
-                
-                -- 选择高地位置撤退
-                local retreatLocator = "locator_middle_herbs_spawn3"
-                NPC_MoveToLocator(forwardDir, "撤退到高地", retreatLocator, 8)
-            end
-            
-            -- 在撤退位置使用远程投石攻击
-            if elapsedTime - lastSkillTime > 5 then
-                NPC_CastSkill("投石术")
-                NPC_BlackboardSet("lastSkillTime", tostring(elapsedTime))
-            end
-            
-        elseif distanceToTarget > 4 then
-            -- 距离大于4米时使用远程攻击
-            if currentState ~= "ranged_attack" then
-                NPC_BlackboardSet("currentState", "ranged_attack")
-            end
-            
-            -- 优先使用投石术
-            if elapsedTime - lastSkillTime > 5 then
-                NPC_CastSkill("投石术")
-                NPC_BlackboardSet("lastSkillTime", tostring(elapsedTime))
-            else
-                -- 追击到合适距离
-                NPC_Chase(forwardDir, "追击到投石距离", targetUUID, 6)
-            end
-            
+        -- 根据与玩家距离选择合适的攻击方式
+        if distance > 2 and distance <= 6 then
+            -- 在远程攻击范围内，使用石块投掷
+            NPC_CastSkill("石块投掷")
+        elseif distance <= 2 then
+            -- 在近战攻击范围内，使用猿拳
+            NPC_CastSkill("猿拳")
         else
-            -- 近战状态
-            if currentState ~= "melee_attack" then
-                NPC_BlackboardSet("currentState", "melee_attack")
-                NPC_Say("看我猿拳的厉害！")
-            end
-            
-            -- 血量低于70%时考虑使用猿啸增强攻击并吸引援助
-            if hpPercent < 0.7 and elapsedTime - lastHowlTime > 20 then
-                NPC_CastSkill("猿啸")
-                NPC_BlackboardSet("lastHowlTime", tostring(elapsedTime))
-                NPC_Say("同伴们，一起上！")
-            end
-            
-            -- 使用猿拳击进行攻击
-            if elapsedTime - lastSkillTime > 3 then
-                NPC_CastSkill("猿拳击")
-                NPC_BlackboardSet("lastSkillTime", tostring(elapsedTime))
-                
-                -- 攻击后短暂后退重整态势
-                local randomPos = NPC_GetRandomPos(myPos, 3)
-                NPC_MoveToPos(forwardDir, "攻击后重整", randomPos, 1.5)
-            end
+            -- 超出攻击范围，追击玩家
+            NPC_Chase({0, 0, 1}, "追击玩家", targetNpcUUID, 2)
         end
     end
     
-    -- 每次战斗中都尝试评估是否需要使用技能
-    -- 距离玩家4米内，且血量在70%以下，并且猿啸技能冷却完毕时，使用猿啸技能
-    if hasEnemyInRange and hpPercent < 0.7 and elapsedTime - lastHowlTime > 20 then
-        local playerDistance = NPC_Distance(myPos, NPC_GetPos(nearbyEnemies[1]))
-        if playerDistance < 4 then
-            NPC_CastSkill("猿啸")
-            NPC_BlackboardSet("lastHowlTime", tostring(elapsedTime))
-            NPC_Say("同伴们，一起上！")
-        end
+    -- 如果是最后一个存活单位，提高攻击频率
+    if isLastAlive then
+        -- 追击更为激进
+        NPC_Chase({0, 0, 1}, "激进追击", targetNpcUUID, 1.5)
     end
 end
-
 return M
