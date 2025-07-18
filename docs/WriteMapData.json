@@ -12,7 +12,7 @@
 			"terrains": [
 				{
 					"eid": "terrain_valley_entrance_ground",
-					"desc": "谷口平地草地",
+					"desc": "谷口平地草地区域",
 					"type": 1,
 					"vertices": [
 						{
@@ -523,11 +523,11 @@
 				{
 					"eid": "locator_valley_entrance_elder",
 					"english": "elder_guide_position",
-					"desc": "老修士现身位置，在观谷石亭前开阔地带，便于对话交流",
+					"desc": "老修士现身位置，在谷口平地中央区域便于对话交流",
 					"priority": 2,
 					"center": {
 						"x": 64,
-						"y": 22
+						"y": 26
 					}
 				},
 				{
