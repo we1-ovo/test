@@ -1,18 +1,18 @@
 {
 	"SkillTID": "天雷诀",
-	"origin_desc": "最终解锁的强力雷系仙术，召唤天雷轰击敌人。MP消耗150点，冷却时间12秒，施法距离10米，造成攻击力3倍(约210点)的魔法伤害，30%概率眩晕敌人2秒。击败中级妖兽后解锁，挑战Boss的核心输出技能。技能实现：使用Skill_CollectMainTarget选择目标，Skill_TargetScaleDamage造成damage_magic类型、系数3倍的伤害，然后Skill_TargetEnemyAddBuff添加buff_stun，概率0.3，持续2000毫秒。",
+	"origin_desc": "最终解锁的强力雷系仙术，召唤天雷轰击敌人。MP消耗150点，冷却时间8秒，施法距离10米，造成攻击力3倍(约225点)的魔法伤害，30%概率眩晕敌人2秒。击败中级妖兽后解锁，挑战Boss的核心输出技能。技能实现：使用Skill_SetMPCost(150)、Skill_SetCooldown(8000)、Skill_SetCastRange(10)、Skill_SetMainTargetType('enemy')设置基础参数，然后使用Skill_CollectMainTarget选择目标，Skill_TargetScaleDamage造成damage_magic类型、系数3倍的伤害，再使用Skill_TargetEnemyAddBuff添加buff_stun，概率0.3，持续2000毫秒。",
 	"init_desc": [
-		"设置技能魔法消耗为150点",
-		"设置技能冷却时间为12000毫秒(12秒)",
+		"设置魔法消耗为150点",
+		"设置技能冷却时间为8000毫秒(8秒)",
 		"设置施法范围为10米",
-		"设置主目标类型为敌人",
+		"设置目标类型为敌人",
 		"设置技能描述为强力雷系仙术"
 	],
 	"cast_desc": [
-		"使用Skill_CollectMainTarget()选择主要攻击目标",
-		"使用Skill_TargetScaleDamage('damage_magic', 3, '天雷诀伤害')对目标造成3倍攻击力的魔法伤害",
-		"使用Skill_TargetEnemyAddBuff('buff_stun', 0.3, 2000, {}, '天雷诀眩晕')有30%概率为目标添加眩晕效果",
-		"眩晕效果持续2000毫秒(2秒)",
-		"技能为单体高伤害带控制效果的强力仙术"
+		"选择主目标敌人",
+		"对目标造成魔法伤害，伤害倍率为攻击力的3倍",
+		"30%概率为目标添加眩晕buff，持续2000毫秒(2秒)",
+		"技能为单体高伤害技能，带有控制效果",
+		"使用目标选择API选择单体敌人，使用伤害倍率API造成高额伤害，使用敌人buff添加API施加眩晕状态"
 	]
 }

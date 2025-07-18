@@ -1,16 +1,18 @@
 {
 	"SkillTID": "灵气弹",
-	"origin_desc": "基础远程仙术，凝聚天地灵气形成能量弹投射向目标。MP消耗50点，冷却时间2秒，施法距离8米，造成攻击力1.5倍(约105点)的魔法伤害。作为初始技能，既可远程消耗又可连续输出。技能实现：使用Skill_CollectMainTarget选择目标，然后通过Skill_TargetScaleDamage造成damage_magic类型、系数1.5倍的伤害。",
+	"origin_desc": "基础远程仙术，凝聚天地灵气形成能量弹投射向目标。MP消耗50点，冷却时间2秒，施法距离8米，造成攻击力1.5倍(约112点)的魔法伤害。作为初始技能，既可远程消耗又可连续输出。技能实现：使用Skill_SetMPCost(50)、Skill_SetCooldown(2000)、Skill_SetCastRange(8)、Skill_SetMainTargetType('enemy')设置基础参数，然后使用Skill_CollectMainTarget选择目标，通过Skill_TargetScaleDamage造成damage_magic类型、系数1.5倍的伤害。",
 	"init_desc": [
-		"设置技能魔法消耗为50点",
+		"设置魔法消耗为50点",
 		"设置技能冷却时间为2000毫秒(2秒)",
 		"设置施法范围为8米",
-		"设置主目标类型为敌人",
-		"设置技能描述为基础远程仙术攻击"
+		"设置目标类型为敌人",
+		"设置技能描述为基础远程仙术"
 	],
 	"cast_desc": [
-		"使用Skill_CollectMainTarget()选择主要攻击目标",
-		"使用Skill_TargetScaleDamage('damage_magic', 1.5, '灵气弹伤害')对目标造成1.5倍攻击力的魔法伤害",
-		"技能为瞬发技能，无需额外等待时间"
+		"选择主目标敌人",
+		"对目标造成魔法伤害，伤害倍率为攻击力的1.5倍",
+		"技能为瞬发型，无需延迟和引导时间",
+		"使用目标选择API选择单体敌人目标",
+		"使用伤害倍率API造成基于攻击力的魔法伤害"
 	]
 }
