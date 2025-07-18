@@ -1,69 +1,69 @@
 {
 	"property": {
+		"Boss": {
+			"numerical_desc": "千年蛟龙王，盘踞灵草谷底守护千年灵草的强大妖兽Boss，经过千年修炼积累了深厚的妖力修为。拥有强大的攻防属性和特殊技能，移动速度略快于玩家以产生压迫感。血量和防御经过精确计算，确保玩家需要40-45秒的激烈战斗才能击败，充分考虑了Player的DPS输出和技能循环。需要玩家综合运用三种仙术技能、精准走位和时机把握才能获胜，体现仙侠Boss战的策略性和观赏性。",
+			"type": "boss",
+			"prop": {
+				"hpMax": 4500,
+				"hpGen": 25,
+				"mpMax": 1500,
+				"mpGen": 15,
+				"speed": 7,
+				"strength": 120,
+				"defense": 45,
+				"agility": 60,
+				"exp": 3500
+			},
+			"canCastSkill": true,
+			"canBeAttack": true,
+			"hatredRange": 15,
+			"damagePerSecond": 180,
+			"castSkillPerSecond": 0.4,
+			"power": 8,
+			"level": 1
+		},
+		"NPC": {
+			"numerical_desc": "灵草谷中的普通妖兽群体，包括谷口的低级妖兽（灵狐、山猿）和深谷的中级妖兽（灵豹、石熊）。作为修仙者历练路上的主要对手，血量和防御设计为玩家运用仙术攻击3-4秒可击败单只，攻击力足以对筑基期修仙者造成威胁。成群出现时通过数量优势和群体配合来考验玩家的战术运用和技能释放时机，确保战斗既有挑战性又不过于困难。",
+			"type": "junior",
+			"prop": {
+				"hpMax": 280,
+				"hpGen": 3,
+				"mpMax": 80,
+				"mpGen": 4,
+				"speed": 5,
+				"strength": 45,
+				"defense": 8,
+				"agility": 30,
+				"exp": 120
+			},
+			"canCastSkill": true,
+			"canBeAttack": true,
+			"hatredRange": 8,
+			"damagePerSecond": 40,
+			"castSkillPerSecond": 0.6,
+			"power": 2,
+			"level": 1
+		},
 		"Player": {
-			"numerical_desc": "筑基期修仙者，修仙界初入仙途的修士，具备扎实的仙术修为基础和较强的法力储备。设计为能够持续战斗的角色，MP容量确保无丹药情况下可连续释放4-5个核心仙术技能。通过在灵草谷的历练获得经验提升，逐步解锁三种递进式仙术技能，最终具备挑战千年守护兽的实力。战斗风格以仙术输出为主，需要灵活走位配合技能释放时机。",
+			"numerical_desc": "筑基期修仙者，修仙界初入仙途的修士，具备扎实的仙术修为基础和充足的法力储备。HP设计确保能够承受一定伤害但需要谨慎作战，MP容量600确保无丹药情况下可连续释放4-5个核心仙术技能。攻击力主要依赖仙术技能输出，基础物理攻击为辅。通过在灵草谷的历练获得经验提升，逐步解锁三种递进式仙术技能，防御力适中以保持游戏挑战性，最终具备挑战千年守护兽的实力。",
 			"type": "player",
 			"prop": {
-				"hpMax": 1200,
-				"hpGen": 12,
+				"hpMax": 1000,
+				"hpGen": 10,
 				"mpMax": 600,
 				"mpGen": 8,
 				"speed": 6,
-				"strength": 70,
-				"defense": 30,
-				"agility": 40,
+				"strength": 75,
+				"defense": 20,
+				"agility": 50,
 				"exp": 0
 			},
 			"canCastSkill": true,
 			"canBeAttack": true,
 			"hatredRange": 0,
-			"damagePerSecond": 140,
-			"castSkillPerSecond": 1,
+			"damagePerSecond": 150,
+			"castSkillPerSecond": 1.2,
 			"power": 5,
-			"level": 1
-		},
-		"Boss": {
-			"numerical_desc": "千年蛟龙王，盘踞灵草谷底守护千年灵草的强大妖兽Boss，经过千年修炼积累了深厚的妖力修为。拥有强大的攻防属性和特殊技能，移动速度略快于玩家以产生压迫感。需要玩家综合运用三种仙术技能、精准走位和时机把握才能击败。战斗设计为40-50秒，充分体现仙侠Boss战的策略性和观赏性，为整个5分钟流程的高潮部分。",
-			"type": "boss",
-			"prop": {
-				"hpMax": 7000,
-				"hpGen": 35,
-				"mpMax": 1800,
-				"mpGen": 18,
-				"speed": 7,
-				"strength": 150,
-				"defense": 70,
-				"agility": 50,
-				"exp": 4000
-			},
-			"canCastSkill": true,
-			"canBeAttack": true,
-			"hatredRange": 15,
-			"damagePerSecond": 210,
-			"castSkillPerSecond": 0.35,
-			"power": 8,
-			"level": 1
-		},
-		"NPC": {
-			"numerical_desc": "灵草谷中的普通妖兽群体，包括谷口的低级妖兽（灵狐、山猿）和深谷的中级妖兽（灵豹、石熊）。作为修仙者历练路上的主要对手，实力设计为玩家运用仙术攻击2-4秒可击败单只，成群出现时提供合理挑战。拥有基础的妖术攻击能力，主要通过数量优势和群体配合来考验玩家的战术运用和技能释放时机。",
-			"type": "junior",
-			"prop": {
-				"hpMax": 350,
-				"hpGen": 4,
-				"mpMax": 100,
-				"mpGen": 5,
-				"speed": 5,
-				"strength": 30,
-				"defense": 15,
-				"agility": 25,
-				"exp": 150
-			},
-			"canCastSkill": true,
-			"canBeAttack": true,
-			"hatredRange": 8,
-			"damagePerSecond": 30,
-			"castSkillPerSecond": 0.5,
-			"power": 2,
 			"level": 1
 		}
 	}
