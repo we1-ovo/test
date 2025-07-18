@@ -24,9 +24,6 @@ local taskConfig = {
     param = {"狼", 1},
     -- reward是任务的奖励。奖励是一个table，table的第一个元素是奖励的物品TID ItemTID，第二个元素是奖励的数量
     reward = {"回复水晶", 1},
-    -- chatSpeed是对话的速度，每个字的显示时间间隔，单位是秒, 默认值是普通的语速是0.1；最快语速可以设置为0.02;最慢语速可以设置为1.0。
-    -- IMPORTANT: chatSpeed控制的当前任务的所有人的说话速度!!!,如果每个人说话速度不一样，需要分拆成多个任务!!!!
-    chatSpeed = 0.1,
     -- autoChat是对话是否自动播放，如果为true，对话会自动播放，如果为false，需要玩家点击按钮才能继续对话。如果需要在单句对话中设置不同的语速，可以在`preChat`, `finishChat`等对话条目中设置第四个参数。
     autoChat = false,
     -- preTask是任务的前置任务，是一个table，table的元素是前置任务的taskID。如果设置了前置任务taskID,如果没有完成前置任务,当前任务不会生效和显示；当前置任务完成时，当前任务才会生效并且显示。如果没有前置任务，preTask为空table。
@@ -35,7 +32,7 @@ local taskConfig = {
     -- 其中第一个元素是说话的人TID(NpcTID/Player,不同于上面的NpcUUID)
     -- 第二个元素是说话内容
     -- 第三个元素是情绪ID @Terms.EmotionID
-    -- 第四个元素是说话速度，取值越大，语速越快。 范围[0.5,2]，默认值为1.0。chatSpeed中可以设置一个全局的参数，如果设置了该参数会覆盖全局的`chatSpeed`设置，如果单句对话未设置则默认使用全局`chatSpeed`
+    -- 第四个元素是说话速度，取值越大，语速越快。 范围[0.5,2]，默认值为1.0。
     preChat = {
         { "Player", "你知道希望之星的事情吗？", "neutral", 1.0 },
         { "收藏家", "希望之星？我记得我这里有一本古籍记载了一些关于希望之星的事情。", "neutral", 1.0 },
