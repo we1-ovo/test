@@ -1,41 +1,53 @@
+-- 老修士的NPC属性配置
+
 local M = {
-    -- 基础信息
+    -- id为NpcTID，是NPC的模板TID
     id = "老修士",
-    desc = "仙风道骨的长者，灵草谷的守护者，负责引导修行者",
-    type = "senior", -- 根据老修士的定位，设置为高级NPC类型
-    attackType = "melee", -- 虽不战斗，但需设置攻击类型
+    -- 老修士的描述
+    desc = "一位仙风道骨的老修士，能够传授御风术",
+    -- 老修士属于中级NPC，不是boss也不是小怪
+    type = "senior", 
+    -- 选择的模型预制体
     prefab = "Assets/PolygonFantasyCharacters/Prefabs/Character_Male_Wizard_01.prefab",
+    -- 选择的头像立绘
     avatar = "Assets/Avatars/Assets_PolygonFantasyCharacters_Prefabs_Character_Male_Wizard_01.png",
-    
-    -- 属性设置，基于不参与战斗的老者形象
+    -- 老修士的属性设置，根据attributes_desc提供的数值
     prop = {
-        -- 虽然设计文档提到血量和防御仅为形式，但仍需设置一定数值
+        -- 最大生命值
         hpMax = 1000,
-        hpGen = 0, -- 不需要生命恢复
-        mpMax = 500,
-        mpGen = 0, -- 不需要法力恢复
-        speed = 4, -- 适中的移动速度，符合年迈仙人形象
-        strength = 0, -- 不参与战斗，攻击力为0
-        defense = 999, -- 高防御确保不会受伤
-        agility = 20, -- 较低的敏捷度，符合老者形象
-        exp = 0, -- 不掉落经验
+        -- 生命回复速度
+        hpGen = 5,
+        -- 最大法力值
+        mpMax = 1000,
+        -- 法力回复速度
+        mpGen = 8,
+        -- 移动速度(米/秒)
+        speed = 4.5,
+        -- 力量属性
+        strength = 10,
+        -- 防御属性
+        defense = 5,
+        -- 敏捷属性
+        agility = 15,
+        -- 经验值，击败后给予的经验(友方NPC不会被击败，设为0)
+        exp = 0,
     },
-    
-    -- 技能列表
+    -- 老修士的技能列表
     skills = {
         "御风术传授",
-        "仙风展露"
+        "瞬移离场",
     },
-    
-    -- 阵营设置为中立NPC，不参与战斗
-    faction = 'faction_neutral_npc',
-    
-    -- AI行为设置
-    aiRoot = 'default', -- 使用默认AI行为
-    hatredRange = 0, -- 不主动攻击任何单位
-    canMove = true, -- 可以移动
-    canCastSkill = true, -- 可以施法(用于剧情技能)
-    canBeAttack = false, -- 不可被攻击
+    -- 老修士是友方NPC，设置为友方阵营
+    faction = 'faction_friend_npc',
+    -- 使用默认AI
+    aiRoot = 'default',
+    -- 仇恨范围设为0，不会主动攻击任何目标
+    hatredRange = 0,
+    -- 老修士虽然有技能，但不会用于战斗
+    canCastSkill = false,
+    -- 老修士没有物品掉落
+    drops = {},
+    -- 老修士可以被攻击，但不会反击
+    canBeAttack = true,
 }
-
 return M

@@ -1,54 +1,45 @@
+-- 山猿NPC属性设置文件
+
 local M = {
-    -- NPC的模板TID，与文件名一致
+    -- id为NpcTID，是NPC的模板TID，与文件名一致
     id = "山猿",
-    -- NPC的描述
-    desc = "强壮的中等体型猿类妖兽，毛色棕褐，肌肉发达，力大无穷",
-    -- NPC类型: boss、junior、senior
-    type = "junior",
-    -- 攻击类型: melee(近战) 或 ranged(远程)
-    attackType = "ranged",
-    -- 预制体路径
-    prefab = "Assets/PolygonFantasyCharacters/Prefabs/Character_Male_Baird_01.prefab",
-    -- 头像立绘路径
-    avatar = "Assets/Avatars/Assets_PolygonFantasyCharacters_Prefabs_Character_Male_Baird_01.png",
-    -- NPC的属性参数
+    -- desc是NPC的描述，会显示在NPC信息中
+    desc = "灵草谷谷口的低级妖兽，体型中等，力大无穷。擅长近身攻击和远程投掷。",
+    type = "junior", -- 根据数值系统设计文档，山猿属于junior类型
+    prefab = "Assets/PolygonFantasyCharacters/Prefabs/FixedScaleCharacters/Character_Male_King.prefab", -- 选择了具有人形特征的模型，最接近猿类身形
+    avatar = "Assets/Avatars/Assets_PolygonFantasyCharacters_Prefabs_FixedScaleCharacters_Character_Male_King.png",
+    -- prop是NPC的属性参考数值系统
     prop = {
-        -- 最大生命值
-        hpMax = 350,
-        -- 生命回复速度
-        hpGen = 4,
-        -- 最大法力值
-        mpMax = 100,
-        -- 法力回复速度
-        mpGen = 5,
-        -- 移动速度
+        -- 根据数值系统设计文档中NPC类型的属性设置
+        hpMax = 280,
+        hpGen = 3,
+        mpMax = 80,
+        mpGen = 4,
         speed = 5,
-        -- 力量属性
-        strength = 30,
-        -- 防御属性
-        defense = 15,
-        -- 敏捷属性
-        agility = 25,
-        -- 击败后给予的经验值
-        exp = 150,
+        strength = 45,
+        defense = 8,
+        agility = 30,
+        exp = 120,
     },
-    -- NPC可使用的技能列表
+    -- skills是NPC的技能，即可以使用的技能id列表
     skills = {
-        "猿拳击",
-        "投石术",
+        "猿拳",
+        "石块投掷",
         "猿啸",
     },
-    -- 阵营设置: faction_player(玩家)、faction_neutral_npc(中立)、faction_npc(敌对)、faction_friend_npc(友方)
+    -- 根据设计文档，山猿属于敌对NPC，与玩家敌对
     faction = 'faction_npc',
-    -- AI行为根目录，使用default表示使用通用AI
+    -- 根据AI描述，山猿使用默认AI
     aiRoot = 'default',
-    -- 仇恨范围(单位米)，发现敌对目标会主动攻击
-    hatredRange = 10,
-    -- 是否可以移动
-    canMove = true,
-    -- 是否可以释放技能战斗
+    -- 根据AI描述，山猿的仇恨范围为8米
+    hatredRange = 8,
+    -- NPC的AI行为描述,是否能够释放技能战斗
     canCastSkill = true,
-    -- 是否可以被攻击
+    -- NPC掉落物品列表
+    drops = {
+        -- 由于设计文档中没有指定掉落物，这里不设置特定掉落
+    },
+    -- NPC能够被攻击
     canBeAttack = true,
 }
 return M
